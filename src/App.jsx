@@ -1,16 +1,16 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import NotFound from "./pages/not-found/NotFound";
-import Welcome from "./pages/welcome/Welcome";
+import { Provider } from "react-redux";
+import { WebSocketClientProvider } from "./features/api/web-socket/WebSocketClientProvider";
+import Routing from "./features/routing/Routing";
+import store from "./store";
 
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <WebSocketClientProvider>
+      <Provider store={store}>
+        <Routing />
+      </Provider>
+    </WebSocketClientProvider>
   );
-}
+};
 
 export default App;

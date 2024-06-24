@@ -1,0 +1,46 @@
+@import "../../global/styles/variables.scss";
+
+.container {
+  color: $font-color-light;
+  user-select: none;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 45vw 10vw 45vw;
+  grid-template-rows: 100vh;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+}
+
+.form-join {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 20vh;
+}
+
+.form-create {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 30vh;
+}
+
+.text {
+  font-size: $font-size-large;
+}

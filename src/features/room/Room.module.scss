@@ -1,0 +1,14 @@
+@import "../../global/styles/variables.scss";
+
+.container {
+  color: $font-color-light;
+}
+
+.flex-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+  padding-top: 5vh;
+}

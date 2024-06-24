@@ -4,19 +4,19 @@
   display: flex;
 }
 
-.flex-center {
+.flex {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.flex-center-vertical {
-  @extend .flex-center;
+.flex-vertical {
+  @extend .flex;
   flex-direction: column;
 }
 
 .form-vertical {
-  @extend .flex-center-vertical;
+  @extend .flex-vertical;
   justify-content: space-between;
   gap: 2vh;
 }

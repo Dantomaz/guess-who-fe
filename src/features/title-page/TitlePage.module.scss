@@ -1,0 +1,24 @@
+@import "../../global/styles/variables.scss";
+
+.container {
+  color: $font-color-light;
+  user-select: none;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 40vw 20vw 40vw;
+  grid-template-rows: 100vh;
+}
+
+.flex-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+}
+
+.title {
+  font-size: 10vh;
+}
