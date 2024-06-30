@@ -8,7 +8,7 @@ const useTitlePage = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    const url = API_INIT_PLAYER.replace("{playerName}", data.playerName);
+    const url = API_INIT_PLAYER.replace("{playerName}", data.nickname);
 
     const request = {
       method: "GET",

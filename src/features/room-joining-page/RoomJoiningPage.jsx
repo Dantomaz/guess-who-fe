@@ -9,27 +9,26 @@ const RoomJoiningPage = () => {
   const { onCreate, onJoin } = useRoomJoiningPage();
 
   return (
-    <main className={`${styles["container"]} ${styles["grid-container"]}`}>
-      <section className={styles["flex-vertical"]}>
-        <form onSubmit={handleSubmit(onJoin)} className={styles["form-create"]}>
+    <div className={styles["grid-container"]}>
+      <section className={`${styles["card"]} ${styles["card-join"]}`}>
+        <form onSubmit={handleSubmit(onJoin)}>
           <span className={styles.text}>Join existing room</span>
           <Input id="roomId" type="text" label="Room ID" register={register("roomId", { required: "Room ID is required" })} formState={formState} />
-          <Button type="submit">JOIN</Button>
+          <Button type="submit" style={{ width: "200px" }}>
+            JOIN
+          </Button>
         </form>
       </section>
-      <section className={styles["flex-container"]}>
-        <span className={styles.text}>OR</span>
-      </section>
-      <section className={styles["flex-vertical"]}>
-        <div className={styles["form-join"]}>
-          <span className={styles.text}>create your own!</span>
-          <Button type="submit" onClick={onCreate}>
+      <section className={`${styles["card"]} ${styles["card-create"]}`}>
+        <div className={styles["form-create"]}>
+          <span className={styles.text}>or create your own!</span>
+          <Button type="submit" onClick={onCreate} style={{ width: "200px" }}>
             CREATE
           </Button>
         </div>
       </section>
-    </main>
+    </div>
   );
-}
+};
 
 export default RoomJoiningPage;

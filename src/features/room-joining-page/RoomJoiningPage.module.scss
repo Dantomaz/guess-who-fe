@@ -1,14 +1,10 @@
 @import "../../global/styles/variables.scss";
 
-.container {
-  color: $font-color-light;
-  user-select: none;
-}
-
 .grid-container {
   display: grid;
-  grid-template-columns: 45vw 10vw 45vw;
+  grid-template-columns: 50vw 50vw;
   grid-template-rows: 100vh;
+  user-select: none;
 }
 
 .flex-container {
@@ -17,30 +13,57 @@
   align-items: center;
 }
 
-.flex-vertical {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2vh;
-}
-
 .form-join {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  height: 20vh;
+  height: 100%;
+  width: 100%;
 }
 
 .form-create {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  height: 30vh;
+  height: 100%;
+  width: 100%;
 }
 
 .text {
   font-size: $font-size-large;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px;
+  gap: 50px;
+  margin: auto auto;
+  background-color: $color-background;
+  border-radius: 15px;
+  box-shadow: 0 4px 4px 4px rgba($color-dark, 0.2);
+
+  > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    gap: 50px;
+  }
+}
+
+.card-join {
+  height: 400px;
+  width: 350px;
+}
+
+.card-create {
+  height: 300px;
+  width: 350px;
 }

@@ -1,27 +1,26 @@
 $color-background: #fefefe;
-$color-primary-1: #c0a1e9;
-$color-primary-2: #9057db;
-$color-primary-3: #dfc5ec;
-$color-secondary-1: #a777e6;
+$color-primary-1: #4c933b;
+$color-secondary-1: #98c13d;
+$color-primary-2: #ffed4d;
+$color-secondary-2: #ffd000;
 $color-error: #ff0000;
 $color-dark: #000000;
+$color-light: #fefefe;
 
-$font-size-very-small: 1vh;
-$font-size-small: 1.2vh;
-$font-size-medium-small: 1.6vh;
-$font-size-medium: 2vh;
-$font-size-medium-large: 3vh;
-$font-size-large: 4vh;
-$font-size-very-large: 5vh;
+$font-size-very-small: 10px;
+$font-size-small: 12px;
+$font-size-medium-small: 14px;
+$font-size-medium: 16px;
+$font-size-medium-large: 20px;
+$font-size-large: 26px;
+$font-size-very-large: 36px;
 
 $font-color-dark: #000000;
 $font-color-light: #ffffff;
 $font-color-gray: #666666;
 $font-color-light-gray: #bbbbbb;
 
-$card-border-radius: 50px;
+$background-image: linear-gradient(rgba(198, 255, 144, 0.3), rgba(147, 255, 46, 0.3)), url("../../assets/page-background.jpg");
 
-$background-image: url("../../assets/page-background.jpg");
-
-$min-button-height: 4.5vh;
-$min-button-width: 9vw;
+$min-button-height: 40px;
+$min-button-width: 140px;

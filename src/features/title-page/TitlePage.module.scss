@@ -1,24 +1,40 @@
 @import "../../global/styles/variables.scss";
 
 .container {
-  color: $font-color-light;
-  user-select: none;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: 40vw 20vw 40vw;
-  grid-template-rows: 100vh;
-}
-
-.flex-vertical {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2vh;
+  user-select: none;
+  height: 100vh;
+  width: 100vw;
 }
 
 .title {
-  font-size: 10vh;
+  font-size: $font-size-large;
+  font-weight: 800;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px;
+  gap: 20px;
+  margin: auto auto;
+  height: 400px;
+  width: 300px;
+  background-color: $color-background;
+  border-radius: 15px;
+  box-shadow: 0 4px 4px 4px rgba($color-dark, 0.2);
+
+  > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    gap: 40px;
+  }
 }

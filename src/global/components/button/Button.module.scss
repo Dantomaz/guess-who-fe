@@ -1,25 +1,26 @@
 @import "../../styles/variables.scss";
 
 .button {
-  font-size: $font-size-medium-small;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 2px;
-  min-height: $min-button-height;
-  min-width: $min-button-width;
-  color: $font-color-light;
-  padding: 2vh 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $font-size-medium;
+  font-weight: 700;
+  padding: 12px 20px;
   text-align: center;
   vertical-align: middle;
   border: 0;
-  border-radius: 50px;
-  background-color: $color-primary-1;
-  text-shadow: 0 0 2px rgba($color-dark, 0.3);
+  border-radius: 20px;
+  background-color: $color-primary-2;
   box-shadow: 0 5px 5px 1px rgba($color-dark, 0.2);
   transition: background-color 0.3s ease-out;
 
   &:hover {
-    background-color: $color-secondary-1;
+    background-color: $color-secondary-2;
     cursor: pointer;
+  }
+
+  & > svg {
+    margin-left: 10px;
   }
 }

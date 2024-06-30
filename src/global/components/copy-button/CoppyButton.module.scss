@@ -1,9 +1,9 @@
 @import "../../../global/styles/variables.scss";
 
 .copy-button {
+  color: $font-color-dark;
   font-size: $font-size-medium-small;
-  font-weight: normal;
-  color: inherit;
+  font-weight: inherit;
   background-color: inherit;
   border: none;
   cursor: pointer;

@@ -10,16 +10,16 @@ const Input = ({ id, className, label, labelClassName, register, formState, ...r
   const labelClasses = `${labelClassName || styles["input-label"]} ${labelColorClass}`;
 
   return (
-    <div>
+    <div className={styles["input-group"]}>
+      <input id={id} className={inputClasses} placeholder=" " {...register} {...rest} />
       {label && (
         <label htmlFor={id} className={labelClasses}>
           {label}
         </label>
       )}
-      <input id={id} className={inputClasses} {...register} {...rest} />
       {/* {error && <span className={styles["input-error-message"]}>{error.message}</span>} */}
     </div>
   );
-}
+};
 
 export default Input;

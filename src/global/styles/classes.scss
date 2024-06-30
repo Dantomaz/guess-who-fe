@@ -8,17 +8,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: inherit;
+  height: inherit;
 }
 
 .flex-vertical {
   @extend .flex;
   flex-direction: column;
+  gap: 20px;
 }
 
 .form-vertical {
   @extend .flex-vertical;
   justify-content: space-between;
-  gap: 2vh;
+  gap: 20px;
 }
 
 .text-center {
@@ -29,12 +32,4 @@
 .text-error {
   font-size: $font-size-medium-small;
   color: $color-error;
-}
-
-.card {
-  height: 30vh;
-  width: 15vw;
-  background-color: $color-background;
-  border-radius: 15px;
-  box-shadow: 0 2px 8px 2px rgba($color-dark, 0.2);
 }

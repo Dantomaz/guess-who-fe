@@ -10,23 +10,31 @@ const TitlePage = () => {
   const { onSubmit } = useTitlePage();
 
   return (
-    <div className={`${styles["container"]} ${styles["grid-container"]}`}>
-      <section className={`${styles.title} flex`}>GUESS</section>
-      <section className="flex">
-        <form onSubmit={handleSubmit(onSubmit)} className={styles["flex-vertical"]}>
+    <div className={`${styles["container"]}`}>
+      <main className={styles["card"]}>
+        <section className="text-center">
+          <p className={styles.text}>Welcome to</p>
+          <p className={styles.title}>Guess Who?</p>
+          <p className={styles.text} style={{ marginTop: "30px" }}>
+            Please, choose a nickname:
+          </p>
+        </section>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Input
-            id="playerName"
+            id="nickname"
             type="text"
-            label="Player name"
-            register={register("playerName", { required: "Player name is required" })}
+            label="Nickname"
+            register={register("nickname", { required: "Required" })}
             formState={formState}
+            style={{ width: "200px" }}
           />
-          <Button type="submit">PLAY</Button>
+          <Button type="submit" style={{ width: "200px" }}>
+            PLAY
+          </Button>
         </form>
-      </section>
-      <section className={`${styles.title} flex`}>WHO?</section>
+      </main>
     </div>
   );
-}
+};
 
 export default TitlePage;

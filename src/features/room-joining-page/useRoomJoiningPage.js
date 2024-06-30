@@ -14,9 +14,9 @@ const useRoomJoiningPage = () => {
 
   const onJoin = (data) => {
     console.log("joining room...");
+    subscribeRoom(data.roomId);
     publish(API_JOIN_ROOM.replace("{roomId}", data.roomId), player)
       .then(() => {
-        subscribeRoom(data.roomId);
         console.log("joined room ", data.roomId);
         navigate("/room");
       })
