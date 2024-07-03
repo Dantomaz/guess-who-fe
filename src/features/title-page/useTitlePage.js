@@ -1,33 +1,26 @@
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { API_INIT_PLAYER } from "../api/api";
+import { requestPlayerInit } from "../api/apiRequest";
+import { unsubscribeAll } from "../api/web-socket/stompClient";
 import { setPlayer } from "../player/playerSlice";
 
 const useTitlePage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    // get rid of all subscriptions from the previous room
+    unsubscribeAll();
+  }, []);
+
   const onSubmit = (data) => {
-    const url = API_INIT_PLAYER.replace("{playerName}", data.nickname);
-
-    const request = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    fetch(url, request)
-      .then((response) => response.json())
+    requestPlayerInit({ nickname: data.nickname })
       .then((response) => {
-        if (response?.error) {
-          console.error(response);
-          return;
-        }
-        dispatch(setPlayer(response));
+        dispatch(setPlayer(response.data));
         navigate("/room/join");
       })
-      .catch((error) => console.error(error));
+      .catch(() => {});
   };
 
   return { onSubmit };

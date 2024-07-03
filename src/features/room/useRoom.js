@@ -1,23 +1,26 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { API_LEAVE_ROOM, API_ROOM_COUNTER } from "../api/api";
-import { useWebSocketClientContext } from "../api/web-socket/WebSocketClientProvider";
+import { publishRoomCounter, requestRoomLeave } from "../api/apiRequest";
+import { resetRoom } from "./roomSlice";
 
 const useRoom = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const room = useSelector((state) => state.roomManager.room);
   const count = useSelector((state) => state.counter.count);
   const player = useSelector((state) => state.playerManager.player);
-  const { publish } = useWebSocketClientContext();
   const addAmount = 1;
 
   const onSend = () => {
-    publish(API_ROOM_COUNTER.replace("{roomId}", room.id), addAmount).catch(() => {});
+    publishRoomCounter({ roomId: room.id, counter: addAmount });
   };
 
   const onLeave = () => {
-    publish(API_LEAVE_ROOM.replace("{roomId}", room.id), player)
-      .then(() => navigate("/"))
+    requestRoomLeave({ roomId: room.id, player })
+      .then(() => {
+        dispatch(resetRoom());
+        navigate("/");
+      })
       .catch(() => {});
   };
 
