@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { extractPlayerFromRoom } from "../../global/utils";
 import { requestRoomCreate, requestRoomJoin, subscribeTopicRoom, subscribeTopicRoomCounter } from "../api/apiRequest";
-import { updatePlayer } from "../player/playerSlice";
+import { setPlayer } from "../player/playerSlice";
 import { setCounter } from "../room/counterSlice";
 import { setRoom } from "../room/roomSlice";
 
@@ -38,7 +38,7 @@ const useRoomJoiningPage = () => {
 
   const updateRoomInfo = (room) => {
     dispatch(setRoom(room));
-    dispatch(updatePlayer(extractPlayerFromRoom(room, player.id)));
+    dispatch(setPlayer(extractPlayerFromRoom(room, player.id)));
   };
 
   const updateCounter = (data) => {

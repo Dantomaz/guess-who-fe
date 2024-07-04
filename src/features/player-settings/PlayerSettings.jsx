@@ -1,0 +1,49 @@
+import React, { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import Button from "../../global/components/button/Button";
+import Input from "../../global/components/input/Input";
+import { isBlankString } from "../../global/utils";
+import styles from "./PlayerSettings.module.scss";
+import usePlayerSettings from "./usePlayerSettings";
+
+const PlayerSettings = () => {
+  const player = useSelector((state) => state.playerManager.player);
+  const { register, reset, handleSubmit, formState } = useForm({ defaultValues: { nickname: player.name } });
+  const { changeNickname } = usePlayerSettings();
+
+  useEffect(() => {
+    reset();
+  }, [reset]);
+
+  return (
+    <>
+      <div className={styles["team"]}>
+        <p>Join a team!</p>
+      </div>
+      <div className={styles["settings"]}>
+        <form onSubmit={handleSubmit(changeNickname)}>
+          <Input
+            id="nickname"
+            type="text"
+            label="Nickname"
+            register={register("nickname", {
+              required: "There's nothing there...",
+              validate: {
+                notBlank: (nickname) => !isBlankString(nickname) || "Still nothing...",
+                notChanged: (nickname) => nickname !== player.name || "It's already your nickname",
+              },
+            })}
+            formState={formState}
+            showError
+          />
+          <Button type="submit" style={{ width: "200px" }}>
+            Update nickname
+          </Button>
+        </form>
+      </div>
+    </>
+  );
+};
+
+export default PlayerSettings;

@@ -8,14 +8,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: inherit;
-  height: inherit;
+  gap: 20px;
 }
 
 .flex-vertical {
   @extend .flex;
   flex-direction: column;
-  gap: 20px;
 }
 
 .form-vertical {

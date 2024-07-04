@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   room: {
     id: null,
-    players: [],
+    players: {},
     status: null,
   },
 };

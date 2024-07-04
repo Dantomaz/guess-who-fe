@@ -19,5 +19,20 @@ export const insertVariables = (string, ...variables) => {
 };
 
 export const extractPlayerFromRoom = (room, playerId) => {
-  return room.players.find((p) => p.id === playerId);
+  return Object.values(room.players).find((player) => player.id === playerId);
+};
+
+export const findHost = (room) => {
+  return Object.values(room.players).find((player) => player.host);
+};
+
+export const isBlankString = (string) => {
+  if (typeof string !== "string") {
+    return;
+  }
+  return string.trim().length === 0;
+};
+
+export const isUUID = (string) => {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(string);
 };

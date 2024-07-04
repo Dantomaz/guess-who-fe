@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import Button from "../../global/components/button/Button";
 import Input from "../../global/components/input/Input";
 import "../../global/styles/classes.scss";
+import { isBlankString } from "../../global/utils";
 import styles from "./TitlePage.module.scss";
 import useTitlePage from "./useTitlePage";
 
@@ -11,28 +12,34 @@ const TitlePage = () => {
 
   return (
     <div className={`${styles["container"]}`}>
-      <main className={styles["card"]}>
-        <section className="text-center">
+      <div className={styles["card"]}>
+        <div className="text-center">
           <p className={styles.text}>Welcome to</p>
           <p className={styles.title}>Guess Who?</p>
           <p className={styles.text} style={{ marginTop: "30px" }}>
             Please, choose a nickname:
           </p>
-        </section>
+        </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
             id="nickname"
             type="text"
             label="Nickname"
-            register={register("nickname", { required: "Required" })}
+            register={register("nickname", {
+              required: "There's nothing there...",
+              validate: {
+                notBlank: (nickname) => !isBlankString(nickname) || "Still nothing...",
+              },
+            })}
             formState={formState}
+            showError
             style={{ width: "200px" }}
           />
           <Button type="submit" style={{ width: "200px" }}>
             PLAY
           </Button>
         </form>
-      </main>
+      </div>
     </div>
   );
 };

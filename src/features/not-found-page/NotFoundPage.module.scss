@@ -9,7 +9,7 @@
   align-items: center;
   background-image: $background-image;
   background-size: cover;
-  user-select: none;
+  box-shadow: inset 0 0 200px -100px $color-dark; // vignete
 }
 
 .page-text {
@@ -20,10 +20,17 @@
   gap: 2vh;
   position: relative;
   top: -10vh;
-  color: $font-color-light;
-  text-shadow: 2px 2px 2px rgba($color-dark, 0.3);
 
   * {
     letter-spacing: 2px;
   }
+}
+
+.title {
+  font-size: $font-size-very-large;
+  font-weight: 700;
+}
+
+.text {
+  font-size: $font-size-large;
 }

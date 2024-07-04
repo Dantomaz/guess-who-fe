@@ -18,12 +18,12 @@ const NotFoundPage = () => {
 
   return (
     <div className={styles["page-background"]}>
-      <span className={styles["page-text"]}>
-        <h1>404 Page Not Found</h1>
-        <h4>Redirecting to title page...</h4>
-      </span>
+      <div className={styles["page-text"]}>
+        <p className={styles["title"]}>404 Page Not Found</p>
+        <p className={styles["text"]}>Redirecting to title page...</p>
+      </div>
     </div>
   );
-}
+};
 
 export default NotFoundPage;

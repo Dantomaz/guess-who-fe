@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   player: {
     id: null,
-    name: null,
+    nickname: null,
     host: false,
   },
 };
@@ -13,21 +13,12 @@ export const playerSlice = createSlice({
   initialState,
   reducers: {
     setPlayer: (state, action) => {
+      console.log("setPlayer dispatched: ", action.payload);
       state.player = action.payload;
-    },
-    updatePlayer: (state, action) => {
-      updatePlayerInfo(state, action.payload);
     },
   },
 });
 
-const updatePlayerInfo = (state, player) => {
-  if (!player) {
-    return;
-  }
-  state.player.host = player.host;
-};
-
-export const { setPlayer, updatePlayer } = playerSlice.actions;
+export const { setPlayer } = playerSlice.actions;
 
 export default playerSlice.reducer;

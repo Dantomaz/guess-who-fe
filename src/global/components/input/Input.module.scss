@@ -16,25 +16,11 @@
   min-width: $min-button-width;
   box-shadow: none;
   transition: border-color 0.2s;
-
-  &::placeholder {
-    color: transparent;
-  }
-
-  &:focus {
-    @extend .input-field-focused;
-  }
-
-  &:not(:placeholder-shown) {
-    @extend .input-exists;
-  }
 }
 
 .input-field-focused {
   font-weight: 700;
   border-width: 3px;
-  border-image: linear-gradient(to right, $color-primary-1, $color-secondary-1);
-  border-image-slice: 1;
 
   ~ .input-label {
     display: block;
@@ -46,8 +32,13 @@
   }
 }
 
-.input-exists {
+.input-field-focused-regular {
   @extend .input-field-focused;
+}
+
+.input-exists {
+  @extend .input-field-focused-regular;
+  border-image: linear-gradient(to right, $color-primary-1, $color-secondary-1) 1;
 
   ~ .input-label {
     color: $color-primary-1;
@@ -56,18 +47,40 @@
 
 .input-field-regular {
   border-bottom: 2px solid $font-color-gray;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:focus {
+    @extend .input-field-focused-regular;
+  }
+
+  &:not(:placeholder-shown) {
+    @extend .input-exists;
+  }
+}
+
+.input-field-focused-error {
+  @extend .input-field-focused;
+  border-image: none;
+  border-bottom: 2px solid $color-error;
 }
 
 .input-field-error {
   border-bottom: 2px solid $color-error;
+  border-image: none;
+
+  ~ .input-label {
+    color: $color-error;
+  }
 
   &:focus {
-    border-image: none;
-    border-color: $color-error;
+    @extend .input-field-focused-error;
+  }
 
-    ~ .input-label {
-      color: $color-error;
-    }
+  &:not(:placeholder-shown) {
+    @extend .input-field-focused-error;
   }
 }
 

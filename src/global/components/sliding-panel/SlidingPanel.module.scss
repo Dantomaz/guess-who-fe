@@ -1,0 +1,62 @@
+@import "../../styles/variables.scss";
+
+$panel-width: 300px;
+
+.sliding-panel {
+  background-color: $color-background;
+  display: block;
+  position: fixed;
+  height: 100vh;
+  width: $panel-width;
+  box-shadow: 0 4px 4px 4px rgba($color-dark, 0.2);
+}
+
+.left {
+  top: 0;
+  left: 0;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.left-enter {
+  transform: translateX(-100%);
+}
+
+.left-enter-active {
+  transition: transform 0.3s;
+  transform: translateX(0);
+}
+
+.left-exit {
+  transform: translateX(0);
+}
+
+.left-exit-active {
+  transition: transform 0.3s;
+  transform: translateX(-100%);
+}
+
+.right {
+  top: 0;
+  left: calc(100vw - $panel-width);
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.right-enter {
+  transform: translateX(100%);
+}
+
+.right-enter-active {
+  transition: transform 0.3s;
+  transform: translateX(0);
+}
+
+.right-exit {
+  transform: translateX(0);
+}
+
+.right-exit-active {
+  transition: transform 0.3s;
+  transform: translateX(100%);
+}
