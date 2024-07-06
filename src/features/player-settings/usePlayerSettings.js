@@ -1,7 +1,11 @@
-import { useSelector } from "react-redux";
-import { publishPlayer } from "../api/apiRequest";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { publishPlayer, requestRoomLeave } from "../api/apiRequest";
+import { resetRoom } from "../room/roomSlice";
 
 function usePlayerSettings() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const room = useSelector((state) => state.roomManager.room);
   const player = useSelector((state) => state.playerManager.player);
 
@@ -10,7 +14,16 @@ function usePlayerSettings() {
     publishPlayer({ roomId: room.id, player: updated });
   };
 
-  return { changeNickname };
+  const onLeave = () => {
+    requestRoomLeave({ roomId: room.id, player })
+      .then(() => {
+        dispatch(resetRoom());
+        navigate("/");
+      })
+      .catch(() => {});
+  };
+
+  return { changeNickname, onLeave };
 }
 
 export default usePlayerSettings;

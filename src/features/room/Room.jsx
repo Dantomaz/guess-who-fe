@@ -6,7 +6,7 @@ import styles from "./Room.module.scss";
 import useRoom from "./useRoom";
 
 const Room = () => {
-  const { onSend, onLeave, count, addAmount } = useRoom();
+  const { onSend, count, addAmount } = useRoom();
 
   return (
     <>
@@ -24,7 +24,6 @@ const Room = () => {
         </div>
         <div className={styles["flex-vertical"]}>
           <Button onClick={onSend}>+ {addAmount}</Button>
-          <Button onClick={onLeave}>LEAVE ROOM</Button>
         </div>
       </div>
     </>

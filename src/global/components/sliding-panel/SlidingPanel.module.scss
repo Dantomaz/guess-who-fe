@@ -8,6 +8,7 @@ $panel-width: 300px;
   position: fixed;
   height: 100vh;
   width: $panel-width;
+  overflow: hidden;
   box-shadow: 0 4px 4px 4px rgba($color-dark, 0.2);
 }
 

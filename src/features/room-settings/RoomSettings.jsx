@@ -21,14 +21,16 @@ const RoomSettings = () => {
         </p>
       </div>
       <div className={styles["settings"]}>
-        <Button className={styles["host-label"]}>
-          {host?.name} <BiSolidCrown fontSize={12} />
-        </Button>
-        <p style={{ fontWeight: 700 }}>
-          Players in this room:<span className={styles["players-number"]}>{playersNumber}</span>
-        </p>
-        <p>{Object.values(room.players).map((player) => `${player.name} `)}</p>
-        <p>{chooseFunnyText(playersNumber)}</p>
+        <section className={styles["section"]}>
+          <Button className={styles["host-label"]}>
+            {host?.name} <BiSolidCrown fontSize={12} />
+          </Button>
+          <p style={{ fontWeight: 700 }}>
+            Players in this room:<span className={styles["players-number"]}>{playersNumber}</span>
+          </p>
+          <p>{Object.values(room.players).map((player) => `${player.name} `)}</p>
+          <p>{chooseFunnyText(playersNumber)}</p>
+        </section>
       </div>
     </>
   );
