@@ -3,6 +3,10 @@ $color-primary-1: #4c933b;
 $color-secondary-1: #98c13d;
 $color-primary-2: #ffed4d;
 $color-secondary-2: #ffd000;
+// $color-primary-1: #1f2092;
+// $color-secondary-1: #3149d1;
+// $color-primary-2: #7d26f0;
+// $color-secondary-2: #6f00ff;
 $color-primary-3: #83bd5d;
 $color-secondary-3: #a2c57a;
 $color-error: #ff0000;
@@ -22,7 +26,7 @@ $font-color-light: #ffffff;
 $font-color-gray: #666666;
 $font-color-light-gray: #e5e7eb;
 
-$background-image: linear-gradient(100deg, rgba(178, 212, 83, 0.4) 20%, rgba(159, 255, 80, 0.4) 100%), url("../../assets/page-background.jpg");
+$background-image: linear-gradient(100deg, rgba($color-primary-1, 0.5), rgba($color-secondary-1, 0.5)), url("../../assets/page-background.jpg");
 
 $min-button-height: 40px;
 $min-button-width: 140px;
