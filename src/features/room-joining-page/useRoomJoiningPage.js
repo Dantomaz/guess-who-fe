@@ -1,15 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { extractPlayerFromRoom } from "../../global/utils";
+import { extractAxiosErrorResponseDetail, extractPlayerFromRoom } from "../../global/utils";
 import { requestRoomCreate, requestRoomJoin, subscribeTopicRoom, subscribeTopicRoomCounter } from "../api/apiRequest";
 import { setPlayer } from "../player/playerSlice";
 import { setCounter } from "../room/counterSlice";
 import { setRoom } from "../room/roomSlice";
+import { useState } from "react";
 
 const useRoomJoiningPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const player = useSelector((state) => state.playerManager.player);
+  const [errorOnJoin, setErrorOnJoin] = useState();
 
   const onJoin = (data) => {
     subscribeToRoomActivity(data.roomId);
@@ -18,7 +20,7 @@ const useRoomJoiningPage = () => {
         updateRoomInfo(response.data);
         navigate("/room");
       })
-      .catch(() => {});
+      .catch((error) => setErrorOnJoin(extractAxiosErrorResponseDetail(error)));
   };
 
   const onCreate = () => {
@@ -45,7 +47,7 @@ const useRoomJoiningPage = () => {
     dispatch(setCounter(data));
   };
 
-  return { onJoin, onCreate };
+  return { onJoin, onCreate, errorOnJoin };
 };
 
 export default useRoomJoiningPage;

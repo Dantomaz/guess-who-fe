@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import Button from "../../global/components/button/Button";
 import Input from "../../global/components/input/Input";
-import { isBlankString } from "../../global/utils";
+import { isStringBlank, isStringSame } from "../../global/utils";
 import styles from "./PlayerSettings.module.scss";
 import usePlayerSettings from "./usePlayerSettings";
 
@@ -30,8 +30,8 @@ const PlayerSettings = () => {
             register={register("nickname", {
               required: "There's nothing there...",
               validate: {
-                notBlank: (nickname) => !isBlankString(nickname) || "Still nothing...",
-                notChanged: (nickname) => nickname !== player.name || "It's already your nickname",
+                notBlank: (nickname) => !isStringBlank(nickname) || "Still nothing...",
+                notChanged: (nickname) => !isStringSame(nickname.trim(), player.name.trim()) || "It's already your nickname",
               },
             })}
             formState={formState}

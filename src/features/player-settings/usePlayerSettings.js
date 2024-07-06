@@ -6,7 +6,7 @@ function usePlayerSettings() {
   const player = useSelector((state) => state.playerManager.player);
 
   const changeNickname = (data) => {
-    const updated = { ...player, name: data.nickname };
+    const updated = { ...player, name: data.nickname.trim() };
     publishPlayer({ roomId: room.id, player: updated });
   };
 

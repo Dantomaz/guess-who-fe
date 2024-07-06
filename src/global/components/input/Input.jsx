@@ -1,7 +1,7 @@
 import styles from "./Input.module.scss";
 
-const Input = ({ id, className, label, labelClassName, register, formState, showError, ...rest }) => {
-  const error = formState && formState.errors?.[id];
+const Input = ({ id, className, label, labelClassName, register, formState, formError, showError, ...rest }) => {
+  const error = formState?.errors?.[id]?.message || formError;
 
   const inputColorClass = error ? styles["input-field-error"] : styles["input-field-regular"];
   const inputClasses = `${styles["input-field"]} ${inputColorClass} ${className || ""}`;
@@ -17,7 +17,7 @@ const Input = ({ id, className, label, labelClassName, register, formState, show
           {label}
         </label>
       )}
-      {error && showError && <span className={styles["input-error-message"]}>{error.message}</span>}
+      {!!error && showError && <span className={styles["input-error-message"]}>{error}</span>}
     </div>
   );
 };

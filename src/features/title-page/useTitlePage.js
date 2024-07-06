@@ -15,7 +15,7 @@ const useTitlePage = () => {
   }, []);
 
   const onSubmit = (data) => {
-    requestPlayerInit({ nickname: data.nickname })
+    requestPlayerInit({ nickname: data.nickname.trim() })
       .then((response) => {
         dispatch(setPlayer(response.data));
         navigate("/room/join");

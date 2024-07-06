@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import Button from "../../global/components/button/Button";
 import Input from "../../global/components/input/Input";
 import "../../global/styles/classes.scss";
-import { isBlankString } from "../../global/utils";
+import { isStringBlank } from "../../global/utils";
 import styles from "./TitlePage.module.scss";
 import useTitlePage from "./useTitlePage";
 
@@ -28,7 +28,7 @@ const TitlePage = () => {
             register={register("nickname", {
               required: "There's nothing there...",
               validate: {
-                notBlank: (nickname) => !isBlankString(nickname) || "Still nothing...",
+                notBlank: (nickname) => !isStringBlank(nickname) || "Still nothing...",
               },
             })}
             formState={formState}
