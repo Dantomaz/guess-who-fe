@@ -1,6 +1,6 @@
 import styles from "./Input.module.scss";
 
-const Input = ({ id, className, label, labelClassName, register, formState, formError, showError, ...rest }) => {
+const Input = ({ id, className, label, labelClassName, overrideClasses, register, formState, formError, showError, ...rest }) => {
   const error = formState?.errors?.[id]?.message || formError;
 
   const inputColorClass = error ? styles["input-field-error"] : styles["input-field-regular"];
@@ -11,9 +11,9 @@ const Input = ({ id, className, label, labelClassName, register, formState, form
 
   return (
     <div className={styles["input-group"]}>
-      <input id={id} className={inputClasses} placeholder=" " {...register} {...rest} />
+      <input id={id} className={overrideClasses ? className : inputClasses} placeholder=" " {...register} {...rest} />
       {label && (
-        <label htmlFor={id} className={labelClasses}>
+        <label htmlFor={id} className={overrideClasses ? labelClassName : labelClasses}>
           {label}
         </label>
       )}

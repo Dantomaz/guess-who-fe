@@ -3,18 +3,20 @@ import { MdOutlineContentCopy } from "react-icons/md";
 import styles from "./CoppyButton.module.scss";
 import useCoppyButton from "./useCoppyButton";
 
-const CopyButton = ({ value, ...rest }) => {
+const CopyButton = ({ value, className, overrideClasses, ...rest }) => {
   const { copyToClipboard, recentlyCopied } = useCoppyButton();
 
   return (
-    <button className={styles["copy-button"]} onClick={() => copyToClipboard(value)} {...rest}>
+    <button className={overrideClasses ? className : styles["copy-button"]} onClick={() => copyToClipboard(value)} {...rest}>
       {recentlyCopied ? (
         <>
-          <FaCheck />copied
+          <FaCheck />
+          copied
         </>
       ) : (
         <>
-          <MdOutlineContentCopy />copy
+          <MdOutlineContentCopy />
+          copy
         </>
       )}
     </button>
