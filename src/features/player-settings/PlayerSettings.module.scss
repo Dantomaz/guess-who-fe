@@ -1,12 +1,12 @@
 @import "../../global/styles/variables.scss";
 
-.team {
+.team-select {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: $font-size-medium-large;
   font-weight: 500;
-  padding: 50px 10px;
+  padding: 30px 10px;
 }
 
 .settings {
@@ -14,7 +14,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: calc(100% - 120px);
+  height: calc(90% - 100px);
   width: 100%;
   background-color: $font-color-light-gray;
 }

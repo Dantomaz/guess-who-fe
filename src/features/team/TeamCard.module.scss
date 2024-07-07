@@ -1,0 +1,24 @@
+@import "../../global/styles/variables.scss";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px;
+  gap: 20px;
+  height: 350px;
+  width: 300px;
+  background-color: $color-background;
+  border-radius: 15px;
+  box-shadow: 0 4px 4px 4px rgba($color-dark, 0.2);
+  opacity: 0.9;
+}
+
+.red {
+  background-image: linear-gradient(100deg, $color-team-red-primary, $color-team-red-secondary);
+}
+
+.blue {
+  background-image: linear-gradient(100deg, $color-team-blue-primary, $color-team-blue-secondary);
+}

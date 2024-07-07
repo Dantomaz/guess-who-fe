@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import Button from "../../global/components/button/Button";
 import Input from "../../global/components/input/Input";
 import { isStringBlank, isStringSame } from "../../global/utils";
+import TeamSelect from "../team/TeamSelect";
 import styles from "./PlayerSettings.module.scss";
 import usePlayerSettings from "./usePlayerSettings";
 
@@ -18,8 +19,8 @@ const PlayerSettings = () => {
 
   return (
     <>
-      <div className={styles["team"]}>
-        <p>Join a team!</p>
+      <div className={styles["team-select"]}>
+        <TeamSelect />
       </div>
       <div className={styles["settings"]}>
         <div className={styles["section"]}>

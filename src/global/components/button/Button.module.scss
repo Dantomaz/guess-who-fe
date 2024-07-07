@@ -13,11 +13,16 @@
   border-radius: 20px;
   background-color: $color-primary-2;
   box-shadow: 0 5px 5px 1px rgba($color-dark, 0.2);
-  transition: background-color 0.3s ease-out;
+  transition: background-color 0.3s ease-out, transform 0.05s, box-shadow 0.05s;
 
   &:hover {
     background-color: $color-secondary-2;
     cursor: pointer;
+  }
+
+  &:active {
+    transform: translateY(5%);
+    box-shadow: 0 3px 3px 1px rgba($color-dark, 0.2);
   }
 
   & > svg {

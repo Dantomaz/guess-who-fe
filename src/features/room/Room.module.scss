@@ -1,6 +1,10 @@
 @import "../../global/styles/variables.scss";
 
 .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 150px;
 }
 
 .flex-vertical {

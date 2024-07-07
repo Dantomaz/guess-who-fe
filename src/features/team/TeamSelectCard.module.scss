@@ -1,0 +1,49 @@
+@import "../../global/styles/variables.scss";
+
+.card {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 10px 20px;
+  min-width: 120px;
+  border-radius: 15px;
+  box-shadow: 0 5px 5px 1px rgba($color-dark, 0.2);
+  font-size: $font-size-medium-large;
+  font-weight: 600;
+  background-color: none;
+  border: none;
+  transition: background-color 0.2s, transform 0.05s, box-shadow 0.05s;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: translateY(5%);
+    box-shadow: 0 3px 3px 1px rgba($color-dark, 0.2);
+  }
+}
+
+.red {
+  background-color: rgba($color-team-red-primary, 0.9);
+
+  &:hover {
+    background-color: $color-team-red-secondary;
+  }
+}
+
+.blue {
+  background-color: rgba($color-team-blue-primary, 0.9);
+
+  &:hover {
+    background-color: $color-team-blue-secondary;
+  }
+}
+
+.spectators {
+  background-color: $color-primary-2;
+
+  &:hover {
+    background-color: rgba($color-secondary-2, 0.9);
+  }
+}
