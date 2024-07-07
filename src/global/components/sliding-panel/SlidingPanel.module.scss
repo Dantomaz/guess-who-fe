@@ -10,6 +10,7 @@ $panel-width: 300px;
   width: $panel-width;
   overflow: hidden;
   box-shadow: 0 4px 4px 4px rgba($color-dark, 0.2);
+  z-index: 100;
 }
 
 .left {
