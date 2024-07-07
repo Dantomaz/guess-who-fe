@@ -8,5 +8,3 @@ export const TOPIC_ROOM = "/topic/room/{id}";
 export const TOPIC_ROOM_COUNTER = "/topic/room/{id}/counter";
 
 // ===== publish endopoints =====
-
-export const PUBLISH_ROOM_COUNTER = "/app/room/{id}/counter";
