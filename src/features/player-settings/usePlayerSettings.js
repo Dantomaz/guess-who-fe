@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { publishPlayer, requestRoomLeave } from "../api/apiRequest";
+import { createJsonPatch } from "../../global/utils";
+import { requestPlayerLeaveRoom, requestPlayerUpdate } from "../api/apiRequest";
 import { resetRoom } from "../room/roomSlice";
 
 function usePlayerSettings() {
@@ -10,12 +11,12 @@ function usePlayerSettings() {
   const player = useSelector((state) => state.playerManager.player);
 
   const changeNickname = (data) => {
-    const updated = { ...player, name: data.nickname.trim() };
-    publishPlayer({ roomId: room.id, player: updated });
+    const playerPatch = createJsonPatch(["replace", "/name", data.nickname.trim()]);
+    requestPlayerUpdate({ roomId: room.id, playerId: player.id, playerPatch }).catch(() => {});
   };
 
   const onLeave = () => {
-    requestRoomLeave({ roomId: room.id, player })
+    requestPlayerLeaveRoom({ roomId: room.id, playerId: player.id })
       .then(() => {
         dispatch(resetRoom());
         navigate("/");

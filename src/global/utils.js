@@ -58,3 +58,7 @@ export const extractAxiosErrorResponseDetail = (error) => {
 export const trimDetailVariables = (detail) => {
   return detail.replace(/\([^)]*\)/, "").trim();
 };
+
+export const createJsonPatch = (...jsonPointers) => {
+  return jsonPointers.map((jsonPointer) => ({ op: jsonPointer[0], path: jsonPointer[1], value: jsonPointer[2] }));
+};

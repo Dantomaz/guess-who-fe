@@ -9,6 +9,4 @@ export const TOPIC_ROOM_COUNTER = "/topic/room/{id}/counter";
 
 // ===== publish endopoints =====
 
-export const PUBLISH_ROOM = "/app/room/{id}";
 export const PUBLISH_ROOM_COUNTER = "/app/room/{id}/counter";
-export const PUBLISH_PLAYER = "/app/room/{roomId}/player/{playerId}";

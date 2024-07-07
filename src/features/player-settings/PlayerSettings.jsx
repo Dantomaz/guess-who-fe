@@ -9,7 +9,7 @@ import usePlayerSettings from "./usePlayerSettings";
 
 const PlayerSettings = () => {
   const player = useSelector((state) => state.playerManager.player);
-  const { register, reset, handleSubmit, formState } = useForm({ defaultValues: { nickname: player.name } });
+  const { register, reset, handleSubmit, formState } = useForm({ defaultValues: { nickname: player?.name } });
   const { changeNickname, onLeave } = usePlayerSettings();
 
   useEffect(() => {
