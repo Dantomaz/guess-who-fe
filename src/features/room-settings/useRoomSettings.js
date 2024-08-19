@@ -24,7 +24,7 @@ const useRoomSettings = () => {
       return "Enough to have some fun :)";
     }
     if (length === 1) {
-      return "It's only you now";
+      return "It's only you... for now";
     }
   };
 

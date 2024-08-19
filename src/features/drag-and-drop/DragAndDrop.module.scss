@@ -1,0 +1,41 @@
+@import "../../global/styles/variables.scss";
+
+.drop-area-container {
+  width: 100%;
+  height: auto;
+}
+
+.drop-area {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(5, auto);
+  gap: 2px;
+  overflow: scroll;
+  scrollbar-width: none;
+  padding: 15px;
+  font-size: $font-size-medium;
+  border: 2px dashed $color-gray;
+  cursor: pointer;
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $font-size-medium-large;
+}
+
+.desc {
+  font-size: $font-size-medium;
+  margin-top: 10px;
+}
+
+.footer {
+  justify-self: flex-end;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+}
