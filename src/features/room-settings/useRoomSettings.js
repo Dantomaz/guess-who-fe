@@ -6,24 +6,24 @@ const useRoomSettings = () => {
   const [playersNumber, setPlayersNumber] = useState();
 
   useEffect(() => {
-    const length = Object.values(room.players).length;
-    setPlayersNumber(length);
+    const numberOfPlayers = Object.values(room.players).length;
+    setPlayersNumber(numberOfPlayers);
   }, [room.players]);
 
-  const chooseFunnyText = (length) => {
-    if (length >= 12) {
+  const chooseFunnyText = (numberOfPlayers) => {
+    if (numberOfPlayers >= 12) {
       return "Now you're just flexing...";
     }
-    if (length >= 8) {
+    if (numberOfPlayers >= 8) {
       return "Damn, that's a lot!";
     }
-    if (length >= 4) {
+    if (numberOfPlayers >= 4) {
       return "Now that's a party!";
     }
-    if (length >= 2) {
+    if (numberOfPlayers >= 2) {
       return "Enough to have some fun :)";
     }
-    if (length === 1) {
+    if (numberOfPlayers === 1) {
       return "It's only you... for now";
     }
   };

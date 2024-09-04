@@ -18,8 +18,8 @@ export const insertVariables = (string, ...variables) => {
   return string;
 };
 
-export const extractPlayerFromRoom = (room, playerId) => {
-  return Object.values(room.players).find((player) => player.id === playerId);
+export const extractPlayerFromPlayersList = (allPlayers, playerId) => {
+  return Object.values(allPlayers).find((player) => player.id === playerId);
 };
 
 export const findHost = (room) => {

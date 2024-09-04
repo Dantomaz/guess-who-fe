@@ -1,10 +1,9 @@
 export const BASE_URL = "ws://localhost:8080/ws";
 
-// ===== subscribe endopoints =====
+// ===== subscribe endpoints =====
 
 export const QUEUE_ERROR = "/user/queue/error";
 
-export const TOPIC_ROOM = "/topic/room/{id}";
-export const TOPIC_ROOM_COUNTER = "/topic/room/{id}/counter";
+export const TOPIC_PLAYERS = "/topic/room/{roomId}/players";
 
-// ===== publish endopoints =====
+// ===== publish endpoints =====

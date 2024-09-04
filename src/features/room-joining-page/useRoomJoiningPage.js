@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { extractAxiosErrorResponseDetail, extractPlayerFromRoom } from "../../global/utils";
-import { requestPlayerJoinRoom, requestRoomCreate, subscribeTopicRoom, subscribeTopicRoomCounter } from "../api/apiRequest";
+import { extractAxiosErrorResponseDetail, extractPlayerFromPlayersList } from "../../global/utils";
+import { requestPlayerJoinRoom, requestRoomCreate, subscribeTopicPlayers } from "../api/apiRequest";
 import { setPlayer } from "../player/playerSlice";
-import { setCounter } from "../room/counterSlice";
-import { setRoom } from "../room/roomSlice";
+import { setPlayers, setRoom } from "../room/roomSlice";
 
 const useRoomJoiningPage = () => {
   const navigate = useNavigate();
@@ -14,36 +13,35 @@ const useRoomJoiningPage = () => {
   const [errorOnJoin, setErrorOnJoin] = useState();
 
   const onJoin = (data) => {
-    subscribeToRoomActivity(data.roomId);
-    requestPlayerJoinRoom({ roomId: data.roomId, player })
-      .then(() => {
-        navigate("/room");
-      })
+    const roomId = data.roomId;
+    requestPlayerJoinRoom({ roomId, player })
+      .then((response) => enterRoom(response.data))
       .catch((error) => setErrorOnJoin(extractAxiosErrorResponseDetail(error)));
   };
 
-  const onCreate = () => {
-    requestRoomCreate({ player })
-      .then((response) => {
-        updateRoomInfo(response.data);
-        subscribeToRoomActivity(response.data.id);
-        navigate("/room");
-      })
-      .catch(() => {});
-  };
-
-  const subscribeToRoomActivity = (roomId) => {
-    subscribeTopicRoom({ roomId, callback: updateRoomInfo });
-    subscribeTopicRoomCounter({ roomId, callback: updateCounter });
+  const enterRoom = (room) => {
+    updateRoomInfo(room);
+    subscribeToRoomActivity(room.id);
+    navigate("/room");
   };
 
   const updateRoomInfo = (room) => {
     dispatch(setRoom(room));
-    dispatch(setPlayer(extractPlayerFromRoom(room, player.id)));
   };
 
-  const updateCounter = (data) => {
-    dispatch(setCounter(data));
+  const subscribeToRoomActivity = (roomId) => {
+    subscribeTopicPlayers({ roomId, callback: updatePlayerInfo });
+  };
+
+  const updatePlayerInfo = (players) => {
+    dispatch(setPlayers(players));
+    dispatch(setPlayer(extractPlayerFromPlayersList(players, player.id)));
+  };
+
+  const onCreate = () => {
+    requestRoomCreate({ player })
+      .then((response) => enterRoom(response.data))
+      .catch((error) => console.error(error));
   };
 
   return { onJoin, onCreate, errorOnJoin };

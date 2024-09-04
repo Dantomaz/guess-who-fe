@@ -8,7 +8,7 @@ const TeamSelect = () => {
   const { onTeamSelect } = useTeam();
   const player = useSelector((state) => state.playerManager.player);
 
-  const team = player.team.toLowerCase();
+  const team = player?.team?.toLowerCase();
   const title = team === "spectators" ? "Join a team to play!" : "Change your team";
   const nameUpper = team === "red" ? "spectators" : "red";
   const nameLower = team === "blue" ? "spectators" : "blue";

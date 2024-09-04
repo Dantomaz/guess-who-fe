@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createJsonPatch } from "../../global/utils";
 import { requestPlayerLeaveRoom, requestPlayerUpdate } from "../api/apiRequest";
+import { unsubscribeAll } from "../api/web-socket/stompClient";
+import { resetPlayer } from "../player/playerSlice";
 import { resetRoom } from "../room/roomSlice";
 
 function usePlayerSettings() {
@@ -17,11 +19,15 @@ function usePlayerSettings() {
 
   const onLeave = () => {
     requestPlayerLeaveRoom({ roomId: room.id, playerId: player.id })
-      .then(() => {
-        dispatch(resetRoom());
-        navigate("/");
-      })
-      .catch(() => {});
+      .then(() => leaveRoom())
+      .catch((error) => console.error(error));
+  };
+
+  const leaveRoom = () => {
+    unsubscribeAll();
+    dispatch(resetRoom());
+    dispatch(resetPlayer());
+    navigate("/");
   };
 
   return { changeNickname, onLeave };

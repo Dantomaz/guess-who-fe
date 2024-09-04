@@ -5,6 +5,7 @@ const initialState = {
     id: null,
     nickname: null,
     host: false,
+    team: null,
   },
 };
 
@@ -16,9 +17,12 @@ export const playerSlice = createSlice({
       console.log("setPlayer dispatched: ", action.payload);
       state.player = action.payload;
     },
+    resetPlayer: (state) => {
+      state.player = initialState.player;
+    },
   },
 });
 
-export const { setPlayer } = playerSlice.actions;
+export const { setPlayer, resetPlayer } = playerSlice.actions;
 
 export default playerSlice.reducer;

@@ -14,7 +14,7 @@ const DragAndDrop = ({ uploadFiles }) => {
       <FileUploader classes={styles["drop-area-container"]} multiple types={fileTypes} handleChange={onFilesChange}>
         <div className={`${styles["drop-area"]} ${!files && styles["empty"]}`}>
           {files ? (
-            files.map((file) => <img src={URL.createObjectURL(file)} key={file.name} alt={file.name} width={64} height={64} />)
+            files.map((file, index) => <img src={URL.createObjectURL(file)} key={index} alt={index} width={64} height={64} />)
           ) : (
             <div className="flex-vertical">
               <p>{"Click here"}</p>
