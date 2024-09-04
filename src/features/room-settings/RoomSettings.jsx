@@ -10,7 +10,7 @@ import useRoomSettings from "./useRoomSettings";
 const RoomSettings = () => {
   const { playersNumber, chooseFunnyText } = useRoomSettings();
   const room = useSelector((state) => state.roomManager.room);
-  const host = findHost(room);
+  const host = findHost(room.players);
 
   return (
     <>

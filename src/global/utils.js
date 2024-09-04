@@ -18,12 +18,8 @@ export const insertVariables = (string, ...variables) => {
   return string;
 };
 
-export const extractPlayerFromPlayersList = (allPlayers, playerId) => {
-  return Object.values(allPlayers).find((player) => player.id === playerId);
-};
-
-export const findHost = (room) => {
-  return Object.values(room.players).find((player) => player.host);
+export const findHost = (players) => {
+  return Object.values(players).find((player) => player.host);
 };
 
 export const isStringBlank = (string) => {

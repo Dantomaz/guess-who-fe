@@ -1,0 +1,16 @@
+@import "../../global/styles/variables.scss";
+
+$width: 950px;
+$height: 750px;
+$gap: 10px;
+
+.container {
+  width: $width;
+  height: $height;
+  display: grid;
+  grid-template-columns: repeat(5, calc($width / 5 - $gap));
+  grid-template-rows: repeat(5, calc($height / 5 - $gap));
+  gap: $gap;
+  overflow: scroll;
+  scrollbar-width: none;
+}

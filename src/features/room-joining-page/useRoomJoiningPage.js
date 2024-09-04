@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { extractAxiosErrorResponseDetail, extractPlayerFromPlayersList } from "../../global/utils";
-import { requestPlayerJoinRoom, requestRoomCreate, subscribeTopicPlayers } from "../api/apiRequest";
+import { extractAxiosErrorResponseDetail } from "../../global/utils";
+import { requestPlayerJoinRoom, requestRoomCreate, subscribeTopicGameState, subscribeTopicImages, subscribeTopicPlayers } from "../api/apiRequest";
+import { setGameState } from "../game-state/gameStateSlice";
 import { setPlayer } from "../player/playerSlice";
-import { setPlayers, setRoom } from "../room/roomSlice";
+import { setImages, setPlayers, setRoom } from "../room/roomSlice";
 
 const useRoomJoiningPage = () => {
   const navigate = useNavigate();
@@ -20,22 +21,41 @@ const useRoomJoiningPage = () => {
   };
 
   const enterRoom = (room) => {
+    // order of updating 'gameState' and 'room' is important, because of deleting 'gameState' property from 'room' object
+    updateGameStateInfo(room.gameState);
     updateRoomInfo(room);
+    console.log(typeof room.players);
+    dispatch(setPlayer(room.players[player.id]));
     subscribeToRoomActivity(room.id);
     navigate("/room");
   };
 
   const updateRoomInfo = (room) => {
+    delete room.gameState;
     dispatch(setRoom(room));
   };
 
+  const updateGameStateInfo = (gameState) => {
+    dispatch(setGameState(gameState));
+  };
+
   const subscribeToRoomActivity = (roomId) => {
+    subscribeTopicImages({ roomId, callback: updateImages });
     subscribeTopicPlayers({ roomId, callback: updatePlayerInfo });
+    subscribeTopicGameState({ roomId, callback: updateGameState });
+  };
+
+  const updateImages = (images) => {
+    dispatch(setImages(images));
   };
 
   const updatePlayerInfo = (players) => {
     dispatch(setPlayers(players));
-    dispatch(setPlayer(extractPlayerFromPlayersList(players, player.id)));
+    dispatch(setPlayer(players[player.id]));
+  };
+
+  const updateGameState = (gameState) => {
+    dispatch(setGameState(gameState));
   };
 
   const onCreate = () => {

@@ -1,8 +1,8 @@
 import { insertVariables } from "../../global/utils";
 import { IMAGES_UPLOAD, PLAYER_CREATE, PLAYER_JOIN_ROOM, PLAYER_LEAVE_ROOM, PLAYER_UPDATE, ROOM_CREATE } from "./rest/apiRestEndpoints";
-import { axiosDelete, axiosGet, axiosPatch, axiosPost } from "./rest/axiosClient";
-import { QUEUE_ERROR, TOPIC_PLAYERS } from "./web-socket/apiWsEndpoints";
-import { subscribe } from "./web-socket/stompClient";
+import { axiosDelete, axiosPatch, axiosPost } from "./rest/axiosClient";
+import { APP_GAME_PREPARE, QUEUE_ERROR, TOPIC_GAME_STATE, TOPIC_IMAGES, TOPIC_PLAYERS } from "./web-socket/apiWsEndpoints";
+import { publish, subscribe } from "./web-socket/stompClient";
 
 const imageHeaders = { headers: { "Content-Type": "multipart/form-data", Accept: "application/json" } };
 
@@ -18,4 +18,8 @@ export const subscribeTopicPlayers = ({ roomId, callback }) => subscribe(insertV
 export const requestRoomCreate = ({ player }) => axiosPost(ROOM_CREATE, player);
 
 export const requestImageUpload = ({ roomId, formData }) => axiosPost(insertVariables(IMAGES_UPLOAD, roomId), formData, imageHeaders);
-export const requestImageDownload = ({ roomId }) => axiosGet(insertVariables(IMAGES_UPLOAD, roomId));
+export const subscribeTopicImages = ({ roomId, callback }) => subscribe(insertVariables(TOPIC_IMAGES, roomId), callback);
+
+export const subscribeTopicGameState = ({ roomId, callback }) => subscribe(insertVariables(TOPIC_GAME_STATE, roomId), callback);
+
+export const publishGamePrepare = ({ roomId }) => publish(insertVariables(APP_GAME_PREPARE, roomId));

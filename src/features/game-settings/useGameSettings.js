@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { requestImageDownload, requestImageUpload } from "../api/apiRequest";
+import { publishGamePrepare, requestImageUpload } from "../api/apiRequest";
 import { setImages } from "../room/roomSlice";
 
 const useGameSettings = () => {
@@ -10,12 +10,9 @@ const useGameSettings = () => {
     const formData = new FormData();
     images.forEach((image) => formData.append("images", image));
     requestImageUpload({ roomId: room.id, formData })
-      .then(() =>
-        requestImageDownload({ roomId: room.id })
-          .then((response) => dispatch(setImages(response.data)))
-          .catch(() => {})
-      )
-      .catch(() => {});
+      .then((response) => dispatch(setImages(response.data)))
+      .then(() => publishGamePrepare({ roomId: room.id }))
+      .catch((error) => console.error(error));
   };
 
   return { uploadImages };
