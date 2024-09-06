@@ -3,9 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   gameState: {
     status: null,
-    cards: {},
-    cardNrChosenByRed: null,
+    cards: null,
     cardNrChosenByBlue: null,
+    cardNrChosenByRed: null,
+    votesBlue: null,
+    votesRed: null,
     currentTurn: null,
     winner: null,
   },

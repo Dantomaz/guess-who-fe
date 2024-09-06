@@ -5,8 +5,12 @@ import { setImages } from "../room/roomSlice";
 const useGameSettings = () => {
   const dispatch = useDispatch();
   const room = useSelector((state) => state.roomManager.room);
+  const player = useSelector((state) => state.playerManager.player);
 
   const uploadImages = (images) => {
+    if (player.team === "SPECTATORS") {
+      return;
+    }
     const formData = new FormData();
     images.forEach((image) => formData.append("images", image));
     requestImageUpload({ roomId: room.id, formData })

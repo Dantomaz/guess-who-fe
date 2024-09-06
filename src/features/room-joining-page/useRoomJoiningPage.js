@@ -24,7 +24,6 @@ const useRoomJoiningPage = () => {
     // order of updating 'gameState' and 'room' is important, because of deleting 'gameState' property from 'room' object
     updateGameStateInfo(room.gameState);
     updateRoomInfo(room);
-    console.log(typeof room.players);
     dispatch(setPlayer(room.players[player.id]));
     subscribeToRoomActivity(room.id);
     navigate("/room");

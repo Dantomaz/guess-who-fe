@@ -58,3 +58,22 @@ export const trimDetailVariables = (detail) => {
 export const createJsonPatch = (...jsonPointers) => {
   return jsonPointers.map((jsonPointer) => ({ op: jsonPointer[0], path: jsonPointer[1], value: jsonPointer[2] }));
 };
+
+export const listVotersByCardNumbers = (players, votes) => {
+  const resultMap = new Map();
+
+  new Map(Object.entries(votes)).forEach((cardNr, playerId) => {
+    // If the card number is not already in the map, initialize it with an empty array
+    if (!resultMap.has(cardNr)) {
+      resultMap.set(cardNr, []);
+    }
+    resultMap.get(cardNr).push(players[playerId]);
+  });
+
+  // example resultMap: {
+  //   cardNr1: [player1, player2],
+  //   cardNr2: [player3],
+  //   ...
+  // }
+  return resultMap;
+};

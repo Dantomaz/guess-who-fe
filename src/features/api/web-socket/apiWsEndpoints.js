@@ -13,3 +13,6 @@ export const TOPIC_GAME_STATE = "/topic/room/{roomId}/gameState";
 // ===== publish endpoints =====
 
 export const APP_GAME_PREPARE = "/app/room/{roomId}/prepareGame";
+export const APP_VOTE_FOR_CARD = "/app/room/{roomId}/vote";
+
+export const APP_GAME_START = "/app/room/{roomId}/startGame";
