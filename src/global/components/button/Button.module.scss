@@ -29,3 +29,19 @@
     margin-left: 0.5vw;
   }
 }
+
+.button-disabled {
+  transition: none;
+  opacity: 0.8;
+  color: rgba($font-color-dark, 0.3);
+
+  &:hover {
+    cursor: default;
+    background-color: $color-primary-2;
+  }
+
+  &:active {
+    transform: none;
+    box-shadow: 0 5px 5px 1px rgba($color-dark, 0.2);
+  }
+}

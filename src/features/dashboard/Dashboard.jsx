@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import Button from "../../global/components/button/Button";
 import SlidingPanel from "../../global/components/sliding-panel/SlidingPanel";
 import "../../global/styles/classes.scss";
+import { didSomeoneNotVote } from "../../global/utils";
 import PlayerSettings from "../player-settings/PlayerSettings";
 import RoomSettings from "../room-settings/RoomSettings";
 import styles from "./Dashboard.module.scss";
@@ -27,7 +28,11 @@ const Dashboard = ({ startGame }) => {
         </div>
         <div className={styles["button-group"]}>
           {gameState.status === "VOTING" && player.host && (
-            <Button className={styles["button-end-voting"]} onClick={startGame}>
+            <Button
+              className={styles["button-end-voting"]}
+              onClick={startGame}
+              disabled={didSomeoneNotVote(room.players, gameState.votesBlue, gameState.votesRed)}
+            >
               End voting
             </Button>
           )}

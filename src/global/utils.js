@@ -84,3 +84,7 @@ export const areBothTeamsPresent = (players) => {
   const redPresent = playersList.find((player) => player.team === "RED");
   return bluePresent && redPresent;
 };
+
+export const didSomeoneNotVote = (players, votesBlue, votesRed) => {
+  return Object.values(players).find((player) => votesBlue[player.id] === undefined && votesRed[player.id] === undefined);
+};
