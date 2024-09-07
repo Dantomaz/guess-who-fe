@@ -8,14 +8,14 @@ const useTeam = () => {
   const player = useSelector((state) => state.playerManager.player);
 
   const teams = useMemo(() => {
-    const teamsSorted = {
+    const playersDividedByTeam = {
       RED: [],
       BLUE: [],
       SPECTATORS: [],
     };
 
-    Object.values(room.players).forEach((player) => teamsSorted[player.team].push(player));
-    return teamsSorted;
+    Object.values(room.players).forEach((player) => playersDividedByTeam[player.team].push(player));
+    return playersDividedByTeam;
   }, [room.players]);
 
   const onTeamSelect = (value) => {
