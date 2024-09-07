@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { areBothTeamsPresent } from "../../global/utils";
 import { publishGamePrepare, requestImageUpload } from "../api/apiRequest";
 import { setImages } from "../room/roomSlice";
 
 const useGameSettings = () => {
   const dispatch = useDispatch();
   const room = useSelector((state) => state.roomManager.room);
-  const player = useSelector((state) => state.playerManager.player);
   const [isDragAndDropVisible, setIsDragAndDropVisible] = useState(false);
 
   const uploadImages = (images) => {
@@ -28,10 +28,9 @@ const useGameSettings = () => {
   };
 
   const prepareGame = () => {
-    if (player.team === "SPECTATORS") {
-      return;
+    if (areBothTeamsPresent(room.players)) {
+      publishGamePrepare({ roomId: room.id });
     }
-    publishGamePrepare({ roomId: room.id });
   };
 
   return { isDragAndDropVisible, showDragAndDrop, hideDragAndDrop, uploadImages, ready: !!room.images, prepareGame };

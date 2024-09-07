@@ -7,6 +7,7 @@ const useRoom = () => {
   const startGame = () => {
     publishGameStart({ roomId });
   };
+
   return { startGame };
 };
 
