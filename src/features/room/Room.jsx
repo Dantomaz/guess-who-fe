@@ -24,7 +24,7 @@ const Room = () => {
           <TeamCard name="blue" />
           {gameState.status === "VOTING" && host && (
             <Button className={styles["button-start"]} onClick={startGame}>
-              Start Game
+              End voting
             </Button>
           )}
           {gameState.status === "IN_PROGRESS" && <div>GAME STARTED</div>}

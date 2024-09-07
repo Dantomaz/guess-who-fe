@@ -3,14 +3,13 @@ import { BiSolidCrown } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import Button from "../../global/components/button/Button";
 import CopyButton from "../../global/components/copy-button/CopyButton";
-import { findHost } from "../../global/utils";
 import styles from "./RoomSettings.module.scss";
 import useRoomSettings from "./useRoomSettings";
 
 const RoomSettings = () => {
-  const { playersNumber, chooseFunnyText } = useRoomSettings();
+  const { playersNumber, chooseFunnyText, resetGame } = useRoomSettings();
   const room = useSelector((state) => state.roomManager.room);
-  const host = findHost(room.players);
+  const player = useSelector((state) => state.playerManager.player);
 
   return (
     <>
@@ -22,14 +21,23 @@ const RoomSettings = () => {
       </div>
       <div className={styles["settings"]}>
         <section className={styles["section"]}>
-          <Button className={styles["host-label"]}>
-            {host?.name} <BiSolidCrown fontSize={12} />
-          </Button>
+          {player.host && (
+            <Button className={styles["host-label"]} onClick={resetGame}>
+              Reset game
+            </Button>
+          )}
           <p style={{ fontWeight: 700 }}>
             Players in this room:<span className={styles["players-number"]}>{playersNumber}</span>
           </p>
-          <p>{Object.values(room.players).map((player) => `${player.name} `)}</p>
           <p>{chooseFunnyText(playersNumber)}</p>
+          <p style={{ marginTop: "10px" }}>
+            {Object.values(room.players).map((player, index) => (
+              <div key={index}>
+                {player.name}
+                {player.host && <BiSolidCrown fontSize={14} style={{ marginLeft: "5px", marginBottom: "-1px" }} />}
+              </div>
+            ))}
+          </p>
         </section>
       </div>
     </>

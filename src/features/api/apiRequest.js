@@ -3,6 +3,7 @@ import { IMAGES_UPLOAD, PLAYER_CREATE, PLAYER_JOIN_ROOM, PLAYER_LEAVE_ROOM, PLAY
 import { axiosDelete, axiosPatch, axiosPost } from "./rest/axiosClient";
 import {
   APP_GAME_PREPARE,
+  APP_GAME_RESTART,
   APP_GAME_START,
   APP_VOTE_FOR_CARD,
   QUEUE_ERROR,
@@ -29,6 +30,8 @@ export const requestImageUpload = ({ roomId, formData }) => axiosPost(insertVari
 export const subscribeTopicImages = ({ roomId, callback }) => subscribe(insertVariables(TOPIC_IMAGES, roomId), callback);
 
 export const subscribeTopicGameState = ({ roomId, callback }) => subscribe(insertVariables(TOPIC_GAME_STATE, roomId), callback);
+
+export const publishGameRestart = ({ roomId }) => publish(insertVariables(APP_GAME_RESTART, roomId));
 
 export const publishGamePrepare = ({ roomId }) => publish(insertVariables(APP_GAME_PREPARE, roomId));
 export const publishVoteForCard = ({ roomId, playerId, cardNumber }) => publish(insertVariables(APP_VOTE_FOR_CARD, roomId), { playerId, cardNumber });
