@@ -9,7 +9,7 @@ const ImagePreview = () => {
     <div className={styles["container"]}>
       {images &&
         Object.values(images).map((image, index) => (
-          <img src={`data:image/jpeg;base64,${image}`} key={index} alt={index} className={styles["image"]} />
+          <img src={`data:image/jpeg;base64,${image}`} key={index} alt={index} draggable={false} className={styles["image"]} />
         ))}
     </div>
   );
