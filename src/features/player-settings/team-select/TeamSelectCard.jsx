@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../global/components/button/Button";
+import Button from "../../../global/components/button/Button";
 import styles from "./TeamSelectCard.module.scss";
 
 function TeamSelectCard({ name, text, onClick, style }) {

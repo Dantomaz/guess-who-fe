@@ -5,13 +5,11 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 30px;
-  margin-bottom: 30px;
-  gap: 20px;
-  height: 350px;
-  width: 300px;
+  padding: 3vh 2vw;
+  height: 35vh;
+  width: 15vw;
   background-color: $color-background;
-  border-radius: 15px;
+  border-radius: 1.5vh;
   box-shadow: 0 4px 4px 4px rgba($color-dark, 0.2);
   opacity: 0.9;
 }

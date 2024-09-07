@@ -19,7 +19,7 @@ const DragAndDrop = ({ uploadFiles }) => {
             <div className="flex-vertical">
               <p>{"Click here"}</p>
               <p>{"or drag & drop the files"}</p>
-              <FaFileUpload style={{ fontSize: "50px", marginTop: "20px" }} />
+              <FaFileUpload className={styles["upload-icon"]} />
             </div>
           )}
         </div>

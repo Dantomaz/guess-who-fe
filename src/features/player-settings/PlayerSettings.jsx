@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Button from "../../global/components/button/Button";
 import Input from "../../global/components/input/Input";
 import { isStringBlank, isStringSame } from "../../global/utils";
-import TeamSelect from "../team/TeamSelect";
+import TeamSelect from "./team-select/TeamSelect";
 import styles from "./PlayerSettings.module.scss";
 import usePlayerSettings from "./usePlayerSettings";
 
@@ -39,13 +39,13 @@ const PlayerSettings = () => {
               formState={formState}
               showError
             />
-            <Button type="submit" style={{ width: "200px" }}>
+            <Button type="submit" style={{ width: "10vw" }}>
               Update nickname
             </Button>
           </form>
         </div>
         <div className={styles["section"]}>
-          <Button onClick={onLeave} style={{ width: "200px" }}>
+          <Button onClick={onLeave} style={{ width: "10vw" }}>
             Leave the room
           </Button>
         </div>

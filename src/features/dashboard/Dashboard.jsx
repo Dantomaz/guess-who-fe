@@ -9,10 +9,11 @@ import RoomSettings from "../room-settings/RoomSettings";
 import styles from "./Dashboard.module.scss";
 import useDashboard from "./useDashboard";
 
-function Dashboard() {
+const Dashboard = ({ startGame }) => {
   const { isLeftPanelShown, showLeftPanel, hideLeftPanel, isRightPanelShown, showRightPanel, hideRightPanel } = useDashboard();
   const room = useSelector((state) => state.roomManager.room);
   const player = useSelector((state) => state.playerManager.player);
+  const gameState = useSelector((state) => state.gameStateManager.gameState);
   const leftPanelRef = useRef();
   const rightPanelRef = useRef();
 
@@ -24,9 +25,17 @@ function Dashboard() {
             Players {<MdSupervisorAccount fontSize={20} />} {Object.values(room.players).length}
           </Button>
         </div>
-        <Button ref={rightPanelRef} onClick={showRightPanel}>
-          {player?.name} {<MdManageAccounts fontSize={20} />}
-        </Button>
+        <div className={styles["button-group"]}>
+          {gameState.status === "VOTING" && player.host && (
+            <Button className={styles["button-end-voting"]} onClick={startGame}>
+              End voting
+            </Button>
+          )}
+          {gameState.status === "IN_PROGRESS" && <div>GAME STARTED</div>}
+          <Button ref={rightPanelRef} onClick={showRightPanel}>
+            {player?.name} {<MdManageAccounts fontSize={20} />}
+          </Button>
+        </div>
       </div>
       <SlidingPanel linkRef={leftPanelRef} type="left" show={isLeftPanelShown} onClickOutsideCallback={hideLeftPanel}>
         <RoomSettings />
@@ -36,6 +45,6 @@ function Dashboard() {
       </SlidingPanel>
     </>
   );
-}
+};
 
 export default Dashboard;

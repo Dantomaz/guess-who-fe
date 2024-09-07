@@ -16,7 +16,7 @@ const TitlePage = () => {
         <div className="text-center">
           <p className={styles.text}>Welcome to</p>
           <p className={styles.title}>Guess Who?</p>
-          <p className={styles.text} style={{ marginTop: "30px" }}>
+          <p className={styles.text} style={{ marginTop: "3vh" }}>
             Please, choose a nickname:
           </p>
         </div>
@@ -33,9 +33,9 @@ const TitlePage = () => {
             })}
             formState={formState}
             showError
-            style={{ width: "200px" }}
+            style={{ width: "10vw" }}
           />
-          <Button type="submit" style={{ width: "200px" }}>
+          <Button type="submit" style={{ width: "10vw" }}>
             PLAY
           </Button>
         </form>

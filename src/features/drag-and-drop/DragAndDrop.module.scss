@@ -11,13 +11,18 @@
   display: grid;
   grid-template-columns: repeat(5, auto);
   grid-template-rows: repeat(5, auto);
-  gap: 2px;
+  gap: 0.2vh;
   overflow: scroll;
   scrollbar-width: none;
-  padding: 15px;
+  padding: 0.5vh 0.5vh;
   font-size: $font-size-medium;
   border: 2px dashed $color-gray;
   cursor: pointer;
+}
+
+.upload-icon {
+  font-size: calc($font-size-very-large * 1.5);
+  margin-top: 2vh;
 }
 
 .empty {
@@ -27,15 +32,10 @@
   font-size: $font-size-medium-large;
 }
 
-.desc {
-  font-size: $font-size-medium;
-  margin-top: 10px;
-}
-
 .footer {
   justify-self: flex-end;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5px;
+  padding: 0 0.2vw;
 }

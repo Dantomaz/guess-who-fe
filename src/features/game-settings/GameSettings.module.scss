@@ -5,15 +5,14 @@
   flex-direction: column;
   justify-content: flex-start;
   text-align: center;
-  gap: 20px;
-  padding: 20px 20px;
-  min-width: 120px;
-  border-radius: 15px;
+  gap: 2vh;
+  padding: 2vh 1vw;
+  border-radius: 1.5vh;
   box-shadow: 0 4px 4px 4px rgba($color-dark, 0.2);
   font-size: $font-size-medium-large;
   font-weight: 600;
-  height: 600px;
-  width: 400px;
+  height: 60vh;
+  width: 21vw;
   background-color: $color-background;
   border: none;
 }

@@ -2,7 +2,7 @@
 
 .input-group {
   position: relative;
-  margin-top: 10px;
+  margin-top: 1vh;
 }
 
 .input-field {
@@ -12,8 +12,7 @@
   outline: none;
   font-size: $font-size-medium;
   font-weight: bold;
-  min-height: $min-button-height;
-  min-width: $min-button-width;
+  height: 4vh;
   box-shadow: none;
   transition: border-color 0.2s;
 }
@@ -25,7 +24,7 @@
   ~ .input-label {
     display: block;
     position: absolute;
-    top: -15px;
+    top: -1.5vh;
     transition: 0.2s;
     font-size: $font-size-medium-small;
     font-weight: bold;
@@ -86,9 +85,9 @@
 
 .input-label {
   display: block;
+  display: block;
   position: absolute;
-  top: 8px;
-  left: 2px;
+  top: 0.8vh;
   transition: 0.2s;
   font-size: $font-size-medium;
   font-weight: bold;
@@ -108,6 +107,5 @@
   position: absolute;
   color: $color-error;
   font-size: $font-size-medium-small;
-  padding: 5px 4px;
-  min-width: $min-button-width;
+  padding: 1vh 0.2vw;
 }

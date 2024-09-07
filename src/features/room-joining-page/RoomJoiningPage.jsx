@@ -11,6 +11,7 @@ const RoomJoiningPage = () => {
 
   return (
     <div className={styles["grid-container"]}>
+      <div></div>
       <section className={`${styles["card"]} ${styles["card-join"]}`}>
         <form onSubmit={handleSubmit(onJoin)}>
           <span className={styles.text}>Join existing room</span>
@@ -29,7 +30,7 @@ const RoomJoiningPage = () => {
             formError={errorOnJoin}
             showError
           />
-          <Button type="submit" style={{ width: "200px" }}>
+          <Button type="submit" style={{ width: "11vw" }}>
             JOIN
           </Button>
         </form>
@@ -37,11 +38,12 @@ const RoomJoiningPage = () => {
       <section className={`${styles["card"]} ${styles["card-create"]}`}>
         <div className={styles["form-create"]}>
           <span className={styles.text}>or create your own!</span>
-          <Button type="submit" onClick={onCreate} style={{ width: "200px" }}>
+          <Button type="submit" onClick={onCreate} style={{ width: "11vw" }}>
             CREATE
           </Button>
         </div>
       </section>
+      <div></div>
     </div>
   );
 };

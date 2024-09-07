@@ -5,9 +5,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 2vh;
   font-weight: 500;
-  padding: 30px 0;
+  padding: 3vh 0;
 }
 
 .invite-text {
@@ -17,7 +17,7 @@
 }
 
 .room-code {
-  padding: 0 15px;
+  padding: 0 0.6vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,13 +27,13 @@
 .room-id {
   user-select: text;
   font-size: $font-size-medium-small;
-  width: 180px;
+  width: 10vw;
   overflow: scroll;
   scrollbar-width: none;
   white-space: nowrap;
   display: inline-block;
-  border-radius: 8px;
-  padding: 8px 12px;
+  border-radius: 0.9vh;
+  padding: 0.9vh 0.6vw;
   box-shadow: inset 0 0 4px 2px rgba($color-dark, 0.1);
 }
 
@@ -42,25 +42,22 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: calc(100% - 120px);
+  height: 85vh;
   width: 100%;
-  gap: 20px;
   background-color: $font-color-light-gray;
 }
 
 .section {
-  padding: 50px 0;
+  padding-top: 5vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 1vh;
 }
 
-.host-label {
-  padding: 10px 18px;
-  font-size: $font-size-medium-small;
-  margin-bottom: 10px;
+.button-reset {
+  margin-bottom: 1vh;
 
   &:active {
     transform: none;
@@ -69,5 +66,5 @@
 
 .players-number {
   font-weight: 700;
-  margin-left: 5px;
+  margin-left: 0.5vw;
 }

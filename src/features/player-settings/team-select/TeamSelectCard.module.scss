@@ -1,12 +1,11 @@
-@import "../../global/styles/variables.scss";
+@import "../../../global/styles/variables.scss";
 
 .card {
   display: flex;
   justify-content: center;
   text-align: center;
-  padding: 10px 20px;
-  min-width: 120px;
-  border-radius: 15px;
+  padding: 1vh 1vw;
+  border-radius: 1.5vh;
   box-shadow: 0 5px 5px 1px rgba($color-dark, 0.2);
   font-size: $font-size-medium-large;
   font-weight: 600;

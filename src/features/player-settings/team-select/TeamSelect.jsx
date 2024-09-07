@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import styles from "./TeamSelect.module.scss";
 import TeamSelectCard from "./TeamSelectCard";
-import useTeam from "./useTeam";
+import useTeam from "../../team/useTeam";
 
 const TeamSelect = () => {
   const { onTeamSelect } = useTeam();
@@ -21,8 +21,8 @@ const TeamSelect = () => {
         <>
           <p>{title}</p>
           <div className={styles["team-select"]}>
-            <TeamSelectCard name={nameUpper} text={textUpper} onClick={onTeamSelect} style={{ width: "200px" }} />
-            <TeamSelectCard name={nameLower} text={textLower} onClick={onTeamSelect} style={{ width: "200px" }} />
+            <TeamSelectCard name={nameUpper} text={textUpper} onClick={onTeamSelect} style={{ width: "11vw" }} />
+            <TeamSelectCard name={nameLower} text={textLower} onClick={onTeamSelect} style={{ width: "11vw" }} />
           </div>
         </>
       }

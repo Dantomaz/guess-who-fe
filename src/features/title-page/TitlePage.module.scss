@@ -18,13 +18,13 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 30px;
-  gap: 20px;
+  padding: 3vh 2vw;
+  gap: 2vh;
   margin: auto auto;
-  height: 400px;
-  width: 300px;
+  height: 40vh;
+  width: 16vw;
   background-color: $color-background;
-  border-radius: 15px;
+  border-radius: 1.5vh;
   box-shadow: 0 4px 4px 4px rgba($color-dark, 0.2);
 
   > form {
@@ -34,6 +34,6 @@
     align-items: center;
     height: 100%;
     width: 100%;
-    gap: 40px;
+    gap: 4.5vh;
   }
 }

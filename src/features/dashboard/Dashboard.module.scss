@@ -5,7 +5,14 @@
   justify-content: space-between;
   align-items: center;
   width: 100vw;
-  height: 60px;
+  height: 7vh;
   background: transparent;
-  padding: 0 150px;
+  padding: 0 8vw;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1vw;
 }

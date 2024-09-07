@@ -1,6 +1,6 @@
 @import "../../styles/variables.scss";
 
-$panel-width: 300px;
+$panel-width: 16vw;
 
 .sliding-panel {
   background-color: $color-background;
@@ -16,8 +16,8 @@ $panel-width: 300px;
 .left {
   top: 0;
   left: 0;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-top-right-radius: 1.5vh;
+  border-bottom-right-radius: 1.5vh;
 }
 
 .left-enter {
@@ -41,8 +41,8 @@ $panel-width: 300px;
 .right {
   top: 0;
   left: calc(100vw - $panel-width);
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
+  border-top-left-radius: 1.5vh;
+  border-bottom-left-radius: 1.5vh;
 }
 
 .right-enter {

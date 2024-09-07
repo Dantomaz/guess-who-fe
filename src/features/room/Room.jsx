@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Button from "../../global/components/button/Button";
 import Board from "../board/Board";
 import Dashboard from "../dashboard/Dashboard";
 import GameSettings from "../game-settings/GameSettings";
@@ -15,20 +14,12 @@ const Room = () => {
 
   return (
     <>
-      <Dashboard />
-      <div className={`${styles["container"]}`}>
+      <Dashboard startGame={startGame} />
+      <div className={styles["container"]}>
         <TeamCard name="red" />
         {gameState.status === "NEW" && host && <GameSettings />}
         {gameState.status !== "NEW" && <Board />}
-        <div>
-          <TeamCard name="blue" />
-          {gameState.status === "VOTING" && host && (
-            <Button className={styles["button-start"]} onClick={startGame}>
-              End voting
-            </Button>
-          )}
-          {gameState.status === "IN_PROGRESS" && <div>GAME STARTED</div>}
-        </div>
+        <TeamCard name="blue" />
       </div>
     </>
   );

@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 50px 150px;
+  padding: 5vh 8vw;
 }
 
 .flex-vertical {
@@ -12,15 +12,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  padding-top: 50px;
+  gap: 2vh;
 }
 
 .text {
   font-size: $font-size-medium-large;
   font-weight: 800;
-}
-
-.button-start {
-  margin: auto;
 }

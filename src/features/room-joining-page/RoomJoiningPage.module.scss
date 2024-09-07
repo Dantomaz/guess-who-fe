@@ -2,14 +2,8 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: 50vw 50vw;
+  grid-template-columns: 20vw 30vw 30vw 20vw;
   grid-template-rows: 100vh;
-}
-
-.flex-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .form-join {
@@ -39,11 +33,10 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 30px;
-  gap: 50px;
+  padding: 1vh 1vw;
   margin: auto auto;
   background-color: $color-background;
-  border-radius: 15px;
+  border-radius: 1.5vh;
   box-shadow: 0 4px 4px 4px rgba($color-dark, 0.2);
 
   > form {
@@ -53,16 +46,16 @@
     align-items: center;
     height: 100%;
     width: 100%;
-    gap: 50px;
+    gap: 6vh;
   }
 }
 
 .card-join {
-  height: 400px;
-  width: 350px;
+  height: 38vh;
+  width: 18vw;
 }
 
 .card-create {
-  height: 300px;
-  width: 350px;
+  height: 38vh;
+  width: 18vw;
 }
