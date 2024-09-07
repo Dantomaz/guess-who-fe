@@ -32,7 +32,7 @@
   scrollbar-width: none;
   white-space: nowrap;
   display: inline-block;
-  border-radius: 0.9vh;
+  border-radius: 0.6rem;
   padding: 0.9vh 0.6vw;
   box-shadow: inset 0 0 4px 2px rgba($color-dark, 0.1);
 }
@@ -42,7 +42,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 85vh;
+  height: 90vh;
   width: 100%;
   background-color: $font-color-light-gray;
 }

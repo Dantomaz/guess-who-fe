@@ -16,8 +16,8 @@ $panel-width: 16vw;
 .left {
   top: 0;
   left: 0;
-  border-top-right-radius: 1.5vh;
-  border-bottom-right-radius: 1.5vh;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 
 .left-enter {
@@ -41,8 +41,8 @@ $panel-width: 16vw;
 .right {
   top: 0;
   left: calc(100vw - $panel-width);
-  border-top-left-radius: 1.5vh;
-  border-bottom-left-radius: 1.5vh;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
 }
 
 .right-enter {

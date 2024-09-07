@@ -23,7 +23,7 @@ const Dashboard = ({ startGame }) => {
       <div className={styles["dashboard-bar"]}>
         <div className="flex">
           <Button ref={leftPanelRef} onClick={showLeftPanel}>
-            Players {<MdSupervisorAccount fontSize={20} />} {Object.values(room.players).length}
+            Players {<MdSupervisorAccount fontSize={24} style={{ marginRight: "0.2vw" }} />} {Object.values(room.players).length}
           </Button>
         </div>
         <div className={styles["button-group"]}>
