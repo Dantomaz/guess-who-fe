@@ -43,10 +43,10 @@ const Dashboard = ({ startGame }) => {
         </div>
       </div>
       <SlidingPanel linkRef={leftPanelRef} type="left" show={isLeftPanelShown} onClickOutsideCallback={hideLeftPanel}>
-        <RoomSettings />
+        <RoomSettings hidePanel={hideLeftPanel} />
       </SlidingPanel>
       <SlidingPanel linkRef={rightPanelRef} type="right" show={isRightPanelShown} onClickOutsideCallback={hideRightPanel}>
-        <PlayerSettings />
+        <PlayerSettings hidePanel={hideRightPanel} />
       </SlidingPanel>
     </>
   );

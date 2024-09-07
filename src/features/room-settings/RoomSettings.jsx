@@ -6,8 +6,8 @@ import CopyButton from "../../global/components/copy-button/CopyButton";
 import styles from "./RoomSettings.module.scss";
 import useRoomSettings from "./useRoomSettings";
 
-const RoomSettings = () => {
-  const { playersNumber, chooseFunnyText, resetGame } = useRoomSettings();
+const RoomSettings = ({ hidePanel }) => {
+  const { playersNumber, chooseFunnyText, resetGame } = useRoomSettings({ hidePanel });
   const room = useSelector((state) => state.roomManager.room);
   const player = useSelector((state) => state.playerManager.player);
 

@@ -4,14 +4,14 @@ import { useSelector } from "react-redux";
 import Button from "../../global/components/button/Button";
 import Input from "../../global/components/input/Input";
 import { isStringBlank, isStringSame } from "../../global/utils";
-import TeamSelect from "./team-select/TeamSelect";
 import styles from "./PlayerSettings.module.scss";
+import TeamSelect from "./team-select/TeamSelect";
 import usePlayerSettings from "./usePlayerSettings";
 
-const PlayerSettings = () => {
+const PlayerSettings = ({ hidePanel }) => {
   const player = useSelector((state) => state.playerManager.player);
   const { register, reset, handleSubmit, formState } = useForm({ defaultValues: { nickname: player?.name } });
-  const { changeNickname, onLeave } = usePlayerSettings();
+  const { changeNickname, onLeave } = usePlayerSettings({ hidePanel });
 
   useEffect(() => {
     reset();

@@ -6,7 +6,7 @@ import { unsubscribeAll } from "../api/web-socket/stompClient";
 import { resetPlayer } from "../player/playerSlice";
 import { resetRoom } from "../room/roomSlice";
 
-function usePlayerSettings() {
+function usePlayerSettings({ hidePanel }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const room = useSelector((state) => state.roomManager.room);
@@ -15,6 +15,7 @@ function usePlayerSettings() {
   const changeNickname = (data) => {
     const playerPatch = createJsonPatch(["replace", "/name", data.nickname.trim()]);
     requestPlayerUpdate({ roomId: room.id, playerId: player.id, playerPatch }).catch(() => {});
+    hidePanel();
   };
 
   const onLeave = () => {

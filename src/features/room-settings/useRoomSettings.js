@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { publishGameRestart } from "../api/apiRequest";
 
-const useRoomSettings = () => {
+const useRoomSettings = ({ hidePanel }) => {
   const room = useSelector((state) => state.roomManager.room);
   const [playersNumber, setPlayersNumber] = useState();
 
@@ -31,6 +31,7 @@ const useRoomSettings = () => {
 
   const resetGame = () => {
     publishGameRestart({ roomId: room.id });
+    hidePanel();
   };
 
   return { playersNumber, chooseFunnyText, resetGame };
