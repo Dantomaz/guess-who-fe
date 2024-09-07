@@ -18,6 +18,7 @@ export const playerSlice = createSlice({
       state.player = action.payload;
     },
     resetPlayer: (state) => {
+      console.log("resetPlayer dispatched");
       state.player = initialState.player;
     },
   },

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { extractAxiosErrorResponseDetail } from "../../global/utils";
 import { requestPlayerJoinRoom, requestRoomCreate, subscribeTopicGameState, subscribeTopicImages, subscribeTopicPlayers } from "../api/apiRequest";
 import { setGameState } from "../game-state/gameStateSlice";
-import { setPlayer } from "../player/playerSlice";
+import { resetPlayer, setPlayer } from "../player/playerSlice";
 import { setImages, setPlayers, setRoom } from "../room/roomSlice";
 
 const useRoomJoiningPage = () => {
@@ -50,7 +50,8 @@ const useRoomJoiningPage = () => {
 
   const updatePlayerInfo = (players) => {
     dispatch(setPlayers(players));
-    dispatch(setPlayer(players[player.id]));
+    const playerInfo = players[player.id];
+    dispatch(playerInfo ? setPlayer(playerInfo) : resetPlayer());
   };
 
   const updateGameState = (gameState) => {
