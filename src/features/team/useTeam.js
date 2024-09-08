@@ -1,11 +1,10 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { createJsonPatch } from "../../global/utils";
-import { requestPlayerUpdate } from "../api/apiRequest";
+import { publishPlayerChangeTeam } from "../api/apiRequest";
 
 const useTeam = () => {
   const room = useSelector((state) => state.roomManager.room);
-  const player = useSelector((state) => state.playerManager.player);
+  const playerId = useSelector((state) => state.playerManager.player.id);
 
   const teams = useMemo(() => {
     const playersDividedByTeam = {
@@ -19,8 +18,7 @@ const useTeam = () => {
   }, [room.players]);
 
   const onTeamSelect = (value) => {
-    const playerPatch = createJsonPatch(["replace", "/team", value.toUpperCase()]);
-    requestPlayerUpdate({ roomId: room.id, playerId: player.id, playerPatch }).catch(() => {});
+    publishPlayerChangeTeam({ roomId: room.id, playerId, newTeam: value.toUpperCase() });
   };
 
   return { onTeamSelect, teams };

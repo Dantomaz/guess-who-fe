@@ -1,10 +1,12 @@
 import { insertVariables } from "../../global/utils";
-import { IMAGES_UPLOAD, PLAYER_CREATE, PLAYER_JOIN_ROOM, PLAYER_LEAVE_ROOM, PLAYER_UPDATE, ROOM_CREATE } from "./rest/apiRestEndpoints";
-import { axiosDelete, axiosPatch, axiosPost } from "./rest/axiosClient";
+import { IMAGES_UPLOAD, PLAYER_CREATE, PLAYER_JOIN_ROOM, PLAYER_LEAVE_ROOM, ROOM_CREATE } from "./rest/apiRestEndpoints";
+import { axiosDelete, axiosPost } from "./rest/axiosClient";
 import {
   APP_GAME_PREPARE,
   APP_GAME_RESTART,
   APP_GAME_START,
+  APP_PLAYER_CHANGE_NAME,
+  APP_PLAYER_CHANGE_TEAM,
   APP_TOGGLE_CARD,
   APP_VOTE_FOR_CARD,
   QUEUE_ERROR,
@@ -19,11 +21,12 @@ const imageHeaders = { headers: { "Content-Type": "multipart/form-data", Accept:
 export const subscribeQueueError = ({ callback }) => subscribe(QUEUE_ERROR, callback);
 
 export const requestPlayerCreate = ({ nickname }) => axiosPost(insertVariables(PLAYER_CREATE, nickname));
-export const requestPlayerUpdate = ({ roomId, playerId, playerPatch: jsonPatch }) =>
-  axiosPatch(insertVariables(PLAYER_UPDATE, roomId, playerId), jsonPatch);
 export const requestPlayerJoinRoom = ({ roomId, player }) => axiosPost(insertVariables(PLAYER_JOIN_ROOM, roomId), player);
 export const requestPlayerLeaveRoom = ({ roomId, playerId }) => axiosDelete(insertVariables(PLAYER_LEAVE_ROOM, roomId, playerId));
 export const subscribeTopicPlayers = ({ roomId, callback }) => subscribe(insertVariables(TOPIC_PLAYERS, roomId), callback);
+export const publishPlayerChangeName = ({ roomId, playerId, newName }) =>
+  publish(insertVariables(APP_PLAYER_CHANGE_NAME, roomId, playerId), { newName });
+export const publishPlayerChangeTeam = ({ roomId, playerId, newTeam }) => publish(insertVariables(APP_PLAYER_CHANGE_TEAM, roomId, playerId), newTeam);
 
 export const requestRoomCreate = ({ player }) => axiosPost(ROOM_CREATE, player);
 

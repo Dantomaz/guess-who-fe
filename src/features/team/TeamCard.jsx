@@ -10,7 +10,9 @@ const TeamCard = ({ children, team, title, ...rest }) => {
     <div className={`${styles["card"]} ${styles[team]}`} {...rest}>
       <div className={styles["players"]}>
         {playerList?.map((player) => (
-          <div className={styles["player"]}>{player.name}</div>
+          <div key={player.id} className={styles["player"]}>
+            {player.name}
+          </div>
         ))}
       </div>
     </div>
