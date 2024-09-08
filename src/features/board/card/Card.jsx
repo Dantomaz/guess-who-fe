@@ -13,7 +13,11 @@ const Card = ({ number, image, closed }) => {
       <div className={styles["image-container"]}>
         <div className={styles["voters"]}>
           {gameState.status === "VOTING" &&
-            voters?.map((player) => <div className={`${styles["voter"]} ${styles[player.team.toLowerCase()]}`}>{player.name}</div>)}
+            voters?.map((player, index) => (
+              <div key={index} className={`${styles["voter"]} ${styles[player.team.toLowerCase()]}`}>
+                {player.name}
+              </div>
+            ))}
         </div>
         <img src={`data:image/jpeg;base64,${image}`} key={number} alt={number} draggable={false} className={styles["image"]} />
       </div>
