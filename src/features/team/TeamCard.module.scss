@@ -21,3 +21,7 @@
 .blue {
   background-image: linear-gradient(100deg, $color-team-blue-primary, $color-team-blue-secondary);
 }
+
+.players {
+  overflow: hidden;
+}

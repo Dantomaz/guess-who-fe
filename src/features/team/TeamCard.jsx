@@ -11,7 +11,7 @@ const TeamCard = ({ children, name, title, ...rest }) => {
 
   return (
     <div className={classes} {...rest}>
-      <div className={styles["title"]}>{playerList?.map((player) => player.name)}</div>
+      <div className={styles["players"]}>{playerList?.map((player) => player.name)}</div>
     </div>
   );
 };

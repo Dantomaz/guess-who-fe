@@ -11,8 +11,9 @@ const GameSettings = () => {
   return (
     <div className={styles["card"]}>
       SETTINGS
-      {isDragAndDropVisible && <DragAndDrop uploadFiles={uploadImages} />}
-      {!isDragAndDropVisible && (
+      {isDragAndDropVisible ? (
+        <DragAndDrop uploadFiles={uploadImages} />
+      ) : (
         <>
           <Button onClick={showDragAndDrop}>Upload images</Button>
           <ImagePreview />
