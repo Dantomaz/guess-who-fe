@@ -68,3 +68,16 @@
   font-weight: 700;
   margin-left: 0.5vw;
 }
+
+.players {
+  margin-top: 1vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.crown-icon {
+  position: absolute;
+  margin-left: 0.25vw;
+  margin-top: 0.5vh;
+}

@@ -30,11 +30,11 @@ const RoomSettings = ({ hidePanel }) => {
             Players in this room:<span className={styles["players-number"]}>{playersNumber}</span>
           </p>
           <p>{chooseFunnyText(playersNumber)}</p>
-          <div style={{ marginTop: "1vh" }}>
+          <div className={styles["players"]}>
             {Object.values(room.players).map((player, index) => (
               <div key={index}>
                 {player.name}
-                {player.host && <BiSolidCrown fontSize={14} style={{ marginLeft: "0.25vw", marginBottom: "-0.2vh" }} />}
+                {player.host && <BiSolidCrown fontSize={"1.5vh"} className={styles["crown-icon"]} />}
               </div>
             ))}
           </div>

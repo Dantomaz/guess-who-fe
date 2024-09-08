@@ -23,7 +23,7 @@ const Dashboard = ({ startGame }) => {
       <div className={styles["dashboard-bar"]}>
         <div className="flex">
           <Button ref={leftPanelRef} onClick={showLeftPanel}>
-            Players {<MdSupervisorAccount fontSize={24} style={{ marginRight: "0.2vw" }} />} {Object.values(room.players).length}
+            Players {<MdSupervisorAccount fontSize={"2.6vh"} style={{ marginRight: "0.2vw" }} />} {Object.values(room.players).length}
           </Button>
         </div>
         <div className={styles["button-group"]}>
@@ -38,7 +38,7 @@ const Dashboard = ({ startGame }) => {
           )}
           {gameState.status === "IN_PROGRESS" && <div>GAME STARTED</div>}
           <Button ref={rightPanelRef} onClick={showRightPanel}>
-            {player?.name} {<MdManageAccounts fontSize={20} />}
+            {player?.name} {<MdManageAccounts fontSize={"2.2vh"} />}
           </Button>
         </div>
       </div>
