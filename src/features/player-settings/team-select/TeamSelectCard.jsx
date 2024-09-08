@@ -2,12 +2,15 @@ import React from "react";
 import Button from "../../../global/components/button/Button";
 import styles from "./TeamSelectCard.module.scss";
 
-function TeamSelectCard({ name, text, onClick, style }) {
-  const classColor = styles[name];
-  const classes = `${styles["card"]} ${classColor}`;
-
+function TeamSelectCard({ name, text, onClick, style, disabled }) {
   return (
-    <Button className={classes} overrideClasses style={style} onClick={() => onClick(name)}>
+    <Button
+      className={`${styles["button"]} ${styles[name]} ${disabled && styles["button-disabled"]}`}
+      overrideClasses
+      style={style}
+      onClick={() => onClick(name)}
+      disabled={disabled}
+    >
       {text}
     </Button>
   );

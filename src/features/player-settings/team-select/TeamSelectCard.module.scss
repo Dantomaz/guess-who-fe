@@ -1,6 +1,6 @@
 @import "../../../global/styles/variables.scss";
 
-.card {
+.button {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -13,11 +13,11 @@
   border: none;
   transition: background-color 0.2s, transform 0.05s, box-shadow 0.05s;
 
-  &:hover {
+  &:hover:not(.button-disabled) {
     cursor: pointer;
   }
 
-  &:active {
+  &:active:not(.button-disabled) {
     transform: translateY(5%);
     box-shadow: 0 3px 3px 1px rgba($color-dark, 0.2);
   }
@@ -26,7 +26,7 @@
 .red {
   background-color: rgba($color-team-red-primary, 0.9);
 
-  &:hover {
+  &:hover:not(.button-disabled) {
     background-color: $color-team-red-secondary;
   }
 }
@@ -34,7 +34,7 @@
 .blue {
   background-color: rgba($color-team-blue-primary, 0.9);
 
-  &:hover {
+  &:hover:not(.button-disabled) {
     background-color: $color-team-blue-secondary;
   }
 }
@@ -42,7 +42,7 @@
 .spectators {
   background-color: $color-primary-2;
 
-  &:hover {
+  &:hover:not(.button-disabled) {
     background-color: rgba($color-secondary-2, 0.9);
   }
 }
