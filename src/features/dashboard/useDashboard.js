@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { useBoolean } from "usehooks-ts";
 import { didSomeoneNotVote } from "../../global/utils";
@@ -9,16 +10,15 @@ function useDashboard() {
   const room = useSelector((state) => state.roomManager.room);
   const gameState = useSelector((state) => state.gameStateManager.gameState);
 
-  const notVoted = gameState.status === "VOTING" && didSomeoneNotVote(room.players, gameState.votesBlue, gameState.votesRed);
+  const notEveryoneVoted = useMemo(() => {
+    return gameState.status === "VOTING" && didSomeoneNotVote(room.players, gameState.votesBlue, gameState.votesRed);
+  }, [gameState.status, room.players, gameState.votesBlue, gameState.votesRed]);
 
   const startGame = () => {
-    if (notVoted) {
-      return;
-    }
     publishGameStart({ roomId: room.id });
   };
 
-  return { isLeftPanelShown, showLeftPanel, hideLeftPanel, isRightPanelShown, showRightPanel, hideRightPanel, notVoted, startGame };
+  return { isLeftPanelShown, showLeftPanel, hideLeftPanel, isRightPanelShown, showRightPanel, hideRightPanel, notEveryoneVoted, startGame };
 }
 
 export default useDashboard;

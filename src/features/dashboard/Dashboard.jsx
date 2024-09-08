@@ -10,7 +10,8 @@ import styles from "./Dashboard.module.scss";
 import useDashboard from "./useDashboard";
 
 const Dashboard = () => {
-  const { isLeftPanelShown, showLeftPanel, hideLeftPanel, isRightPanelShown, showRightPanel, hideRightPanel, notVoted, startGame } = useDashboard();
+  const { isLeftPanelShown, showLeftPanel, hideLeftPanel, isRightPanelShown, showRightPanel, hideRightPanel, notEveryoneVoted, startGame } =
+    useDashboard();
   const room = useSelector((state) => state.roomManager.room);
   const player = useSelector((state) => state.playerManager.player);
   const gameState = useSelector((state) => state.gameStateManager.gameState);
@@ -27,7 +28,7 @@ const Dashboard = () => {
         </div>
         <div className={styles["button-group"]}>
           {gameState.status === "VOTING" && player.host && (
-            <Button className={styles["button-end-voting"]} onClick={startGame} disabled={notVoted}>
+            <Button className={styles["button-end-voting"]} onClick={startGame} disabled={notEveryoneVoted}>
               End voting
             </Button>
           )}
