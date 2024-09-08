@@ -86,5 +86,5 @@ export const areBothTeamsPresent = (players) => {
 };
 
 export const didSomeoneNotVote = (players, votesBlue, votesRed) => {
-  return Object.values(players).find((player) => votesBlue[player.id] === undefined && votesRed[player.id] === undefined);
+  return Object.values(players).some((player) => votesBlue[player.id] === undefined && votesRed[player.id] === undefined);
 };

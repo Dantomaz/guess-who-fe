@@ -5,16 +5,14 @@ import Dashboard from "../dashboard/Dashboard";
 import GameSettings from "../game-settings/GameSettings";
 import TeamCard from "../team/TeamCard";
 import styles from "./Room.module.scss";
-import useRoom from "./useRoom";
 
 const Room = () => {
   const gameState = useSelector((state) => state.gameStateManager.gameState);
   const host = useSelector((state) => state.playerManager.player?.host);
-  const { startGame } = useRoom();
 
   return (
     <>
-      <Dashboard startGame={startGame} />
+      <Dashboard />
       <div className={styles["container"]}>
         <TeamCard team="red" />
         {gameState.status === "NEW" && host && <GameSettings />}
