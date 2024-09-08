@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useBoolean } from "usehooks-ts";
 import { areBothTeamsPresent } from "../../global/utils";
 import { publishGamePrepare, requestImageUpload } from "../api/apiRequest";
 import { setImages } from "../room/roomSlice";
@@ -7,7 +7,7 @@ import { setImages } from "../room/roomSlice";
 const useGameSettings = () => {
   const dispatch = useDispatch();
   const room = useSelector((state) => state.roomManager.room);
-  const [isDragAndDropVisible, setIsDragAndDropVisible] = useState(false);
+  const { value: isDragAndDropVisible, setTrue: showDragAndDrop, setFalse: hideDragAndDrop } = useBoolean();
 
   const uploadImages = (images) => {
     const formData = new FormData();
@@ -17,14 +17,6 @@ const useGameSettings = () => {
       .then((response) => dispatch(setImages(response.data)))
       .then(() => hideDragAndDrop())
       .catch((error) => console.error(error));
-  };
-
-  const showDragAndDrop = () => {
-    setIsDragAndDropVisible(true);
-  };
-
-  const hideDragAndDrop = () => {
-    setIsDragAndDropVisible(false);
   };
 
   const prepareGame = () => {
