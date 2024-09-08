@@ -15,33 +15,17 @@
   box-shadow: 0 5px 5px 1px rgba($color-dark, 0.2);
   transition: background-color 0.3s ease-out, transform 0.05s, box-shadow 0.05s;
 
-  &:hover {
+  &:hover:not(.button-disabled) {
     background-color: $color-secondary-2;
     cursor: pointer;
   }
 
-  &:active {
+  &:active:not(.button-disabled) {
     transform: translateY(5%);
     box-shadow: 0 3px 3px 1px rgba($color-dark, 0.2);
   }
 
   & > svg {
     margin-left: 0.5vw;
-  }
-}
-
-.button-disabled {
-  transition: none;
-  opacity: 0.8;
-  color: rgba($font-color-dark, 0.3);
-
-  &:hover {
-    cursor: default;
-    background-color: $color-primary-2;
-  }
-
-  &:active {
-    transform: none;
-    box-shadow: 0 5px 5px 1px rgba($color-dark, 0.2);
   }
 }
