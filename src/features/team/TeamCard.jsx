@@ -2,16 +2,17 @@ import React from "react";
 import styles from "./TeamCard.module.scss";
 import useTeam from "./useTeam";
 
-const TeamCard = ({ children, name, title, ...rest }) => {
+const TeamCard = ({ children, team, title, ...rest }) => {
   const { teams } = useTeam();
-  const playerList = teams[name.toUpperCase()];
-
-  const classColor = styles[name];
-  const classes = `${styles["card"]} ${classColor}`;
+  const playerList = teams[team.toUpperCase()];
 
   return (
-    <div className={classes} {...rest}>
-      <div className={styles["players"]}>{playerList?.map((player) => player.name)}</div>
+    <div className={`${styles["card"]} ${styles[team]}`} {...rest}>
+      <div className={styles["players"]}>
+        {playerList?.map((player) => (
+          <div className={styles["player"]}>{player.name}</div>
+        ))}
+      </div>
     </div>
   );
 };
