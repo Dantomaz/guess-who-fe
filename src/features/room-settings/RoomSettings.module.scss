@@ -53,7 +53,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1vh;
+  gap: 3vh;
 }
 
 .button-reset {
@@ -70,10 +70,10 @@
 }
 
 .players {
-  margin-top: 1vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1vh;
 }
 
 .crown-icon {

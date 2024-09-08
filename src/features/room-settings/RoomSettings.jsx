@@ -29,7 +29,6 @@ const RoomSettings = ({ hidePanel }) => {
           <p style={{ fontWeight: 700 }}>
             Players in this room:<span className={styles["players-number"]}>{playersNumber}</span>
           </p>
-          <p>{chooseFunnyText(playersNumber)}</p>
           <div className={styles["players"]}>
             {Object.values(room.players).map((player, index) => (
               <div key={index}>
@@ -38,6 +37,7 @@ const RoomSettings = ({ hidePanel }) => {
               </div>
             ))}
           </div>
+          <p>{chooseFunnyText(playersNumber)}</p>
         </section>
       </div>
     </>
