@@ -34,6 +34,7 @@ const PlayerSettings = ({ hidePanel }) => {
                 validate: {
                   notBlank: (nickname) => !isStringBlank(nickname) || "Still nothing...",
                   notChanged: (nickname) => !isStringSame(nickname.trim(), player.name.trim()) || "It's already your nickname",
+                  tooLong: (nickname) => nickname.trim().length <= 15 || "It's too long",
                 },
               })}
               formState={formState}
