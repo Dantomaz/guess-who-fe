@@ -88,3 +88,11 @@ export const areBothTeamsPresent = (players) => {
 export const didSomeoneNotVote = (players, votesBlue, votesRed) => {
   return Object.values(players).some((player) => votesBlue[player.id] === undefined && votesRed[player.id] === undefined);
 };
+
+export const getGridTemplateColumnsEstimate = (size) => {
+  return { gridTemplateColumns: `repeat(${getColumnEstimate(size)}, 1fr)` };
+};
+
+const getColumnEstimate = (size) => {
+  return Math.ceil(Math.sqrt(size));
+};
