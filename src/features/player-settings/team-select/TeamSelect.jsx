@@ -1,20 +1,22 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import useTeam from "../../team/useTeam";
+import useTeamSelect from "../team-select/useTeamSelect";
 import styles from "./TeamSelect.module.scss";
 import TeamSelectCard from "./TeamSelectCard";
 
 const TeamSelect = () => {
-  const { onTeamSelect } = useTeam();
+  const { onTeamSelect } = useTeamSelect();
   const player = useSelector((state) => state.playerManager.player);
   const gameStatus = useSelector((state) => state.gameStateManager.gameState.status);
 
-  const team = player?.team?.toLowerCase();
-  const title = team === "spectators" ? "Join a team to play!" : "Change your team";
-  const nameUpper = team === "red" ? "spectators" : "red";
-  const nameLower = team === "blue" ? "spectators" : "blue";
-  const textUpper = team === "red" ? "Spectators" : "Team Red";
-  const textLower = team === "blue" ? "Spectators" : "Team Blue";
+  const team = player?.team;
+  const title = team === "SPECTATORS" ? "Join a team to play!" : "Change your team";
+
+  const nameUpper = team === "RED" ? "SPECTATORS" : "RED";
+  const nameLower = team === "BLUE" ? "SPECTATORS" : "BLUE";
+
+  const textUpper = team === "RED" ? "Spectators" : "Team Red";
+  const textLower = team === "BLUE" ? "Spectators" : "Team Blue";
 
   return (
     <div className={styles["container"]}>

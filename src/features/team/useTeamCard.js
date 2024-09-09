@@ -2,9 +2,10 @@ import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { publishPlayerChangeTeam } from "../api/apiRequest";
 
-const useTeam = () => {
+const useTeamCard = ({ team }) => {
   const room = useSelector((state) => state.roomManager.room);
-  const playerId = useSelector((state) => state.playerManager.player.id);
+  const player = useSelector((state) => state.playerManager.player);
+  const gameState = useSelector((state) => state.gameStateManager.gameState);
 
   const teams = useMemo(() => {
     const playersDividedByTeam = {
@@ -17,11 +18,13 @@ const useTeam = () => {
     return playersDividedByTeam;
   }, [room.players]);
 
-  const onTeamSelect = (value) => {
-    publishPlayerChangeTeam({ roomId: room.id, playerId, newTeam: value.toUpperCase() });
+  const displaySwitchTeamButton = gameState.status === "NEW" && player.team !== team;
+
+  const switchTeam = () => {
+    publishPlayerChangeTeam({ roomId: room.id, playerId: player.id, newTeam: team });
   };
 
-  return { onTeamSelect, teams };
+  return { teams, displaySwitchTeamButton, switchTeam };
 };
 
-export default useTeam;
+export default useTeamCard;

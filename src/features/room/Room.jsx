@@ -16,10 +16,10 @@ const Room = () => {
       <Dashboard />
       <Notifier />
       <div className={styles["container"]}>
-        <TeamCard team="red" />
+        <TeamCard team="RED" />
         {gameState.status === "NEW" && host && <GameSettings />}
         {gameState.status !== "NEW" && <Board />}
-        <TeamCard team="blue" />
+        <TeamCard team="BLUE" />
       </div>
     </>
   );
