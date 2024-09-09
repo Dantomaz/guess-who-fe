@@ -4,7 +4,7 @@ import styles from "./TeamCard.module.scss";
 import useTeamCard from "./useTeamCard";
 
 const TeamCard = ({ children, team, title, ...rest }) => {
-  const { teams, displaySwitchTeamButton, switchTeam } = useTeamCard({ team });
+  const { teams, displayEndTurnButton, endTurn, displaySwitchTeamButton, switchTeam } = useTeamCard({ team });
   const playerList = teams[team];
 
   return (
@@ -16,6 +16,7 @@ const TeamCard = ({ children, team, title, ...rest }) => {
           </div>
         ))}
       </div>
+      {displayEndTurnButton && <Button onClick={endTurn}>End turn</Button>}
       {displaySwitchTeamButton && <Button onClick={switchTeam}>Join team</Button>}
     </div>
   );

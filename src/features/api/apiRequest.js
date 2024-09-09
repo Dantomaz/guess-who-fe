@@ -2,6 +2,7 @@ import { insertVariables } from "../../global/utils";
 import { IMAGES_UPLOAD, PLAYER_CREATE, PLAYER_JOIN_ROOM, PLAYER_LEAVE_ROOM, ROOM_CREATE } from "./rest/apiRestEndpoints";
 import { axiosDelete, axiosPost } from "./rest/axiosClient";
 import {
+  APP_END_TURN,
   APP_GAME_PREPARE,
   APP_GAME_RESTART,
   APP_GAME_START,
@@ -42,3 +43,4 @@ export const publishVoteForCard = ({ roomId, playerId, cardNumber }) => publish(
 
 export const publishGameStart = ({ roomId }) => publish(insertVariables(APP_GAME_START, roomId));
 export const publishToggleCard = ({ roomId, cardNumber, team }) => publish(insertVariables(APP_TOGGLE_CARD, roomId), { cardNumber, team });
+export const publishEndTurn = ({ roomId }) => publish(insertVariables(APP_END_TURN, roomId));

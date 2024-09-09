@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { publishPlayerChangeTeam } from "../api/apiRequest";
+import { publishEndTurn, publishPlayerChangeTeam } from "../api/apiRequest";
 
 const useTeamCard = ({ team }) => {
   const room = useSelector((state) => state.roomManager.room);
@@ -18,13 +18,18 @@ const useTeamCard = ({ team }) => {
     return playersDividedByTeam;
   }, [room.players]);
 
+  const displayEndTurnButton = player.team === team && gameState.currentTurn === player.team;
   const displaySwitchTeamButton = gameState.status === "NEW" && player.team !== team;
+
+  const endTurn = () => {
+    publishEndTurn({ roomId: room.id });
+  };
 
   const switchTeam = () => {
     publishPlayerChangeTeam({ roomId: room.id, playerId: player.id, newTeam: team });
   };
 
-  return { teams, displaySwitchTeamButton, switchTeam };
+  return { teams, displayEndTurnButton, endTurn, displaySwitchTeamButton, switchTeam };
 };
 
 export default useTeamCard;

@@ -15,7 +15,11 @@ const useNotifier = () => {
   } else if (gameState.status === "VOTING") {
     text = "Choose the card for your team";
   } else if (gameState.status === "IN_PROGRESS") {
-    text = "Game in progress...";
+    if (gameState.currentTurn === player.team) {
+      text = "Ask a question";
+    } else {
+      text = "Answer your opponent's question";
+    }
   } else if (gameState.status === "FINISHED") {
     text = "Game finished";
   } else {
