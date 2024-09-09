@@ -1,16 +1,12 @@
 @import "../../global/styles/variables.scss";
 
-$width: 50vw;
-$height: 80vh;
-$gap: 1vh;
-
 .container {
-  width: $width;
-  height: $height;
+  width: 50vw;
+  height: 80vh;
   display: grid;
-  grid-template-columns: repeat(5, calc($width / 5 - $gap));
-  grid-template-rows: repeat(5, calc($height / 5 - $gap));
-  gap: $gap;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1vh;
   overflow: scroll;
   scrollbar-width: none;
 }
