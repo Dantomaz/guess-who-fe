@@ -9,7 +9,6 @@ const GameSettings = () => {
 
   return (
     <div className={styles["card"]}>
-      SETTINGS
       {isDragAndDropVisible ? (
         <DragAndDrop uploadFiles={uploadImages} cancel={hideDragAndDrop} />
       ) : (

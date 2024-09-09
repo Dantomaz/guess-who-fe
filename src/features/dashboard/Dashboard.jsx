@@ -32,7 +32,6 @@ const Dashboard = () => {
               End voting
             </Button>
           )}
-          {gameState.status === "IN_PROGRESS" && <div>GAME STARTED</div>}
           <Button ref={rightPanelRef} onClick={showRightPanel}>
             {player?.name} {<MdManageAccounts fontSize={"2.2vh"} />}
           </Button>

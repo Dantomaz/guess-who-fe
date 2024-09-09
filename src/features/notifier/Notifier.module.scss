@@ -1,0 +1,19 @@
+@import "../../global/styles/variables.scss";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notifier {
+  height: auto;
+  width: auto;
+  padding: 1vh 0.8vw;
+  margin: 0;
+  white-space: nowrap;
+  background-color: $color-background;
+  font-size: $font-size-large;
+  font-weight: 700;
+  border-radius: 1rem;
+}
