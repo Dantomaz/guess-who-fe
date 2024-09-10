@@ -85,8 +85,10 @@ export const areBothTeamsPresent = (players) => {
   return bluePresent && redPresent;
 };
 
-export const didSomeoneNotVote = (players, votesBlue, votesRed) => {
-  return Object.values(players).some((player) => votesBlue[player.id] === undefined && votesRed[player.id] === undefined);
+export const countVoters = (players, votesBlue, votesRed) => {
+  return Object.values(players).filter(
+    (player) => (votesBlue && votesBlue[player.id] !== undefined) || (votesRed && votesRed[player.id] !== undefined)
+  ).length;
 };
 
 export const getGridTemplateColumnsEstimate = (size) => {

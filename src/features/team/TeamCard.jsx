@@ -4,18 +4,34 @@ import styles from "./TeamCard.module.scss";
 import useTeamCard from "./useTeamCard";
 
 const TeamCard = ({ children, team, title, ...rest }) => {
-  const { teams, displayEndTurnButton, endTurn, displaySwitchTeamButton, switchTeam } = useTeamCard({ team });
-  const playerList = teams[team];
+  const {
+    playersInTeam,
+    numberOfVoters,
+    numberOfAllPlayers,
+    displayEndVotingButton,
+    notEveryoneVoted,
+    startGame,
+    displayEndTurnButton,
+    endTurn,
+    displaySwitchTeamButton,
+    switchTeam,
+  } = useTeamCard({ team });
 
   return (
     <div className={`${styles["card"]} ${styles[team.toLowerCase()]}`} {...rest}>
       <div className={styles["players"]}>
-        {playerList?.map((player) => (
-          <div key={player.id} className={styles["player"]}>
-            {player.name}
-          </div>
-        ))}
+        {playersInTeam &&
+          playersInTeam.map((player) => (
+            <div key={player.id} className={styles["player"]}>
+              {player.name}
+            </div>
+          ))}
       </div>
+      {displayEndVotingButton && (
+        <Button className={styles["button-end-voting"]} onClick={startGame} disabled={notEveryoneVoted}>
+          End voting ({numberOfVoters}/{numberOfAllPlayers})
+        </Button>
+      )}
       {displayEndTurnButton && <Button onClick={endTurn}>End turn</Button>}
       {displaySwitchTeamButton && <Button onClick={switchTeam}>Join team</Button>}
     </div>

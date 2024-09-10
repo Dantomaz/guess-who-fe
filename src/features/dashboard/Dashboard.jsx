@@ -10,11 +10,9 @@ import styles from "./Dashboard.module.scss";
 import useDashboard from "./useDashboard";
 
 const Dashboard = () => {
-  const { isLeftPanelShown, showLeftPanel, hideLeftPanel, isRightPanelShown, showRightPanel, hideRightPanel, notEveryoneVoted, startGame } =
-    useDashboard();
+  const { isLeftPanelShown, showLeftPanel, hideLeftPanel, isRightPanelShown, showRightPanel, hideRightPanel } = useDashboard();
   const room = useSelector((state) => state.roomManager.room);
   const player = useSelector((state) => state.playerManager.player);
-  const gameState = useSelector((state) => state.gameStateManager.gameState);
   const leftPanelRef = useRef();
   const rightPanelRef = useRef();
 
@@ -27,11 +25,6 @@ const Dashboard = () => {
           </Button>
         </div>
         <div className={styles["button-group"]}>
-          {gameState.status === "VOTING" && player.host && (
-            <Button className={styles["button-end-voting"]} onClick={startGame} disabled={notEveryoneVoted}>
-              End voting
-            </Button>
-          )}
           <Button ref={rightPanelRef} onClick={showRightPanel}>
             {player?.name} {<MdManageAccounts fontSize={"2.2vh"} />}
           </Button>
