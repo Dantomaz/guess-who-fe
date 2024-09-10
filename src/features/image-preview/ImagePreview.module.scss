@@ -1,0 +1,13 @@
+@import "../../global/styles/variables.scss";
+
+.image-container {
+  max-width: 50vw;
+  max-height: 80vh;
+  overflow: hidden;
+}
+
+.image {
+  max-width: 50vw;
+  max-height: 80vh;
+  border-radius: 2rem;
+}

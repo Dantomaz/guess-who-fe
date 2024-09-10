@@ -96,3 +96,8 @@ export const getGridTemplateColumnsEstimate = (size) => {
 const getColumnEstimate = (size) => {
   return Math.ceil(Math.sqrt(size));
 };
+
+export const preventDefaultAction = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+};
