@@ -2,7 +2,7 @@ import styles from "./ImagePreview.module.scss";
 import useImagePreview from "./useImagePreview";
 
 const ImagePreview = ({ image, key }) => {
-  const { zoom, handleZoom } = useImagePreview();
+  const { zoom, handleZoom, handleMouseDown, handleMouseUp, handleMouseMove, position, isDragging } = useImagePreview();
 
   return (
     <div className={styles["image-container"]}>
@@ -13,7 +13,11 @@ const ImagePreview = ({ image, key }) => {
         draggable={false}
         className={styles["image"]}
         onWheel={handleZoom}
-        style={{ transform: `scale(${zoom})` }}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        style={{ transform: `scale(${zoom}) translate(${position.x}px, ${position.y}px)`, cursor: isDragging ? "grabbing" : "grab" }}
       />
     </div>
   );
