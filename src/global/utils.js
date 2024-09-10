@@ -80,8 +80,8 @@ export const listVotersByCardNumbers = (players, votes) => {
 
 export const areBothTeamsPresent = (players) => {
   const playersList = Object.values(players);
-  const bluePresent = playersList.find((player) => player.team === "BLUE");
-  const redPresent = playersList.find((player) => player.team === "RED");
+  const bluePresent = playersList.some((player) => player.team === "BLUE");
+  const redPresent = playersList.some((player) => player.team === "RED");
   return bluePresent && redPresent;
 };
 

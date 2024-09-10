@@ -6,6 +6,7 @@ import {
   APP_GAME_PREPARE,
   APP_GAME_RESTART,
   APP_GAME_START,
+  APP_GUESS_CARD,
   APP_PLAYER_CHANGE_NAME,
   APP_PLAYER_CHANGE_TEAM,
   APP_TOGGLE_CARD,
@@ -42,5 +43,6 @@ export const publishGamePrepare = ({ roomId }) => publish(insertVariables(APP_GA
 export const publishVoteForCard = ({ roomId, playerId, cardNumber }) => publish(insertVariables(APP_VOTE_FOR_CARD, roomId), { playerId, cardNumber });
 
 export const publishGameStart = ({ roomId }) => publish(insertVariables(APP_GAME_START, roomId));
-export const publishToggleCard = ({ roomId, cardNumber, team }) => publish(insertVariables(APP_TOGGLE_CARD, roomId), { cardNumber, team });
 export const publishEndTurn = ({ roomId }) => publish(insertVariables(APP_END_TURN, roomId));
+export const publishToggleCard = ({ roomId, cardNumber, team }) => publish(insertVariables(APP_TOGGLE_CARD, roomId), { cardNumber, team });
+export const publishGuessCard = ({ roomId, cardNumber }) => publish(insertVariables(APP_GUESS_CARD, roomId), cardNumber);

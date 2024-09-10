@@ -1,0 +1,28 @@
+@import "../../../global/styles/variables.scss";
+
+.voters {
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.voter {
+  font-size: $font-size-medium-small;
+  color: $color-light;
+  font-weight: 400;
+  padding: 0.1vh 0.2vw;
+  margin: 0.1vh;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.red {
+  background-image: linear-gradient(100deg, $color-team-red-primary, $color-team-red-secondary);
+}
+
+.blue {
+  background-image: linear-gradient(100deg, $color-team-blue-primary, $color-team-blue-secondary);
+}

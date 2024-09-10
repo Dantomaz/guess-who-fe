@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { listVotersByCardNumbers } from "../../../global/utils";
-import { publishToggleCard, publishVoteForCard } from "../../api/apiRequest";
+import { publishGuessCard, publishToggleCard, publishVoteForCard } from "../../api/apiRequest";
 
-const useCard = ({ number }) => {
+const useCard = ({ number, closed }) => {
   const room = useSelector((state) => state.roomManager.room);
   const player = useSelector((state) => state.playerManager.player);
   const gameState = useSelector((state) => state.gameStateManager.gameState);
@@ -16,6 +16,18 @@ const useCard = ({ number }) => {
 
   const voteForCard = () => {
     publishVoteForCard({ roomId: room.id, playerId: player.id, cardNumber: number });
+  };
+
+  const showPickIcon = gameState.status === "IN_PROGRESS" && gameState.currentTurn === player.team;
+  const isHighlightedBlue = gameState.status === "FINISHED" && number === gameState.cardNrChosenByBlue;
+  const isHighlightedRed = gameState.status === "FINISHED" && number === gameState.cardNrChosenByRed;
+
+  const guessCard = (e) => {
+    e.stopPropagation();
+    if (closed) {
+      return;
+    }
+    publishGuessCard({ roomId: room.id, cardNumber: number });
   };
 
   const { onClick: handleClick, onContextMenu: handleContextMenu } =
@@ -41,7 +53,7 @@ const useCard = ({ number }) => {
       },
     }[gameState.status] || {};
 
-  return { voters, handleClick, handleContextMenu };
+  return { voters, handleClick, handleContextMenu, showPickIcon, guessCard, isHighlightedBlue, isHighlightedRed };
 };
 
 export default useCard;
