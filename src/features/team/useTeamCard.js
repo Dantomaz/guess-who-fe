@@ -18,7 +18,7 @@ const useTeamCard = ({ team }) => {
     return playersDividedByTeam;
   }, [room.players]);
 
-  const displayEndTurnButton = player.team === team && gameState.currentTurn === player.team;
+  const displayEndTurnButton = gameState.status === "IN_PROGRESS" && player.team === team && gameState.currentTurn === player.team;
   const displaySwitchTeamButton = gameState.status === "NEW" && player.team !== team;
 
   const endTurn = () => {

@@ -5,7 +5,7 @@ import styles from "./GameSettings.module.scss";
 import useGameSettings from "./useGameSettings";
 
 const GameSettings = () => {
-  const { isDragAndDropVisible, showDragAndDrop, hideDragAndDrop, uploadImages, ready, prepareGame } = useGameSettings();
+  const { isDragAndDropVisible, showDragAndDrop, hideDragAndDrop, uploadImages, ready, isStartButtonDisabled, prepareGame } = useGameSettings();
 
   return (
     <div className={styles["card"]}>
@@ -14,7 +14,11 @@ const GameSettings = () => {
       ) : (
         <>
           <Button onClick={showDragAndDrop}>Upload images</Button>
-          {ready && <Button onClick={prepareGame}>Start game</Button>}
+          {ready && (
+            <Button onClick={prepareGame} disabled={isStartButtonDisabled}>
+              Start game
+            </Button>
+          )}
         </>
       )}
     </div>

@@ -8,7 +8,7 @@ const useNotifier = () => {
 
   if (gameState.status === "NEW") {
     if (player.host) {
-      text = "SETTINGS";
+      text = "Settings";
     } else {
       text = "Wait for host";
     }
@@ -16,12 +16,16 @@ const useNotifier = () => {
     text = "Choose the card for your team";
   } else if (gameState.status === "IN_PROGRESS") {
     if (gameState.currentTurn === player.team) {
-      text = "Ask a question";
+      text = "Ask a question or take a guess!";
     } else {
       text = "Answer your opponent's question";
     }
   } else if (gameState.status === "FINISHED") {
-    text = "Game finished";
+    if (gameState.winner === player.team) {
+      text = "Your team won!";
+    } else {
+      text = "Your team lost!";
+    }
   } else {
     text = "Happy bug day!"; // this should never be displayed
   }

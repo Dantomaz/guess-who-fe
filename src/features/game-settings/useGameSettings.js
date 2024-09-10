@@ -9,6 +9,8 @@ const useGameSettings = () => {
   const room = useSelector((state) => state.roomManager.room);
   const { value: isDragAndDropVisible, setTrue: showDragAndDrop, setFalse: hideDragAndDrop } = useBoolean();
 
+  const isStartButtonDisabled = !areBothTeamsPresent(room.players);
+
   const uploadImages = (images) => {
     const formData = new FormData();
     images.forEach((image) => formData.append("images", image));
@@ -20,12 +22,10 @@ const useGameSettings = () => {
   };
 
   const prepareGame = () => {
-    if (areBothTeamsPresent(room.players)) {
-      publishGamePrepare({ roomId: room.id });
-    }
+    publishGamePrepare({ roomId: room.id });
   };
 
-  return { isDragAndDropVisible, showDragAndDrop, hideDragAndDrop, uploadImages, ready: !!room.images, prepareGame };
+  return { isDragAndDropVisible, showDragAndDrop, hideDragAndDrop, uploadImages, ready: !!room.images, isStartButtonDisabled, prepareGame };
 };
 
 export default useGameSettings;
