@@ -22,7 +22,7 @@ const useCard = ({ number }) => {
 
   const card = gameState.cards[number - 1];
   const closed = player.team === "RED" ? card.closedByRed : card.closedByBlue;
-  const showPickIcon = gameState.status === "IN_PROGRESS" && gameState.currentTurn === player.team;
+  const showPickIcon = gameState.status === "IN_PROGRESS" && gameState.currentTurn === player.team && !closed;
   const isHighlightedBlue = gameState.status === "FINISHED" && number === gameState.cardNrChosenByBlue;
   const isHighlightedRed = gameState.status === "FINISHED" && number === gameState.cardNrChosenByRed;
 

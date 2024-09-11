@@ -33,7 +33,7 @@ const Card = ({ number, image }) => {
       >
         <div className={styles["card-title-container"]}>
           <div className={styles["card-number"]}>{number}</div>
-          {showPickIcon && <PickIcon active={!closed} onClick={guessCard} />}
+          {showPickIcon && <PickIcon onClick={guessCard} />}
         </div>
         <div className={styles["image-container"]} onContextMenu={showImagePreview}>
           {gameState.status === "VOTING" && <Voters voters={voters} />}
