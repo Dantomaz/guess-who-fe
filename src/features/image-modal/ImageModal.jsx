@@ -15,6 +15,9 @@ const ImageModal = ({ image, imageKey, onBackdropClick }) => {
       onMouseUp={handleMouseUp}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
+      style={{
+        cursor: zoom > 1 ? (isDragging ? "grabbing" : "grab") : "default",
+      }}
     >
       <div className={styles["modal-container"]}>
         <div ref={containerRef} className={styles["image-container"]}>
@@ -27,7 +30,6 @@ const ImageModal = ({ image, imageKey, onBackdropClick }) => {
             className={styles["image"]}
             style={{
               transform: `scale(${zoom}) translate(${position.x}px, ${position.y}px)`,
-              cursor: isDragging ? "grabbing" : "grab",
               borderRadius: `${2 / zoom}rem`,
             }}
           />
