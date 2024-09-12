@@ -1,8 +1,13 @@
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 
 const useNotifier = () => {
   const player = useSelector((state) => state.playerManager.player);
   const gameState = useSelector((state) => state.gameStateManager.gameState);
+  const textRef = useRef();
+  const [oldText, setOldText] = useState("");
 
   let text = "";
 
@@ -30,7 +35,31 @@ const useNotifier = () => {
     text = "Happy bug day!"; // this should never be displayed
   }
 
-  return { text };
+  useEffect(() => {
+    setOldText(text);
+  }, [text]);
+
+  useGSAP(
+    () => {
+      if (text) {
+        gsap
+          .timeline()
+          .to(textRef.current, {
+            text: "",
+            ease: "none",
+            duration: `${oldText.length / 100}`,
+          })
+          .to(textRef.current, {
+            text: text,
+            ease: "none",
+            duration: `${text.length / 50}`,
+          });
+      }
+    },
+    { dependencies: [text] }
+  );
+
+  return { textRef };
 };
 
 export default useNotifier;

@@ -16,4 +16,8 @@
   font-size: $font-size-large;
   font-weight: 700;
   border-radius: 1rem;
+
+  &::after {
+    content: "\200B"; /* zero width space */
+  }
 }
