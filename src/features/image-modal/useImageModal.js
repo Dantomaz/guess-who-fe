@@ -54,7 +54,7 @@ const useImageModal = ({ onBackdropClick }) => {
     }
   };
 
-  const handleMouseUp = (e) => {
+  const handleMouseUp = () => {
     timeoutRef.current = setTimeout(() => {
       release();
     }, 1);

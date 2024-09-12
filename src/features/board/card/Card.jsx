@@ -33,7 +33,7 @@ const Card = ({ number, image }) => {
     const deltaX = window.innerWidth / 2 - flipState.current.elementStates[0].bounds.left - flipState.current.elementStates[0].bounds.width / 2;
     const deltaY = -flipState.current.elementStates[0].bounds.bottom - 100;
 
-    // offset the card before rendering to prepare for the animation
+    // offset the card to prepare for the animation
     gsap.set(cardRef.current, { transform: `translate(${deltaX}px, ${deltaY}px)` });
   }, []);
 
@@ -69,7 +69,7 @@ const Card = ({ number, image }) => {
           <img src={`data:image/jpeg;base64,${image}`} key={number} alt={number} draggable={false} className={styles["image"]} />
         </div>
       </div>
-      {isImagePreviewShown && <ImageModal image={image} imageKey={number} onBackdropClick={hideImagePreview} />}
+      <ImageModal image={image} imageKey={number} onBackdropClick={hideImagePreview} show={isImagePreviewShown} baseFlipState={flipState} />
     </>
   );
 };
