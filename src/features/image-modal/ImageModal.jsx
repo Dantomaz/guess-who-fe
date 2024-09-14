@@ -8,9 +8,20 @@ import styles from "./ImageModal.module.scss";
 import useImageModal from "./useImageModal";
 
 const ImageModal = ({ image, imageKey, onBackdropClick, show, baseFlipState }) => {
-  const { onClick, onRightClick, zoom, handleZoom, handleMouseDown, handleMouseUp, handleMouseMove, position, isDragging, containerRef, imageRef } =
-    useImageModal({ onBackdropClick });
-  const backdropRef = useRef();
+  const {
+    onClick,
+    onRightClick,
+    zoom,
+    handleZoom,
+    handleMouseDown,
+    handleMouseUp,
+    handleMouseMove,
+    position,
+    isDragging,
+    backdropRef,
+    containerRef,
+    imageRef,
+  } = useImageModal({ onBackdropClick });
   const flipState = useRef();
   const [delta, setDelta] = useState();
 
@@ -31,7 +42,7 @@ const ImageModal = ({ image, imageKey, onBackdropClick, show, baseFlipState }) =
         flipState.current.elementStates[0].bounds.height / 2;
 
       // offset the container to prepare for the animation
-      gsap.set(containerRef.current, { transform: `translate(${deltaX}px, ${deltaY}px)`, scale: 0, opacity: 0 });
+      gsap.set(containerRef.current, { transform: `translate(${deltaX}px, ${deltaY}px)`, scale: 0 });
 
       setDelta({ x: deltaX, y: deltaY });
     }
@@ -40,17 +51,11 @@ const ImageModal = ({ image, imageKey, onBackdropClick, show, baseFlipState }) =
   useGSAP(
     () => {
       if (show) {
-        // animate container enter
-        gsap.to(containerRef.current, {
-          opacity: 1,
-          duration: 0.5,
-          ease: "power4.out",
-        });
         // animate the container enter movement
         Flip.to(flipState.current, {
           duration: 0.5,
           scale: 1,
-          ease: "power4.out",
+          ease: "power2.out",
         });
 
         // animate backdrop enter
@@ -59,7 +64,7 @@ const ImageModal = ({ image, imageKey, onBackdropClick, show, baseFlipState }) =
           {
             opacity: 0,
           },
-          { opacity: 1, duration: 0.5, ease: "power4.out" }
+          { opacity: 1, duration: 0.5, ease: "power2.out" }
         );
       }
     },
@@ -71,7 +76,6 @@ const ImageModal = ({ image, imageKey, onBackdropClick, show, baseFlipState }) =
       // animate container exit
       gsap.to(containerRef.current, {
         scale: 0,
-        opacity: 0,
         x: delta.x,
         y: delta.y,
         duration: 0.5,
@@ -92,12 +96,10 @@ const ImageModal = ({ image, imageKey, onBackdropClick, show, baseFlipState }) =
         onClick={onClick}
         onContextMenu={onRightClick}
         onWheel={handleZoom}
-        onMouseUp={handleMouseUp}
         onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
-        style={{
-          cursor: zoom > 1 ? (isDragging ? "grabbing" : "grab") : "default",
-        }}
+        style={{ cursor: zoom > 1 ? (isDragging ? "grabbing" : "grab") : "default" }}
       >
         <div className={styles["modal-container"]}>
           <div ref={containerRef} className={styles["image-container"]}>
@@ -108,10 +110,7 @@ const ImageModal = ({ image, imageKey, onBackdropClick, show, baseFlipState }) =
               alt={imageKey}
               draggable={false}
               className={styles["image"]}
-              style={{
-                transform: `scale(${zoom}) translate(${position.x}px, ${position.y}px)`,
-                borderRadius: `${2 / zoom}rem`,
-              }}
+              style={{ borderRadius: `${2 / zoom}rem` }}
             />
           </div>
         </div>
