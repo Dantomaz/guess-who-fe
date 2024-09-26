@@ -10,6 +10,7 @@ const useCard = ({ number }) => {
   const gameState = useSelector((state) => state.gameStateManager.gameState);
   const [voters, setVoters] = useState();
   const { value: isImagePreviewShown, setTrue: showImagePreview, setFalse: hideImagePreview } = useBoolean();
+  const { value: isPeeking, setTrue: startPeeking, setFalse: stopPeeking } = useBoolean();
 
   useEffect(() => {
     const voters = player.team === "RED" ? gameState.votesRed : gameState.votesBlue;
@@ -25,6 +26,12 @@ const useCard = ({ number }) => {
   const showPickIcon = gameState.status === "IN_PROGRESS" && gameState.currentTurn === player.team && !closed;
   const isHighlightedBlue = gameState.status === "FINISHED" && number === gameState.cardNrChosenByBlue;
   const isHighlightedRed = gameState.status === "FINISHED" && number === gameState.cardNrChosenByRed;
+
+  const peek = (event) => {
+    if (event.button === 2) {
+      startPeeking();
+    }
+  };
 
   const guessCard = (e) => {
     preventDefaultAction(e);
@@ -59,6 +66,9 @@ const useCard = ({ number }) => {
     isImagePreviewShown,
     showImagePreview,
     hideImagePreview,
+    isPeeking,
+    peek,
+    stopPeeking,
   };
 };
 

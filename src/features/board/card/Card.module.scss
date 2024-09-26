@@ -4,16 +4,37 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   font-size: $font-size-medium;
   font-weight: 700;
   padding: 0;
   margin: 0;
   border-radius: 0.5rem;
   background-image: linear-gradient(100deg, $color-primary-1, $color-secondary-3);
+  overflow: hidden;
 }
 
-.card-closed {
-  filter: brightness(10%);
+.card-shutter {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(100deg, $color-primary-1, $color-secondary-3);
+  border-radius: 0.5rem;
+  opacity: 1;
+  z-index: 100;
+  transition: all 0.3s ease-out;
+}
+
+.card-shutter-opened {
+  max-height: 0;
+}
+
+.card-shutter-closed {
+  max-height: 100%;
+}
+
+.card-shutter-peek {
+  opacity: 0;
 }
 
 .card-title-container {

@@ -22,6 +22,9 @@ const Card = ({ number, image }) => {
     isImagePreviewShown,
     showImagePreview,
     hideImagePreview,
+    isPeeking,
+    peek,
+    stopPeeking,
   } = useCard({ number });
   const gameState = useSelector((state) => state.gameStateManager.gameState);
   const cardRef = useRef();
@@ -54,12 +57,18 @@ const Card = ({ number, image }) => {
     <>
       <div
         ref={cardRef}
-        className={`${styles["card"]} ${closed && styles["card-closed"]} ${
-          styles[isHighlightedBlue ? "highlighted-blue" : isHighlightedRed ? "highlighted-red" : ""]
-        }`}
+        className={`${styles["card"]} ${styles[isHighlightedBlue ? "highlighted-blue" : isHighlightedRed ? "highlighted-red" : ""]}`}
         onClick={handleClick}
         onContextMenu={preventDefaultAction}
       >
+        <div
+          className={`${styles["card-shutter"]} ${closed ? styles["card-shutter-closed"] : styles["card-shutter-opened"]} ${
+            isPeeking && styles["card-shutter-peek"]
+          }`}
+          onMouseDown={peek}
+          onMouseUp={stopPeeking}
+          onMouseLeave={stopPeeking}
+        ></div>
         <div className={styles["card-title-container"]}>
           <div className={styles["card-number"]}>{number}</div>
           {showPickIcon && <PickIcon onClick={guessCard} />}
