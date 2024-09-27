@@ -26,6 +26,8 @@ const useCard = ({ number }) => {
   const showPickIcon = gameState.status === "IN_PROGRESS" && gameState.currentTurn === player.team && !closed;
   const isHighlightedBlue = gameState.status === "FINISHED" && number === gameState.cardNrChosenByBlue;
   const isHighlightedRed = gameState.status === "FINISHED" && number === gameState.cardNrChosenByRed;
+  const isHighlightedBoth = isHighlightedBlue && isHighlightedRed;
+  const highlightStyle = isHighlightedBoth ? "highlighted-both" : isHighlightedBlue ? "highlighted-blue" : isHighlightedRed ? "highlighted-red" : "";
 
   const peek = (event) => {
     if (event.button === 2) {
@@ -61,8 +63,7 @@ const useCard = ({ number }) => {
     handleClick,
     showPickIcon,
     guessCard,
-    isHighlightedBlue,
-    isHighlightedRed,
+    highlightStyle,
     isImagePreviewShown,
     showImagePreview,
     hideImagePreview,

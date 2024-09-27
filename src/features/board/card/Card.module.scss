@@ -66,10 +66,21 @@
 
 .highlighted-blue {
   color: $font-color-light;
-  background-image: linear-gradient(100deg, $color-team-blue-primary, $color-team-blue-secondary);
+  background-image: linear-gradient(to right, $color-team-blue-primary, $color-team-blue-secondary);
 }
 
 .highlighted-red {
   color: $font-color-light;
-  background-image: linear-gradient(100deg, $color-team-red-primary, $color-team-red-secondary);
+  background-image: linear-gradient(to right, $color-team-red-primary, $color-team-red-secondary);
+}
+
+.highlighted-both {
+  color: $font-color-light;
+  background-image: linear-gradient(
+    to right,
+    $color-team-blue-primary,
+    $color-team-blue-secondary 49%,
+    $color-team-red-primary 51%,
+    $color-team-red-secondary
+  );
 }

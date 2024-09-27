@@ -17,8 +17,7 @@ const Card = ({ number, image }) => {
     handleClick,
     showPickIcon,
     guessCard,
-    isHighlightedBlue,
-    isHighlightedRed,
+    highlightStyle,
     isImagePreviewShown,
     showImagePreview,
     hideImagePreview,
@@ -55,12 +54,7 @@ const Card = ({ number, image }) => {
 
   return (
     <>
-      <div
-        ref={cardRef}
-        className={`${styles["card"]} ${styles[isHighlightedBlue ? "highlighted-blue" : isHighlightedRed ? "highlighted-red" : ""]}`}
-        onClick={handleClick}
-        onContextMenu={preventDefaultAction}
-      >
+      <div ref={cardRef} className={`${styles["card"]} ${styles[highlightStyle]}`} onClick={handleClick} onContextMenu={preventDefaultAction}>
         <div
           className={`${styles["card-shutter"]} ${closed ? styles["card-shutter-closed"] : styles["card-shutter-opened"]} ${
             isPeeking && styles["card-shutter-peek"]
