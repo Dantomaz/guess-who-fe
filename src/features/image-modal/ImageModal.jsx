@@ -16,7 +16,6 @@ const ImageModal = ({ image, imageKey, onBackdropClick, show, baseFlipState }) =
     handleMouseDown,
     handleMouseUp,
     handleMouseMove,
-    position,
     isDragging,
     backdropRef,
     containerRef,

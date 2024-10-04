@@ -3,12 +3,15 @@ import { parsePossibleJSONFromString } from "../../../global/utils";
 import { subscribeQueueError } from "../apiRequest";
 import { BASE_URL } from "./apiWsEndpoints";
 
-let subscriptions = [];
+const subscriptions = [];
+const subscriptionsToRetry = [];
 
 const onConnect = () => {
   console.log("connected: ", client.connected);
   if (client.connected) {
     subscribeQueueError({ callback: (error) => handleWebSocketError(error) });
+    subscriptionsToRetry.forEach(({ destination, callback }) => subscribe(destination, callback));
+    subscriptionsToRetry.length = 0; // no more subscriptions to retry
   }
 };
 
@@ -52,6 +55,7 @@ export const disconnect = () => {
 export const subscribe = (destination, callback) => {
   if (!client.connected) {
     console.error(`Cannot subscribe to ${destination} - no connection established. Connecting...`);
+    subscriptionsToRetry.push({ destination, callback });
     return;
   }
 
@@ -73,4 +77,5 @@ export const publish = (destination, body) => {
 
 export const unsubscribeAll = () => {
   subscriptions.forEach((subscription) => subscription.unsubscribe());
+  subscriptions.length = 0; // clear the subscriptions array
 };

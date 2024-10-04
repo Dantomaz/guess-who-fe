@@ -91,7 +91,6 @@ const useImageModal = ({ onBackdropClick }) => {
 
   const handleZoom = (e) => {
     const ZOOM_FACTOR = zoom.current * 0.2;
-    console.log(ZOOM_FACTOR);
     if (e.deltaY < 0) {
       setZoom((prev) => ({ current: Math.min(prev.current + ZOOM_FACTOR, 4), previous: prev.current })); // zoom in
     } else {
@@ -156,7 +155,6 @@ const useImageModal = ({ onBackdropClick }) => {
     handleMouseDown,
     handleMouseUp,
     handleMouseMove,
-    position,
     isDragging,
     backdropRef,
     containerRef,

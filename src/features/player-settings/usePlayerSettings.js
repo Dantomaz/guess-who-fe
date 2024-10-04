@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { publishPlayerChangeName, requestPlayerLeaveRoom } from "../api/apiRequest";
+import { publishPlayerChangeName, requestRoomLeave } from "../api/apiRequest";
 import { unsubscribeAll } from "../api/web-socket/stompClient";
 import { resetPlayer } from "../player/playerSlice";
 import { resetRoom } from "../room/roomSlice";
@@ -17,7 +17,7 @@ function usePlayerSettings({ hidePanel }) {
   };
 
   const onLeave = () => {
-    requestPlayerLeaveRoom({ roomId: room.id, playerId: player.id })
+    requestRoomLeave({ roomId: room.id, playerId: player.id })
       .then(() => leaveRoom())
       .catch((error) => console.error(error));
   };
