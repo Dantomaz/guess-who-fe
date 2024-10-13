@@ -63,10 +63,11 @@ export const listVotersByCardNumbers = (players, votes) => {
   const resultMap = new Map();
 
   new Map(Object.entries(votes)).forEach((cardNr, playerId) => {
-    // If the card number is not already in the map, initialize it with an empty array
+    // If the card number is not already in the map, initialize it with an empty voters array
     if (!resultMap.has(cardNr)) {
       resultMap.set(cardNr, []);
     }
+    // Add player to voters array
     resultMap.get(cardNr).push(players[playerId]);
   });
 
