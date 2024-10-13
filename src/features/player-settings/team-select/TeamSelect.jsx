@@ -10,13 +10,13 @@ const TeamSelect = () => {
   const gameStatus = useSelector((state) => state.gameStateManager.gameState.status);
 
   const team = player?.team;
-  const title = team === "SPECTATORS" ? "Join a team to play!" : "Change your team";
+  const title = team === "NONE" ? "Join a team to play!" : "Change your team";
 
-  const nameUpper = team === "RED" ? "SPECTATORS" : "RED";
-  const nameLower = team === "BLUE" ? "SPECTATORS" : "BLUE";
+  const nameUpper = team === "RED" ? "NONE" : "RED";
+  const nameLower = team === "BLUE" ? "NONE" : "BLUE";
 
-  const textUpper = team === "RED" ? "Spectators" : "Team Red";
-  const textLower = team === "BLUE" ? "Spectators" : "Team Blue";
+  const textUpper = team === "RED" ? "No Team" : "Team Red";
+  const textLower = team === "BLUE" ? "No Team" : "Team Blue";
 
   return (
     <div className={styles["container"]}>

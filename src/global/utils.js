@@ -79,13 +79,6 @@ export const listVotersByCardNumbers = (players, votes) => {
   return resultMap;
 };
 
-export const areBothTeamsPresent = (players) => {
-  const playersList = Object.values(players);
-  const bluePresent = playersList.some((player) => player.team === "BLUE");
-  const redPresent = playersList.some((player) => player.team === "RED");
-  return bluePresent && redPresent;
-};
-
 export const countVoters = (players, votesBlue, votesRed) => {
   return Object.values(players).filter(
     (player) => (votesBlue && votesBlue[player.id] !== undefined) || (votesRed && votesRed[player.id] !== undefined)
