@@ -7,7 +7,7 @@ const subscriptions = [];
 const subscriptionsToRetry = [];
 
 const onConnect = () => {
-  console.log("connected: ", client.connected);
+  console.log("Web Socket connection established (connected: ", client.connected, ")");
   if (client.connected) {
     subscribeQueueError({ callback: (error) => handleWebSocketError(error) });
     subscriptionsToRetry.forEach(({ destination, callback }) => subscribe(destination, callback));
@@ -29,7 +29,7 @@ const onStompError = (frame) => {
 };
 
 const onWebSocketClose = (frame) => {
-  console.log("connected: ", client.connected);
+  console.log("Web Socket connection lost (connected: ", client.connected, ")");
 };
 
 const client = new Client({
@@ -63,12 +63,13 @@ export const subscribe = (destination, callback) => {
     callback(parsePossibleJSONFromString(frame.body));
   });
 
+  console.log(`Subscribed to ${destination}`);
   subscriptions.push(newSubscription);
 };
 
 export const publish = (destination, body) => {
   if (!client.connected) {
-    console.error(`Cannot publish to ${destination} - no connection established. Connecting...`);
+    console.error(`Cannot publish to ${destination} - no connection established.`);
     return;
   }
 
