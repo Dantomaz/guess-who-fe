@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+import { createContext, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { requestRoomReconnect } from "../api/apiRequest";
 import useStateUpdateHandler from "../state/useStateUpdateHandler";
 
-const useReconnect = () => {
+const ReconnectContext = createContext();
+
+const ReconnectProvider = ({ children }) => {
   const navigate = useNavigate();
   const { reenterRoom } = useStateUpdateHandler();
 
@@ -18,6 +20,12 @@ const useReconnect = () => {
       .then(() => navigate("/room"))
       .catch(() => navigate("/"));
   };
+
+  return <ReconnectContext.Provider value={null}>{children}</ReconnectContext.Provider>;
 };
 
-export default useReconnect;
+export default ReconnectProvider;
+
+export const useReconnect = () => {
+  return useContext(ReconnectContext);
+};
