@@ -7,7 +7,7 @@ import { Transition } from "react-transition-group";
 import styles from "./ImageModal.module.scss";
 import useImageModal from "./useImageModal";
 
-const ImageModal = ({ image, imageKey, onBackdropClick, show, baseFlipState }) => {
+const ImageModal = ({ imageUrl, imageKey, onBackdropClick, show, baseFlipState }) => {
   const {
     onClick,
     onRightClick,
@@ -104,7 +104,7 @@ const ImageModal = ({ image, imageKey, onBackdropClick, show, baseFlipState }) =
           <div ref={containerRef} className={styles["image-container"]}>
             <img
               ref={imageRef}
-              src={`data:image/jpeg;base64,${image}`}
+              src={imageUrl}
               key={imageKey}
               alt={imageKey}
               draggable={false}

@@ -4,6 +4,7 @@ import { publishPlayerChangeName, requestRoomLeave } from "../api/apiRequest";
 import { unsubscribeAll } from "../api/web-socket/stompClient";
 import { resetPlayer } from "../player/playerSlice";
 import { resetRoom } from "../room/roomSlice";
+import { resetGameState } from "../game-state/gameStateSlice";
 
 function usePlayerSettings({ hidePanel }) {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function usePlayerSettings({ hidePanel }) {
 
   const leaveRoom = () => {
     unsubscribeAll();
+    dispatch(resetGameState());
     dispatch(resetRoom());
     dispatch(resetPlayer());
     navigate("/");

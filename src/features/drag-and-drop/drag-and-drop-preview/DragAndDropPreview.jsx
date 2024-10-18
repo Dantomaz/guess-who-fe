@@ -21,10 +21,8 @@ const DragAndDropPreview = ({ images, newFiles }) => {
       ))}
     </div>
   ) : (
-    <div className={`${styles["drop-area"]}`} style={getGridTemplateColumnsEstimate(Object.values(images).length)}>
-      {Object.values(images).map((file, index) => (
-        <img src={`data:image/jpeg;base64,${file}`} key={index} alt={index} draggable={false} className={styles["image"]} />
-      ))}
+    <div className={`${styles["drop-area"]}`} style={getGridTemplateColumnsEstimate(images.length)}>
+      {images && images.map((imageUrl, index) => <img src={imageUrl} key={index} alt={index} draggable={false} className={styles["image"]} />)}
     </div>
   );
 };

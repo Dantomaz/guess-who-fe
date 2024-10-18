@@ -17,7 +17,7 @@ const DragAndDrop = ({ uploadFiles, cancel }) => {
         <DragAndDropPreview images={images} newFiles={files} />
       </FileUploader>
       <div className={styles["counter"]}>
-        {files ? files.length : images ? Object.values(images).length : 0}/{MAX_FILES} images
+        {files?.length || images?.length || 0}/{MAX_FILES} images
       </div>
       <div className={styles["footer"]}>
         {<Button onClick={cancel}>Cancel</Button>}

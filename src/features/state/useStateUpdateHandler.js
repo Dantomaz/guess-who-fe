@@ -9,7 +9,8 @@ const useStateUpdateHandler = () => {
   const playerId = useSelector((state) => state.playerManager.player?.id);
 
   const enterRoom = (room) => {
-    updateRoomState(room, room.players[playerId]);
+    const player = room.players[playerId];
+    updateRoomState(room, player);
   };
 
   const reenterRoom = (room, player) => {
@@ -18,19 +19,23 @@ const useStateUpdateHandler = () => {
 
   const updateRoomState = (room, player) => {
     dispatch(setPlayer(player));
-    updateGameStateInfo(room.gameState);
-    const { gameState, ...roomOnly } = room;
-    updateRoomInfo(roomOnly);
+    const { images, gameState, ...roomInfo } = room;
+    updateRoomInfo(roomInfo);
+    updateGameState(gameState);
+    updateImages(images);
     subscribeToRoomActivity(room.id, player.id);
   };
 
-  const updateGameStateInfo = (gameState) => {
+  const updateRoomInfo = (room) => {
+    dispatch(setRoom(room));
+  };
+
+  const updateGameState = (gameState) => {
     dispatch(setGameState(gameState));
   };
 
-  const updateRoomInfo = (room) => {
-    delete room.gameState;
-    dispatch(setRoom(room));
+  const updateImages = (images) => {
+    dispatch(setImages(images));
   };
 
   const subscribeToRoomActivity = (roomId, playerId) => {
@@ -39,18 +44,10 @@ const useStateUpdateHandler = () => {
     subscribeTopicGameState({ roomId, callback: updateGameState });
   };
 
-  const updateImages = (images) => {
-    dispatch(setImages(images));
-  };
-
   const updatePlayerInfo = (players, playerId) => {
     dispatch(setPlayers(players));
     const playerInfo = players[playerId];
     dispatch(playerInfo ? setPlayer(playerInfo) : resetPlayer());
-  };
-
-  const updateGameState = (gameState) => {
-    dispatch(setGameState(gameState));
   };
 
   return { enterRoom, reenterRoom };

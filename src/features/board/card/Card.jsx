@@ -10,7 +10,7 @@ import PickIcon from "./PickIcon";
 import useCard from "./useCard";
 import Voters from "./Voters";
 
-const Card = ({ number, image }) => {
+const Card = ({ number, imageUrl }) => {
   const {
     closed,
     voters,
@@ -69,10 +69,10 @@ const Card = ({ number, image }) => {
         </div>
         <div className={styles["image-container"]} onContextMenu={showImagePreview}>
           {gameState.status === "VOTING" && <Voters voters={voters} />}
-          <img src={`data:image/jpeg;base64,${image}`} key={number} alt={number} draggable={false} className={styles["image"]} />
+          <img src={imageUrl} key={number} alt={number} draggable={false} className={styles["image"]} />
         </div>
       </div>
-      <ImageModal image={image} imageKey={number} onBackdropClick={hideImagePreview} show={isImagePreviewShown} baseFlipState={flipState} />
+      <ImageModal imageUrl={imageUrl} imageKey={number} onBackdropClick={hideImagePreview} show={isImagePreviewShown} baseFlipState={flipState} />
     </>
   );
 };

@@ -4,7 +4,7 @@ const initialState = {
   room: {
     id: null,
     players: {},
-    images: {},
+    images: null,
   },
 };
 
@@ -22,7 +22,11 @@ export const roomSlice = createSlice({
       state.room.players = action.payload;
     },
     setImages: (state, action) => {
-      state.room.images = action.payload;
+      if (action.payload) {
+        // Convert Map to Array - array looks exactly like the map and order of the items is preserved, allowing the use of array .map() function
+        // This is because Map keys are indices starting from 0, exactly like in the array
+        state.room.images = Object.values(action.payload);
+      }
     },
   },
 });
