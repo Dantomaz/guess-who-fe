@@ -1,17 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   publishPlayerChangeTeam,
   subscribeTopicGameState,
   subscribeTopicImages,
   subscribeTopicPlayers,
+  subscribeTopicSessionInvalidate,
   unsubscribeTopicGameState,
 } from "../api/apiRequest";
-import { setGameState } from "../game-state/gameStateSlice";
+import { unsubscribeAll } from "../api/web-socket/stompClient";
+import { resetGameState, setGameState } from "../game-state/gameStateSlice";
 import { resetPlayer, setPlayer } from "../player/playerSlice";
-import { setImages, setPlayers, setRoom } from "../room/roomSlice";
+import { resetRoom, setImages, setPlayers, setRoom } from "../room/roomSlice";
+import { setUserTimedOut } from "../timeout/timeoutSlice";
 
 const useStateUpdateHandler = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const room = useSelector((state) => state.roomManager.room);
   const player = useSelector((state) => state.playerManager.player);
 
@@ -50,12 +55,26 @@ const useStateUpdateHandler = () => {
   const subscribeToRoomActivity = (roomId, playerId) => {
     subscribeTopicImages({ roomId, callback: updateImages });
     subscribeTopicPlayers({ roomId, callback: (players) => updatePlayerInfo(players, playerId) });
+    subscribeTopicSessionInvalidate({ roomId, playerId, callback: timeout });
   };
 
   const updatePlayerInfo = (players, playerId) => {
     dispatch(setPlayers(players));
     const playerInfo = players[playerId];
     dispatch(playerInfo ? setPlayer(playerInfo) : resetPlayer());
+  };
+
+  const timeout = () => {
+    dispatch(setUserTimedOut(true));
+    leaveRoom();
+  };
+
+  const leaveRoom = () => {
+    unsubscribeAll();
+    dispatch(resetGameState());
+    dispatch(resetRoom());
+    dispatch(resetPlayer());
+    navigate("/");
   };
 
   const switchTeam = (newTeam) => {
@@ -69,7 +88,7 @@ const useStateUpdateHandler = () => {
     publishPlayerChangeTeam({ roomId: room.id, playerId: player.id, newTeam });
   };
 
-  return { enterRoom, reenterRoom, switchTeam };
+  return { enterRoom, reenterRoom, leaveRoom, switchTeam };
 };
 
 export default useStateUpdateHandler;

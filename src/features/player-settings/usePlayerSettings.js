@@ -1,16 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { publishPlayerChangeName, requestRoomLeave } from "../api/apiRequest";
-import { unsubscribeAll } from "../api/web-socket/stompClient";
-import { resetGameState } from "../game-state/gameStateSlice";
-import { resetPlayer } from "../player/playerSlice";
-import { resetRoom } from "../room/roomSlice";
+import useStateUpdateHandler from "../state/useStateUpdateHandler";
 
 function usePlayerSettings({ hidePanel }) {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const room = useSelector((state) => state.roomManager.room);
   const player = useSelector((state) => state.playerManager.player);
+  const { leaveRoom } = useStateUpdateHandler();
 
   const changeNickname = (data) => {
     publishPlayerChangeName({ roomId: room.id, playerId: player.id, newName: data.nickname.trim() });
@@ -19,14 +14,6 @@ function usePlayerSettings({ hidePanel }) {
 
   const onLeave = () => {
     requestRoomLeave({ roomId: room.id, playerId: player.id }).then(leaveRoom).catch(console.error);
-  };
-
-  const leaveRoom = () => {
-    unsubscribeAll();
-    dispatch(resetGameState());
-    dispatch(resetRoom());
-    dispatch(resetPlayer());
-    navigate("/");
   };
 
   return { changeNickname, onLeave };

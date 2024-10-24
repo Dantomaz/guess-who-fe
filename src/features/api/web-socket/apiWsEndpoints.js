@@ -8,6 +8,8 @@ export const TOPIC_IMAGES = "/topic/room/{roomId}/images";
 
 export const TOPIC_GAME_STATE = "/topic/room/{roomId}/gameState/team/{team}";
 
+export const TOPIC_SESSION_INVALIDATE = "/topic/room/{roomId}/player/{playerId}/sessionInvalidate";
+
 // ===== publish endpoints =====
 
 export const APP_PLAYER_CHANGE_NAME = "/app/room/{roomId}/player/{playerId}/changeName";

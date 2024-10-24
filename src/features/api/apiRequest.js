@@ -15,6 +15,7 @@ import {
   TOPIC_GAME_STATE,
   TOPIC_IMAGES,
   TOPIC_PLAYERS,
+  TOPIC_SESSION_INVALIDATE,
 } from "./web-socket/apiWsEndpoints";
 import { publish, subscribe, unsubscribe } from "./web-socket/stompClient";
 
@@ -48,3 +49,6 @@ export const publishGameStart = ({ roomId }) => publish(insertVariables(APP_GAME
 export const publishEndTurn = ({ roomId }) => publish(insertVariables(APP_END_TURN, roomId));
 export const publishToggleCard = ({ roomId, cardNumber, team }) => publish(insertVariables(APP_TOGGLE_CARD, roomId), { cardNumber, team });
 export const publishGuessCard = ({ roomId, cardNumber }) => publish(insertVariables(APP_GUESS_CARD, roomId), cardNumber);
+
+export const subscribeTopicSessionInvalidate = ({ roomId, playerId, callback }) =>
+  subscribe(insertVariables(TOPIC_SESSION_INVALIDATE, roomId, playerId), callback);
