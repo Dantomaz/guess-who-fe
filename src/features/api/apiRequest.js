@@ -33,7 +33,7 @@ export const requestRoomJoin = ({ roomId, player }) => axiosPost(insertVariables
 export const requestRoomLeave = ({ roomId, playerId }) => axiosDelete(insertVariables(ROOM_LEAVE, roomId, playerId));
 export const requestRoomReconnect = () => axiosPost(ROOM_RECONNECT);
 
-export const requestImageUpload = ({ roomId, formData }) => axiosPost(insertVariables(IMAGES_UPLOAD, roomId), formData, imageHeaders);
+export const requestImagesUpload = ({ roomId, formData }) => axiosPost(insertVariables(IMAGES_UPLOAD, roomId), formData, imageHeaders);
 export const subscribeTopicImages = ({ roomId, callback }) => subscribe(insertVariables(TOPIC_IMAGES, roomId), callback);
 
 export const subscribeTopicGameState = ({ roomId, callback }) => subscribe(insertVariables(TOPIC_GAME_STATE, roomId), callback);

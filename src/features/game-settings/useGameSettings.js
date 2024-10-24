@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useBoolean } from "usehooks-ts";
-import { publishGamePrepare, requestImageUpload } from "../api/apiRequest";
+import { publishGamePrepare, requestImagesUpload } from "../api/apiRequest";
 import { setImages } from "../room/roomSlice";
 
 const useGameSettings = () => {
@@ -34,7 +34,7 @@ const useGameSettings = () => {
     const formData = new FormData();
     images.forEach((image) => formData.append("images", image));
 
-    requestImageUpload({ roomId: room.id, formData })
+    requestImagesUpload({ roomId: room.id, formData })
       .then((response) => dispatch(setImages(response.data)))
       .then(() => hideDragAndDrop())
       .catch((error) => console.error(error));

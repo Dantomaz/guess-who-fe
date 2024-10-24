@@ -1,5 +1,12 @@
 @import "../../global/styles/variables.scss";
 
+.hint {
+  p {
+    text-align: justify;
+    font-size: $font-size-medium;
+  }
+}
+
 .drop-area-container {
   width: 100%;
   height: auto;

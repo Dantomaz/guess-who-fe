@@ -6,21 +6,28 @@ import styles from "./DragAndDrop.module.scss";
 import DragAndDropPreview from "./drag-and-drop-preview/DragAndDropPreview";
 import useDragAndDrop from "./useDragAndDrop";
 
-const DragAndDrop = ({ uploadFiles, cancel }) => {
+const DragAndDrop = ({ uploadFiles, onCancel }) => {
   const images = useSelector((state) => state.roomManager.room?.images);
-  const { fileTypes, onFilesChange, files, MAX_FILES } = useDragAndDrop();
+  const { fileTypes, onFilesChange, abortCompression, files, MAX_FILES, isLoading } = useDragAndDrop();
+  const imageCounter = files?.length || images?.length || 0;
+
+  const handleCancel = () => {
+    abortCompression();
+    onCancel();
+  };
 
   return (
     <>
-      <p>Upload images for this game!</p>
-      <FileUploader classes={styles["drop-area-container"]} multiple types={fileTypes} handleChange={onFilesChange}>
-        <DragAndDropPreview images={images} newFiles={files} />
-      </FileUploader>
-      <div className={styles["counter"]}>
-        {files?.length || images?.length || 0}/{MAX_FILES} images
+      <div className={styles["hint"]}>
+        <p>High quality images will take longer time to upload. Consider compressing them first!</p>
+        <p>If any of the images is larger than 1MB, it will be compressed automatically. This takes time and CPU power. Please be patient.</p>
       </div>
+      <FileUploader classes={styles["drop-area-container"]} multiple types={fileTypes} handleChange={onFilesChange}>
+        <DragAndDropPreview images={images} newFiles={files} isLoading={isLoading} />
+      </FileUploader>
+      <div className={styles["counter"]}>{`${imageCounter}/${MAX_FILES} images`}</div>
       <div className={styles["footer"]}>
-        {<Button onClick={cancel}>Cancel</Button>}
+        {<Button onClick={handleCancel}>Cancel</Button>}
         {
           <Button onClick={() => uploadFiles(files)} disabled={!files}>
             Upload

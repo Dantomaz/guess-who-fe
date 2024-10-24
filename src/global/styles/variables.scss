@@ -38,3 +38,6 @@ $font-color-gray: #666666;
 $font-color-light-gray: #e5e7eb;
 
 $background-image: linear-gradient(100deg, rgba($color-primary-1, 0.5), rgba($color-secondary-1, 0.5)), url("../../assets/page-background.jpg");
+
+$spinner-size-medium: calculate-font-size(15);
+$spinner-size-large: calculate-font-size(25);
