@@ -20,13 +20,17 @@ $color-team-red-secondary: #a02e1c;
 $color-team-blue-primary: #3989a7;
 $color-team-blue-secondary: #2881a1;
 
-$font-size-very-small: calc((1.3vh + 1.3vw / 2) / 2);
-$font-size-small: calc((1.4vh + 1.4vw / 2) / 2);
-$font-size-medium-small: calc((1.5vh + 1.5vw / 2) / 2);
-$font-size-medium: calc((1.8vh + 1.8vw / 2) / 2);
-$font-size-medium-large: calc((2vh + 2vw / 2) / 2);
-$font-size-large: calc((2.5vh + 2.5vw / 2) / 2);
-$font-size-very-large: calc((4vh + 4vw / 2) / 2);
+@function calculate-font-size($value) {
+  @return calc((#{$value}vh + #{$value}vw / 2) / 2);
+}
+
+$font-size-very-small: calculate-font-size(1.3);
+$font-size-small: calculate-font-size(1.4);
+$font-size-medium-small: calculate-font-size(1.5);
+$font-size-medium: calculate-font-size(1.8);
+$font-size-medium-large: calculate-font-size(2);
+$font-size-large: calculate-font-size(2.5);
+$font-size-very-large: calculate-font-size(4);
 
 $font-color-dark: #000000;
 $font-color-light: #ffffff;
