@@ -25,7 +25,7 @@ export const subscribeQueueError = ({ callback }) => subscribe(QUEUE_ERROR, call
 export const requestPlayerCreate = ({ nickname }) => axiosPost(insertVariables(PLAYER_CREATE, nickname));
 export const subscribeTopicPlayers = ({ roomId, callback }) => subscribe(insertVariables(TOPIC_PLAYERS, roomId), callback);
 export const publishPlayerChangeName = ({ roomId, playerId, newName }) =>
-  publish(insertVariables(APP_PLAYER_CHANGE_NAME, roomId, playerId), { newName });
+  publish(insertVariables(APP_PLAYER_CHANGE_NAME, roomId, playerId), { payload: newName }); // every String has to be named 'payload' when sending over STOMP
 export const publishPlayerChangeTeam = ({ roomId, playerId, newTeam }) => publish(insertVariables(APP_PLAYER_CHANGE_TEAM, roomId, playerId), newTeam);
 
 export const requestRoomCreate = ({ player }) => axiosPost(ROOM_CREATE, player);
