@@ -23,7 +23,7 @@ const useRoomJoiningPage = () => {
     requestRoomCreate({ player })
       .then((response) => enterRoom(response.data))
       .then(() => navigate("/room"))
-      .catch((error) => console.error(error));
+      .catch(console.error);
   };
 
   return { onJoin, onCreate, errorOnJoin };

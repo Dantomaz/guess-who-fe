@@ -2,14 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   gameState: {
-    status: null,
-    cards: null,
-    cardNrChosenByBlue: null,
-    cardNrChosenByRed: null,
-    votesBlue: null,
-    votesRed: null,
+    gameStatus: null,
     currentTurn: null,
     winner: null,
+    totalNumberOfPlayersVotes: 0,
+    cards: null,
+    pickedCardNumber: null,
+    pickedOpponentsCardNumber: null,
+    playersVotes: null,
   },
 };
 

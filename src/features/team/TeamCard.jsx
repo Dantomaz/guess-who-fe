@@ -1,9 +1,11 @@
 import React from "react";
 import Button from "../../global/components/button/Button";
+import useStateUpdateHandler from "../state/useStateUpdateHandler";
 import styles from "./TeamCard.module.scss";
 import useTeamCard from "./useTeamCard";
 
 const TeamCard = ({ children, team, title, ...rest }) => {
+  const { switchTeam } = useStateUpdateHandler();
   const {
     playersInTeam,
     numberOfVoters,
@@ -14,7 +16,6 @@ const TeamCard = ({ children, team, title, ...rest }) => {
     displayEndTurnButton,
     endTurn,
     displaySwitchTeamButton,
-    switchTeam,
   } = useTeamCard({ team });
 
   return (
@@ -33,7 +34,7 @@ const TeamCard = ({ children, team, title, ...rest }) => {
         </Button>
       )}
       {displayEndTurnButton && <Button onClick={endTurn}>End turn</Button>}
-      {displaySwitchTeamButton && <Button onClick={switchTeam}>Join team</Button>}
+      {displaySwitchTeamButton && <Button onClick={() => switchTeam(team)}>Join team</Button>}
     </div>
   );
 };

@@ -1,20 +1,29 @@
 import { useDispatch, useSelector } from "react-redux";
-import { subscribeTopicGameState, subscribeTopicImages, subscribeTopicPlayers } from "../api/apiRequest";
+import {
+  publishPlayerChangeTeam,
+  subscribeTopicGameState,
+  subscribeTopicImages,
+  subscribeTopicPlayers,
+  unsubscribeTopicGameState,
+} from "../api/apiRequest";
 import { setGameState } from "../game-state/gameStateSlice";
 import { resetPlayer, setPlayer } from "../player/playerSlice";
 import { setImages, setPlayers, setRoom } from "../room/roomSlice";
 
 const useStateUpdateHandler = () => {
   const dispatch = useDispatch();
-  const playerId = useSelector((state) => state.playerManager.player?.id);
+  const room = useSelector((state) => state.roomManager.room);
+  const player = useSelector((state) => state.playerManager.player);
 
   const enterRoom = (room) => {
-    const player = room.players[playerId];
-    updateRoomState(room, player);
+    updateRoomState(room, room.players[player.id]);
   };
 
   const reenterRoom = (room, player) => {
     updateRoomState(room, player);
+    if (player.team && player.team !== "NONE") {
+      subscribeTopicGameState({ roomId: room.id, team: player.team, callback: updateGameState });
+    }
   };
 
   const updateRoomState = (room, player) => {
@@ -41,7 +50,6 @@ const useStateUpdateHandler = () => {
   const subscribeToRoomActivity = (roomId, playerId) => {
     subscribeTopicImages({ roomId, callback: updateImages });
     subscribeTopicPlayers({ roomId, callback: (players) => updatePlayerInfo(players, playerId) });
-    subscribeTopicGameState({ roomId, callback: updateGameState });
   };
 
   const updatePlayerInfo = (players, playerId) => {
@@ -50,7 +58,18 @@ const useStateUpdateHandler = () => {
     dispatch(playerInfo ? setPlayer(playerInfo) : resetPlayer());
   };
 
-  return { enterRoom, reenterRoom };
+  const switchTeam = (newTeam) => {
+    const currentTeam = player.team;
+    if (currentTeam && currentTeam !== "NONE") {
+      unsubscribeTopicGameState({ roomId: room.id, team: currentTeam });
+    }
+    if (newTeam !== "NONE") {
+      subscribeTopicGameState({ roomId: room.id, team: newTeam, callback: updateGameState });
+    }
+    publishPlayerChangeTeam({ roomId: room.id, playerId: player.id, newTeam });
+  };
+
+  return { enterRoom, reenterRoom, switchTeam };
 };
 
 export default useStateUpdateHandler;

@@ -16,7 +16,7 @@ import {
   TOPIC_IMAGES,
   TOPIC_PLAYERS,
 } from "./web-socket/apiWsEndpoints";
-import { publish, subscribe } from "./web-socket/stompClient";
+import { publish, subscribe, unsubscribe } from "./web-socket/stompClient";
 
 const imageHeaders = { headers: { "Content-Type": "multipart/form-data", Accept: "application/json" } };
 
@@ -36,7 +36,8 @@ export const requestRoomReconnect = () => axiosPost(ROOM_RECONNECT);
 export const requestImagesUpload = ({ roomId, formData }) => axiosPost(insertVariables(IMAGES_UPLOAD, roomId), formData, imageHeaders);
 export const subscribeTopicImages = ({ roomId, callback }) => subscribe(insertVariables(TOPIC_IMAGES, roomId), callback);
 
-export const subscribeTopicGameState = ({ roomId, callback }) => subscribe(insertVariables(TOPIC_GAME_STATE, roomId), callback);
+export const subscribeTopicGameState = ({ roomId, team, callback }) => subscribe(insertVariables(TOPIC_GAME_STATE, roomId, team), callback);
+export const unsubscribeTopicGameState = ({ roomId, team }) => unsubscribe(insertVariables(TOPIC_GAME_STATE, roomId, team));
 
 export const publishGameRestart = ({ roomId }) => publish(insertVariables(APP_GAME_RESTART, roomId));
 

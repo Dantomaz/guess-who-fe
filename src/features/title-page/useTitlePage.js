@@ -13,7 +13,7 @@ const useTitlePage = () => {
         dispatch(setPlayer(response.data));
         navigate("/room/join");
       })
-      .catch((error) => console.error(error));
+      .catch(console.error);
   };
 
   return { onSubmit };

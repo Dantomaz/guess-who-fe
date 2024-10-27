@@ -79,12 +79,6 @@ export const listVotersByCardNumbers = (players, votes) => {
   return resultMap;
 };
 
-export const countVoters = (players, votesBlue, votesRed) => {
-  return Object.values(players).filter(
-    (player) => (votesBlue && votesBlue[player.id] !== undefined) || (votesRed && votesRed[player.id] !== undefined)
-  ).length;
-};
-
 export const getGridTemplateColumnsEstimate = (size) => {
   return { gridTemplateColumns: `repeat(${getColumnEstimate(size)}, 1fr)` };
 };

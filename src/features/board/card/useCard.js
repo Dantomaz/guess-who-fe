@@ -13,19 +13,24 @@ const useCard = ({ number }) => {
   const { value: isPeeking, setTrue: startPeeking, setFalse: stopPeeking } = useBoolean();
 
   useEffect(() => {
-    const voters = player.team === "RED" ? gameState.votesRed : gameState.votesBlue;
+    const voters = gameState.playersVotes;
     setVoters(listVotersByCardNumbers(room.players, voters).get(number));
-  }, [gameState.votesBlue, gameState.votesRed, player.team, room.players, number]);
+  }, [gameState.playersVotes, room.players, number]);
 
   const voteForCard = () => {
     publishVoteForCard({ roomId: room.id, playerId: player.id, cardNumber: number });
   };
 
+  const isCardHighlighted = (team) => {
+    const cardPickedMatchesTeam = player.team === team ? number === gameState.pickedCardNumber : number === gameState.pickedOpponentsCardNumber;
+    return gameState.gameStatus === "FINISHED" && cardPickedMatchesTeam;
+  };
+
   const card = gameState.cards[number - 1];
-  const closed = player.team === "RED" ? card.closedByRed : card.closedByBlue;
-  const showPickIcon = gameState.status === "IN_PROGRESS" && gameState.currentTurn === player.team && !closed;
-  const isHighlightedBlue = gameState.status === "FINISHED" && number === gameState.cardNrChosenByBlue;
-  const isHighlightedRed = gameState.status === "FINISHED" && number === gameState.cardNrChosenByRed;
+  const closed = card.closedLocked || card.closed;
+  const showPickIcon = gameState.gameStatus === "IN_PROGRESS" && gameState.currentTurn === player.team && !closed;
+  const isHighlightedBlue = isCardHighlighted("BLUE");
+  const isHighlightedRed = isCardHighlighted("RED");
   const isHighlightedBoth = isHighlightedBlue && isHighlightedRed;
   const highlightStyle = isHighlightedBoth ? "highlighted-both" : isHighlightedBlue ? "highlighted-blue" : isHighlightedRed ? "highlighted-red" : "";
 
@@ -52,10 +57,12 @@ const useCard = ({ number }) => {
       },
       IN_PROGRESS: {
         onClick: () => {
-          publishToggleCard({ roomId: room.id, cardNumber: number, team: player.team });
+          if (!card.closedLocked) {
+            publishToggleCard({ roomId: room.id, cardNumber: number, team: player.team });
+          }
         },
       },
-    }[gameState.status] || {};
+    }[gameState.gameStatus] || {};
 
   return {
     closed,

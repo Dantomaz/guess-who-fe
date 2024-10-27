@@ -11,28 +11,28 @@ const useNotifier = () => {
 
   let text = "";
 
-  if (gameState.status === "NEW") {
+  if (gameState.gameStatus === "NEW") {
     if (player.host) {
       text = "Settings";
     } else {
       text = "Wait for host";
     }
-  } else if (gameState.status === "VOTING") {
+  } else if (gameState.gameStatus === "VOTING") {
     text = "Choose the card for your team";
-  } else if (gameState.status === "IN_PROGRESS") {
+  } else if (gameState.gameStatus === "IN_PROGRESS") {
     if (gameState.currentTurn === player.team) {
       text = "Ask a question or take a guess!";
     } else {
       text = "Answer your opponent's question";
     }
-  } else if (gameState.status === "FINISHED") {
+  } else if (gameState.gameStatus === "FINISHED") {
     if (gameState.winner === player.team) {
       text = "Your team won!";
     } else {
       text = "Your team lost!";
     }
   } else {
-    text = "Happy bug day!"; // this should never be displayed
+    text = " ";
   }
 
   useEffect(() => {

@@ -8,7 +8,7 @@ export const TOPIC_PLAYERS = "/topic/room/{roomId}/players";
 
 export const TOPIC_IMAGES = "/topic/room/{roomId}/images";
 
-export const TOPIC_GAME_STATE = "/topic/room/{roomId}/gameState";
+export const TOPIC_GAME_STATE = "/topic/room/{roomId}/gameState/team/{team}";
 
 // ===== publish endpoints =====
 

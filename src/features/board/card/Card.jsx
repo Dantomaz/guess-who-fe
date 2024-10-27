@@ -25,7 +25,7 @@ const Card = ({ number, imageUrl }) => {
     peek,
     stopPeeking,
   } = useCard({ number });
-  const gameState = useSelector((state) => state.gameStateManager.gameState);
+  const gameStatus = useSelector((state) => state.gameStateManager.gameState.gameStatus);
   const cardRef = useRef();
   const flipState = useRef();
 
@@ -68,7 +68,7 @@ const Card = ({ number, imageUrl }) => {
           {showPickIcon && <PickIcon onClick={guessCard} />}
         </div>
         <div className={styles["image-container"]} onContextMenu={showImagePreview}>
-          {gameState.status === "VOTING" && <Voters voters={voters} />}
+          {gameStatus === "VOTING" && <Voters voters={voters} />}
           <img src={imageUrl} key={number} alt={number} draggable={false} className={styles["image"]} />
         </div>
       </div>

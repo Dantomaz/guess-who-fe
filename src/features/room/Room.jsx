@@ -11,14 +11,17 @@ const Room = () => {
   const gameState = useSelector((state) => state.gameStateManager.gameState);
   const host = useSelector((state) => state.playerManager.player?.host);
 
+  const displaySettings = gameState.gameStatus === "NEW" && host;
+  const displayBoard = gameState.gameStatus !== "NEW";
+
   return (
     <div>
       <Dashboard />
       <Notifier />
       <div className={styles["container"]}>
         <TeamCard team="RED" />
-        {gameState.status === "NEW" && host && <GameSettings />}
-        {gameState.status !== "NEW" && <Board />}
+        {displaySettings && <GameSettings />}
+        {displayBoard && <Board />}
         <TeamCard team="BLUE" />
       </div>
     </div>

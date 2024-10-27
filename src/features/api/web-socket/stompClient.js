@@ -3,7 +3,7 @@ import { parsePossibleJSONFromString } from "../../../global/utils";
 import { subscribeQueueError } from "../apiRequest";
 import { BASE_URL } from "./apiWsEndpoints";
 
-const subscriptions = [];
+const subscriptions = {};
 const subscriptionsToRetry = [];
 
 const onConnect = () => {
@@ -64,7 +64,7 @@ export const subscribe = (destination, callback) => {
   });
 
   console.log(`Subscribed to ${destination}`);
-  subscriptions.push(newSubscription);
+  subscriptions[destination] = newSubscription;
 };
 
 export const publish = (destination, body) => {
@@ -76,7 +76,17 @@ export const publish = (destination, body) => {
   client.publish({ destination, body: JSON.stringify(body) });
 };
 
+export const unsubscribe = (destination) => {
+  if (!subscriptions[destination]) {
+    console.error(`No subscription found for ${destination}`);
+    return;
+  }
+
+  subscriptions[destination].unsubscribe();
+  delete subscriptions[destination];
+  console.log(`Unsubscribed from ${destination}`);
+};
+
 export const unsubscribeAll = () => {
-  subscriptions.forEach((subscription) => subscription.unsubscribe());
-  subscriptions.length = 0; // clear the subscriptions array
+  Object.values(subscriptions).forEach((subscription) => subscription.unsubscribe());
 };

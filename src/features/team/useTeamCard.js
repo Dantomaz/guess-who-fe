@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
-import { countVoters } from "../../global/utils";
-import { publishEndTurn, publishGameStart, publishPlayerChangeTeam } from "../api/apiRequest";
+import { publishEndTurn, publishGameStart } from "../api/apiRequest";
 
 const useTeamCard = ({ team }) => {
   const room = useSelector((state) => state.roomManager.room);
@@ -9,12 +8,12 @@ const useTeamCard = ({ team }) => {
 
   const players = Object.values(room.players);
   const playersInTeam = players.filter((player) => player.team === team);
-  const numberOfVoters = countVoters(room.players, gameState.votesBlue, gameState.votesRed);
+  const numberOfVoters = gameState.totalNumberOfPlayersVotes;
   const numberOfAllPlayers = players.length;
   const notEveryoneVoted = numberOfVoters < numberOfAllPlayers;
-  const displayEndVotingButton = gameState.status === "VOTING" && player.team === team && player.host;
-  const displayEndTurnButton = gameState.status === "IN_PROGRESS" && player.team === team && gameState.currentTurn === player.team;
-  const displaySwitchTeamButton = gameState.status === "NEW" && player.team !== team;
+  const displayEndVotingButton = gameState.gameStatus === "VOTING" && player.team === team && player.host;
+  const displayEndTurnButton = gameState.gameStatus === "IN_PROGRESS" && player.team === team && gameState.currentTurn === player.team;
+  const displaySwitchTeamButton = gameState.gameStatus === "NEW" && player.team !== team;
 
   const startGame = () => {
     publishGameStart({ roomId: room.id });
@@ -22,10 +21,6 @@ const useTeamCard = ({ team }) => {
 
   const endTurn = () => {
     publishEndTurn({ roomId: room.id });
-  };
-
-  const switchTeam = () => {
-    publishPlayerChangeTeam({ roomId: room.id, playerId: player.id, newTeam: team });
   };
 
   return {
@@ -38,7 +33,6 @@ const useTeamCard = ({ team }) => {
     displayEndTurnButton,
     endTurn,
     displaySwitchTeamButton,
-    switchTeam,
   };
 };
 

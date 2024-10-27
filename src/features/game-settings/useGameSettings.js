@@ -36,8 +36,8 @@ const useGameSettings = () => {
 
     requestImagesUpload({ roomId: room.id, formData })
       .then((response) => dispatch(setImages(response.data)))
-      .then(() => hideDragAndDrop())
-      .catch((error) => console.error(error));
+      .then(hideDragAndDrop)
+      .catch(console.error);
   };
 
   const prepareGame = () => {
