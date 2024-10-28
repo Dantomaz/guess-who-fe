@@ -6,7 +6,7 @@
   text-align: center;
   padding: 1vh 1vw;
   border-radius: 1rem;
-  box-shadow: 0 5px 5px 1px rgba($color-dark, 0.2);
+  box-shadow: $box-shadow-button;
   font-size: $font-size-medium-large;
   font-weight: 600;
   background-color: none;
@@ -19,7 +19,7 @@
 
   &:active:not(.button-disabled) {
     transform: translateY(5%);
-    box-shadow: 0 3px 3px 1px rgba($color-dark, 0.2);
+    box-shadow: $box-shadow-button-pushed;
   }
 }
 

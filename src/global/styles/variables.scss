@@ -41,3 +41,7 @@ $background-image: linear-gradient(100deg, rgba($color-primary-1, 0.5), rgba($co
 
 $spinner-size-medium: calculate-font-size(15);
 $spinner-size-large: calculate-font-size(25);
+
+$box-shadow-button: 0 3px 3px 1px rgba($color-dark, 0.3);
+$box-shadow-button-pushed: 0 1px 3px 0 rgba($color-dark, 0.4);
+$box-shadow-card: 0 3px 3px 2px rgba($color-dark, 0.3);

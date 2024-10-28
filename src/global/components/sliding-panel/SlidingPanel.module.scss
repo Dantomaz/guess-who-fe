@@ -9,7 +9,6 @@ $panel-width: 16vw;
   height: 100vh;
   width: $panel-width;
   overflow: hidden;
-  box-shadow: 0 4px 4px 4px rgba($color-dark, 0.2);
   z-index: 100;
 }
 
@@ -18,6 +17,7 @@ $panel-width: 16vw;
   left: 0;
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
+  box-shadow: 3px 3px 3px 2px rgba($color-dark, 0.3); // same as $box-shadow-card, but positive h-offset
 }
 
 .left-enter {
@@ -43,6 +43,7 @@ $panel-width: 16vw;
   left: calc(100vw - $panel-width);
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
+  box-shadow: -3px 3px 3px 2px rgba($color-dark, 0.3); // same as $box-shadow-card, but negative h-offset
 }
 
 .right-enter {

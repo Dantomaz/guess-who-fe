@@ -12,7 +12,7 @@
   border: 0;
   border-radius: 1rem;
   background-color: $color-primary-2;
-  box-shadow: 0 5px 5px 1px rgba($color-dark, 0.2);
+  box-shadow: $box-shadow-button;
   transition: background-color 0.3s ease-out, transform 0.05s, box-shadow 0.05s;
 
   &:hover:not(.button-disabled) {
@@ -22,7 +22,7 @@
 
   &:active:not(.button-disabled) {
     transform: translateY(5%);
-    box-shadow: 0 3px 3px 1px rgba($color-dark, 0.2);
+    box-shadow: $box-shadow-button-pushed;
   }
 
   & > svg {
