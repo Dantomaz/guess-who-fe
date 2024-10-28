@@ -12,10 +12,10 @@ import Voters from "./Voters";
 
 const Card = ({ number, imageUrl }) => {
   const {
-    closed,
+    isCardClosed,
     voters,
     handleClick,
-    showPickIcon,
+    isPickIconVisible,
     guessCard,
     highlightStyle,
     isImagePreviewShown,
@@ -56,7 +56,7 @@ const Card = ({ number, imageUrl }) => {
     <>
       <div ref={cardRef} className={`${styles["card"]} ${styles[highlightStyle]}`} onClick={handleClick} onContextMenu={preventDefaultAction}>
         <div
-          className={`${styles["card-shutter"]} ${closed ? styles["card-shutter-closed"] : styles["card-shutter-opened"]} ${
+          className={`${styles["card-shutter"]} ${isCardClosed ? styles["card-shutter-closed"] : styles["card-shutter-opened"]} ${
             isPeeking && styles["card-shutter-peek"]
           }`}
           onMouseDown={peek}
@@ -65,7 +65,7 @@ const Card = ({ number, imageUrl }) => {
         ></div>
         <div className={styles["card-title-container"]}>
           <div className={styles["card-number"]}>{number}</div>
-          {showPickIcon && <PickIcon onClick={guessCard} />}
+          {isPickIconVisible && <PickIcon onClick={guessCard} disable={isCardClosed} />}
         </div>
         <div className={styles["image-container"]} onContextMenu={showImagePreview}>
           {gameStatus === "VOTING" && <Voters voters={voters} />}

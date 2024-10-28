@@ -27,8 +27,8 @@ const useCard = ({ number }) => {
   };
 
   const card = gameState.cards[number - 1];
-  const closed = card.closedLocked || card.closed;
-  const showPickIcon = gameState.gameStatus === "IN_PROGRESS" && gameState.currentTurn === player.team && !closed;
+  const isCardClosed = card.closedLocked || card.closed;
+  const isPickIconVisible = gameState.gameStatus === "IN_PROGRESS" && gameState.currentTurn === player.team;
   const isHighlightedBlue = isCardHighlighted("BLUE");
   const isHighlightedRed = isCardHighlighted("RED");
   const isHighlightedBoth = isHighlightedBlue && isHighlightedRed;
@@ -42,7 +42,7 @@ const useCard = ({ number }) => {
 
   const guessCard = (e) => {
     preventDefaultAction(e);
-    if (closed) {
+    if (isCardClosed) {
       return;
     }
     publishGuessCard({ roomId: room.id, cardNumber: number });
@@ -65,10 +65,10 @@ const useCard = ({ number }) => {
     }[gameState.gameStatus] || {};
 
   return {
-    closed,
+    isCardClosed,
     voters,
     handleClick,
-    showPickIcon,
+    isPickIconVisible,
     guessCard,
     highlightStyle,
     isImagePreviewShown,
