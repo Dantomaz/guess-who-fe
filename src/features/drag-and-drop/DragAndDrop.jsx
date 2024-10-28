@@ -9,7 +9,9 @@ import useDragAndDrop from "./useDragAndDrop";
 const DragAndDrop = ({ uploadFiles, onCancel }) => {
   const images = useSelector((state) => state.roomManager.room?.images);
   const { fileTypes, onFilesChange, abortCompression, files, MAX_FILES, isLoading } = useDragAndDrop();
-  const imageCounter = files?.length || images?.length || 0;
+
+  const imagesToPreview = files ? files.map(URL.createObjectURL) : images;
+  const imageCounter = imagesToPreview?.length || 0;
 
   const handleCancel = () => {
     abortCompression();
@@ -26,7 +28,7 @@ const DragAndDrop = ({ uploadFiles, onCancel }) => {
         <p>Consider lowering the size of your images first, before uploading if they are larger than 500KB each.</p>
       </div>
       <FileUploader classes={styles["drop-area-container"]} multiple types={fileTypes} handleChange={onFilesChange}>
-        <DragAndDropPreview images={images} newFiles={files} isLoading={isLoading} />
+        <DragAndDropPreview images={imagesToPreview} isLoading={isLoading} />
       </FileUploader>
       <div className={styles["counter"]}>{`${imageCounter}/${MAX_FILES} images`}</div>
       <div className={styles["footer"]}>
