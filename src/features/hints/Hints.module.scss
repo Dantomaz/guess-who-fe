@@ -1,0 +1,39 @@
+@import "../../global/styles/variables.scss";
+
+.hints-card {
+  position: absolute;
+  bottom: 6%;
+  right: 3%;
+  width: 20vw;
+  height: 32vh;
+  padding: 2vh 1vw;
+  margin: 0;
+  z-index: 900;
+  background-color: $color-background;
+  border-radius: 1rem;
+  box-shadow: $box-shadow-card;
+  opacity: 1;
+}
+
+.text-container {
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+
+  .title {
+    font-size: $font-size-medium-large;
+    font-weight: bold;
+    align-self: center;
+  }
+
+  p {
+    font-size: $font-size-medium;
+    text-align: justify;
+
+    span {
+      font-weight: 700;
+    }
+  }
+}

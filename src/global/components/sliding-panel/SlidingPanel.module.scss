@@ -9,7 +9,7 @@ $panel-width: 16vw;
   height: 100vh;
   width: $panel-width;
   overflow: hidden;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .left {

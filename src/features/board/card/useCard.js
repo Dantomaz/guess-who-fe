@@ -1,16 +1,28 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useBoolean } from "usehooks-ts";
 import { listVotersByCardNumbers, preventDefaultAction } from "../../../global/utils";
 import { publishGuessCard, publishToggleCard, publishVoteForCard } from "../../api/apiRequest";
+import { hintsContextDefault, hintsContextPreview } from "../../hints/hintsSlice";
 
 const useCard = ({ number }) => {
+  const dispatch = useDispatch();
   const room = useSelector((state) => state.roomManager.room);
   const player = useSelector((state) => state.playerManager.player);
   const gameState = useSelector((state) => state.gameStateManager.gameState);
   const [voters, setVoters] = useState();
-  const { value: isImagePreviewShown, setTrue: showImagePreview, setFalse: hideImagePreview } = useBoolean();
+  const [isImagePreviewShown, setImagePreviewShown] = useState(false);
   const { value: isPeeking, setTrue: startPeeking, setFalse: stopPeeking } = useBoolean();
+
+  const showImagePreview = () => {
+    dispatch(hintsContextPreview());
+    setImagePreviewShown(true);
+  };
+
+  const hideImagePreview = () => {
+    dispatch(hintsContextDefault());
+    setImagePreviewShown(false);
+  };
 
   useEffect(() => {
     const voters = gameState.playersVotes;

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Board from "../board/Board";
 import Dashboard from "../dashboard/Dashboard";
 import GameSettings from "../game-settings/GameSettings";
+import Hints from "../hints/Hints";
 import Notifier from "../notifier/Notifier";
 import TeamCard from "../team/TeamCard";
 import styles from "./Room.module.scss";
@@ -18,6 +19,7 @@ const Room = () => {
     <div>
       <Dashboard />
       <Notifier />
+      <Hints />
       <div className={styles["container"]}>
         <TeamCard team="RED" />
         {displaySettings && <GameSettings />}
