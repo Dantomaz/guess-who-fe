@@ -8,4 +8,3 @@ export const ROOM_LEAVE = "/room/{roomId}/player/{playerId}";
 export const ROOM_RECONNECT = "/room/reconnect";
 
 export const IMAGES_UPLOAD = "/room/{roomId}/images";
-export const IMAGES_DOWNLOAD = "/room/{roomId}/images";
