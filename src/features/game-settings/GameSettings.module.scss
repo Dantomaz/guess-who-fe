@@ -17,3 +17,22 @@
   background-color: $color-background;
   border: none;
 }
+
+.options {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  margin-bottom: 4vh;
+}
+
+.option-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vh;
+}
+
+.option-button {
+  margin-left: 1.2vw;
+}

@@ -25,7 +25,8 @@ const DragAndDrop = ({ uploadFiles, onCancel }) => {
           Images will be compressed automatically to improve performance, but compressing high quality images will take some time and CPU power.
           Please be patient.
         </p>
-        <p>Consider lowering the size of your images first, before uploading if they are larger than 500KB each.</p>
+        <p>Consider lowering the size of your images first, before saving them if they are larger than 200KB each.</p>
+        <p>Image ratio of 1:1 is most optimal.</p>
       </div>
       <FileUploader classes={styles["drop-area-container"]} multiple types={fileTypes} handleChange={onFilesChange}>
         <DragAndDropPreview images={imagesToPreview} isLoading={isLoading} />
@@ -35,7 +36,7 @@ const DragAndDrop = ({ uploadFiles, onCancel }) => {
         {<Button onClick={handleCancel}>Cancel</Button>}
         {
           <Button onClick={() => uploadFiles(files)} disabled={!files}>
-            Upload
+            Save
           </Button>
         }
       </div>

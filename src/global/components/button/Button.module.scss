@@ -1,5 +1,9 @@
 @import "../../styles/variables.scss";
 
+.button-wrapper {
+  display: inline-block;
+}
+
 .button {
   display: flex;
   justify-content: center;

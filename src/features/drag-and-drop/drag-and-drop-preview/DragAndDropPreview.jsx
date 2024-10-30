@@ -1,6 +1,6 @@
 import React from "react";
 import { FaFileUpload } from "react-icons/fa";
-import { getGridTemplateColumnsEstimate } from "../../../global/utils";
+import { getGridTemplateColumnsNumber } from "../../../global/utils";
 import LoadingSpinner from "../../spinner/LoadingSpinner";
 import styles from "./DragAndDropPreview.module.scss";
 
@@ -17,7 +17,7 @@ const DragAndDropPreview = ({ images, isLoading }) => {
 
   const renderImagesGrid = () => {
     return (
-      <div className={`${styles["drop-area"]}`} style={getGridTemplateColumnsEstimate(images.length)}>
+      <div className={`${styles["drop-area"]}`} style={getGridTemplateColumnsNumber(images.length)}>
         {images && images.map((imageUrl, index) => <img src={imageUrl} key={index} alt={index} draggable={false} className={styles["image"]} />)}
       </div>
     );
@@ -35,7 +35,7 @@ const DragAndDropPreview = ({ images, isLoading }) => {
     );
   };
 
-  return isLoading ? renderLoading() : images ? renderImagesGrid() : renderDragAndDropPrompt();
+  return isLoading ? renderLoading() : images && images.length > 0 ? renderImagesGrid() : renderDragAndDropPrompt();
 };
 
 export default DragAndDropPreview;

@@ -41,7 +41,7 @@ export const unsubscribeTopicGameState = ({ roomId, team }) => unsubscribe(inser
 
 export const publishGameRestart = ({ roomId }) => publish(insertVariables(APP_GAME_RESTART, roomId));
 
-export const publishGamePrepare = ({ roomId }) => publish(insertVariables(APP_GAME_PREPARE, roomId));
+export const publishGamePrepare = ({ roomId, useDefaultImages }) => publish(insertVariables(APP_GAME_PREPARE, roomId), useDefaultImages);
 export const publishVoteForCard = ({ roomId, playerId, cardNumber }) => publish(insertVariables(APP_VOTE_FOR_CARD, roomId), { playerId, cardNumber });
 
 export const publishGameStart = ({ roomId }) => publish(insertVariables(APP_GAME_START, roomId));

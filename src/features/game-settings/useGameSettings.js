@@ -6,7 +6,11 @@ import { setImages } from "../room/roomSlice";
 const useGameSettings = () => {
   const dispatch = useDispatch();
   const room = useSelector((state) => state.roomManager.room);
+  const images = useSelector((state) => state.roomManager.room.images);
   const { value: isDragAndDropVisible, setTrue: showDragAndDrop, setFalse: hideDragAndDrop } = useBoolean();
+  const { value: useDefaultImages, setTrue: setDefaultImages, setFalse: setCustomImages } = useBoolean(true);
+
+  const imagesUploaded = images && images.length > 0;
 
   const arePlayersReadyToStart = (players) => {
     const playerList = Object.values(players);
@@ -41,10 +45,39 @@ const useGameSettings = () => {
   };
 
   const prepareGame = () => {
-    publishGamePrepare({ roomId: room.id });
+    publishGamePrepare({ roomId: room.id, useDefaultImages });
   };
 
-  return { isDragAndDropVisible, showDragAndDrop, hideDragAndDrop, uploadImages, ready: !!room.images, isStartButtonDisabled, prepareGame };
+  const onSetDefaultImages = () => {
+    setDefaultImages();
+  };
+
+  const onSetCustomImages = () => {
+    setCustomImages();
+    if (!imagesUploaded) {
+      showDragAndDrop();
+    }
+  };
+
+  const onCancelCustomImages = () => {
+    hideDragAndDrop();
+    if (!imagesUploaded) {
+      setDefaultImages();
+    }
+  };
+
+  return {
+    isDragAndDropVisible,
+    showDragAndDrop,
+    imagesUploaded,
+    uploadImages,
+    isStartButtonDisabled,
+    prepareGame,
+    useDefaultImages,
+    onSetDefaultImages,
+    onSetCustomImages,
+    onCancelCustomImages,
+  };
 };
 
 export default useGameSettings;

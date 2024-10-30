@@ -79,12 +79,14 @@ export const listVotersByCardNumbers = (players, votes) => {
   return resultMap;
 };
 
-export const getGridTemplateColumnsEstimate = (size) => {
-  return { gridTemplateColumns: `repeat(${getColumnEstimate(size)}, 1fr)` };
+export const getGridTemplateColumnsNumber = (size) => {
+  return { gridTemplateColumns: `repeat(${getColumnNumber(size)}, 1fr)` };
 };
 
-const getColumnEstimate = (size) => {
-  return Math.ceil(Math.sqrt(size));
+const getColumnNumber = (size) => {
+  // if above 20 images, modify the columns number to make 6x4 grid
+  const modifier = size > 20 ? 1 : 0;
+  return Math.ceil(Math.sqrt(size) + modifier);
 };
 
 export const preventDefaultAction = (e) => {

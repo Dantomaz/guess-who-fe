@@ -1,6 +1,10 @@
 @import "../../global/styles/variables.scss";
 
 .hint {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vh;
+
   p {
     text-align: justify;
     font-size: $font-size-medium;
@@ -13,7 +17,6 @@
 }
 
 .counter {
-  margin-left: 0.2vw;
   align-self: last baseline;
 }
 

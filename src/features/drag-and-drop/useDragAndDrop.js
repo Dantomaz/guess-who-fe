@@ -6,7 +6,8 @@ const useDragAndDrop = () => {
   const [files, setFiles] = useState();
   const { value: isLoading, setTrue: showLoading, setFalse: hideLoading } = useBoolean(false);
   const fileTypes = ["PNG", "JPG", "JPEG"];
-  const MAX_FILES = 30;
+  const MIN_FILES = 12;
+  const MAX_FILES = 24;
   const controller = useRef();
 
   // destructure object to an array
@@ -15,7 +16,7 @@ const useDragAndDrop = () => {
       return;
     }
 
-    if (uploaded.length < 1 || uploaded.length > MAX_FILES) {
+    if (uploaded.length < 1 || uploaded.length > MAX_FILES || uploaded.length < MIN_FILES) {
       return;
     }
 
