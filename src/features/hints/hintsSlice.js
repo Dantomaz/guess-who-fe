@@ -9,8 +9,8 @@ export const hintsSlice = createSlice({
   name: "hintsManager",
   initialState,
   reducers: {
-    toggleHints: (state) => {
-      state.showHints = !state.showHints;
+    setShowHints: (state, action) => {
+      state.showHints = action.payload;
     },
     hintsContextDefault: (state) => {
       state.context = "default";
@@ -21,6 +21,6 @@ export const hintsSlice = createSlice({
   },
 });
 
-export const { toggleHints, hintsContextDefault, hintsContextPreview } = hintsSlice.actions;
+export const { setShowHints, hintsContextDefault, hintsContextPreview } = hintsSlice.actions;
 
 export default hintsSlice.reducer;
