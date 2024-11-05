@@ -1,7 +1,6 @@
 import { Client } from "@stomp/stompjs";
 import { parsePossibleJSONFromString } from "../../../global/utils";
 import { subscribeQueueError } from "../apiRequest";
-import { BASE_URL } from "./apiWsEndpoints";
 
 const subscriptions = {};
 const subscriptionsToRetry = [];
@@ -33,7 +32,7 @@ const onWebSocketClose = (frame) => {
 };
 
 const client = new Client({
-  brokerURL: BASE_URL,
+  brokerURL: process.env.REACT_APP_SERVER_WEBSOCKET_URL,
   onConnect: onConnect,
   onWebSocketError: onWebSocketError,
   onStompError: onStompError,

@@ -1,5 +1,3 @@
-export const BASE_URL = "http://localhost:8080";
-
 export const PLAYER_CREATE = "/player/{nickname}";
 
 export const ROOM_CREATE = "/room";
