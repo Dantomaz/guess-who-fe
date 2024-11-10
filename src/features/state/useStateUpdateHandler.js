@@ -21,14 +21,23 @@ const useStateUpdateHandler = () => {
   const player = useSelector((state) => state.playerManager.player);
 
   const enterRoom = (room) => {
+    resetState();
     updateRoomState(room, room.players[player.id]);
   };
 
   const reenterRoom = (room, player) => {
+    resetState();
     updateRoomState(room, player);
     if (player.team && player.team !== "NONE") {
       subscribeTopicGameState({ roomId: room.id, team: player.team, callback: updateGameState });
     }
+  };
+
+  const resetState = () => {
+    unsubscribeAll();
+    dispatch(resetGameState());
+    dispatch(resetRoom());
+    dispatch(resetPlayer());
   };
 
   const updateRoomState = (room, player) => {
@@ -70,11 +79,8 @@ const useStateUpdateHandler = () => {
   };
 
   const leaveRoom = () => {
-    unsubscribeAll();
-    dispatch(resetGameState());
-    dispatch(resetRoom());
-    dispatch(resetPlayer());
-    navigate("/");
+    resetState();
+    navigate("/", { replace: true });
   };
 
   const switchTeam = (newTeam) => {

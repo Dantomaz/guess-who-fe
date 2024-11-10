@@ -15,14 +15,14 @@ const useRoomJoiningPage = () => {
     const roomId = data.roomId;
     requestRoomJoin({ roomId, player })
       .then((response) => enterRoom(response.data))
-      .then(() => navigate("/room"))
+      .then(() => navigate("/room", { replace: true }))
       .catch((error) => setErrorOnJoin(extractAxiosErrorResponseDetail(error)));
   };
 
   const onCreate = () => {
     requestRoomCreate({ player })
       .then((response) => enterRoom(response.data))
-      .then(() => navigate("/room"))
+      .then(() => navigate("/room", { replace: true }))
       .catch(console.error);
   };
 
