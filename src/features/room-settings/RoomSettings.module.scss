@@ -7,7 +7,7 @@
   align-items: center;
   gap: 2vh;
   font-weight: 500;
-  padding: 3vh 0;
+  padding: 3vh 0.6vw;
 }
 
 .invite-text {
@@ -17,7 +17,6 @@
 }
 
 .room-code {
-  padding: 0 0.6vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -48,12 +47,12 @@
 }
 
 .section {
-  padding-top: 5vh;
+  padding-top: 3vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3vh;
+  gap: 2vh;
 }
 
 .button-reset {
@@ -73,11 +72,5 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1vh;
-}
-
-.crown-icon {
-  position: absolute;
-  margin-left: 0.25vw;
-  margin-top: 0.5vh;
+  gap: 0.2vh;
 }

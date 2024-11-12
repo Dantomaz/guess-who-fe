@@ -9,13 +9,15 @@ import {
   APP_GUESS_CARD,
   APP_PLAYER_CHANGE_NAME,
   APP_PLAYER_CHANGE_TEAM,
+  APP_PLAYER_KICK,
+  APP_PLAYER_MAKE_HOST,
   APP_TOGGLE_CARD,
   APP_VOTE_FOR_CARD,
   QUEUE_ERROR,
   TOPIC_GAME_STATE,
   TOPIC_IMAGES,
   TOPIC_PLAYERS,
-  TOPIC_SESSION_INVALIDATE,
+  TOPIC_DISCONNECT,
 } from "./web-socket/apiWsEndpoints";
 import { publish, subscribe, unsubscribe } from "./web-socket/stompClient";
 
@@ -28,6 +30,8 @@ export const subscribeTopicPlayers = ({ roomId, callback }) => subscribe(insertV
 export const publishPlayerChangeName = ({ roomId, playerId, newName }) =>
   publish(insertVariables(APP_PLAYER_CHANGE_NAME, roomId, playerId), { payload: newName }); // every String has to be named 'payload' when sending over STOMP
 export const publishPlayerChangeTeam = ({ roomId, playerId, newTeam }) => publish(insertVariables(APP_PLAYER_CHANGE_TEAM, roomId, playerId), newTeam);
+export const publishPlayerMakeHost = ({ roomId, playerId }) => publish(insertVariables(APP_PLAYER_MAKE_HOST, roomId, playerId));
+export const publishPlayerKick = ({ roomId, playerId }) => publish(insertVariables(APP_PLAYER_KICK, roomId, playerId));
 
 export const requestRoomCreate = ({ player }) => axiosPost(ROOM_CREATE, player);
 export const requestRoomJoin = ({ roomId, player }) => axiosPost(insertVariables(ROOM_JOIN, roomId), player);
@@ -50,5 +54,4 @@ export const publishEndTurn = ({ roomId }) => publish(insertVariables(APP_END_TU
 export const publishToggleCard = ({ roomId, cardNumber, team }) => publish(insertVariables(APP_TOGGLE_CARD, roomId), { cardNumber, team });
 export const publishGuessCard = ({ roomId, cardNumber }) => publish(insertVariables(APP_GUESS_CARD, roomId), cardNumber);
 
-export const subscribeTopicSessionInvalidate = ({ roomId, playerId, callback }) =>
-  subscribe(insertVariables(TOPIC_SESSION_INVALIDATE, roomId, playerId), callback);
+export const subscribeTopicDisconnect = ({ roomId, playerId, callback }) => subscribe(insertVariables(TOPIC_DISCONNECT, roomId, playerId), callback);

@@ -40,9 +40,7 @@ const PlayerSettings = ({ hidePanel }) => {
               formState={formState}
               showError
             />
-            <Button type="submit" style={{ width: "10vw" }}>
-              Update nickname
-            </Button>
+            <Button type="submit">Update nickname</Button>
           </form>
         </div>
         <div className={styles["section"]}>

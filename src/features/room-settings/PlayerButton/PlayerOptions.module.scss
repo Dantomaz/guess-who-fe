@@ -1,0 +1,45 @@
+@import "../../../global/styles/variables.scss";
+
+.container {
+  position: absolute;
+  left: 120%;
+  top: -10%;
+  width: auto;
+  height: auto;
+  padding: 0.5vw;
+  gap: 0.5vw;
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-background;
+  border-radius: 1rem;
+
+  Button {
+    white-space: nowrap;
+    font-size: $font-size-medium-small;
+    padding: 0.8vh 0.8vw;
+    border-radius: 0.7rem;
+  }
+}
+
+.button-danger {
+  background-color: $color-danger-primary;
+
+  &:hover:not(.button-disabled) {
+    background-color: $color-danger-secondary;
+  }
+}
+
+.container:before {
+  content: "";
+  position: absolute;
+  left: -5%;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 0 solid transparent;
+  border-right: 15px solid $color-background;
+}

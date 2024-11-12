@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { MdManageAccounts, MdSupervisorAccount } from "react-icons/md";
 import { useSelector } from "react-redux";
+import { useBoolean } from "usehooks-ts";
 import Button from "../../global/components/button/Button";
 import SlidingPanel from "../../global/components/sliding-panel/SlidingPanel";
 import "../../global/styles/classes.scss";
@@ -10,10 +11,12 @@ import styles from "./Dashboard.module.scss";
 import useDashboard from "./useDashboard";
 
 const Dashboard = () => {
-  const { isLeftPanelShown, showLeftPanel, hideLeftPanel, isRightPanelShown, showRightPanel, hideRightPanel, toggleHints } = useDashboard();
+  const { toggleHints } = useDashboard();
   const room = useSelector((state) => state.roomManager.room);
   const player = useSelector((state) => state.playerManager.player);
   const showHints = useSelector((state) => state.hintsManager.showHints);
+  const { value: isLeftPanelShown, setTrue: showLeftPanel, setFalse: hideLeftPanel } = useBoolean();
+  const { value: isRightPanelShown, setTrue: showRightPanel, setFalse: hideRightPanel } = useBoolean();
   const leftPanelRef = useRef();
   const rightPanelRef = useRef();
 

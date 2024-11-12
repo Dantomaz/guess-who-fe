@@ -8,12 +8,14 @@ export const TOPIC_IMAGES = "/topic/room/{roomId}/images";
 
 export const TOPIC_GAME_STATE = "/topic/room/{roomId}/gameState/team/{team}";
 
-export const TOPIC_SESSION_INVALIDATE = "/topic/room/{roomId}/player/{playerId}/sessionInvalidate";
+export const TOPIC_DISCONNECT = "/topic/room/{roomId}/player/{playerId}/disconnect";
 
 // ===== publish endpoints =====
 
 export const APP_PLAYER_CHANGE_NAME = "/app/room/{roomId}/player/{playerId}/changeName";
 export const APP_PLAYER_CHANGE_TEAM = "/app/room/{roomId}/player/{playerId}/changeTeam";
+export const APP_PLAYER_MAKE_HOST = "/app/room/{roomId}/player/{playerId}/makeHost";
+export const APP_PLAYER_KICK = "/app/room/{roomId}/player/{playerId}/kick";
 
 export const APP_GAME_RESTART = "/app/room/{roomId}/restartGame";
 

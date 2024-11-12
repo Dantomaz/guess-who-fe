@@ -17,7 +17,7 @@
   border-radius: 1rem;
   background-color: $color-primary-2;
   box-shadow: $box-shadow-button;
-  transition: background-color 0.3s ease-out, transform 0.05s, box-shadow 0.05s;
+  transition: background-color 0.1s ease-out, transform 0.05s, box-shadow 0.05s;
 
   &:hover:not(.button-disabled) {
     background-color: $color-secondary-2;

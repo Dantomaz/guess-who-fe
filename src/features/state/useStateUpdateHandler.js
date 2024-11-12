@@ -2,17 +2,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   publishPlayerChangeTeam,
+  subscribeTopicDisconnect,
   subscribeTopicGameState,
   subscribeTopicImages,
   subscribeTopicPlayers,
-  subscribeTopicSessionInvalidate,
   unsubscribeTopicGameState,
 } from "../api/apiRequest";
 import { unsubscribeAll } from "../api/web-socket/stompClient";
+import { setDisconnectInfo } from "../disconnect/disconnectSlice";
 import { resetGameState, setGameState } from "../game-state/gameStateSlice";
 import { resetPlayer, setPlayer } from "../player/playerSlice";
 import { resetRoom, setImages, setPlayers, setRoom } from "../room/roomSlice";
-import { setUserTimedOut } from "../timeout/timeoutSlice";
 
 const useStateUpdateHandler = () => {
   const dispatch = useDispatch();
@@ -64,7 +64,7 @@ const useStateUpdateHandler = () => {
   const subscribeToRoomActivity = (roomId, playerId) => {
     subscribeTopicImages({ roomId, callback: updateImages });
     subscribeTopicPlayers({ roomId, callback: (players) => updatePlayerInfo(players, playerId) });
-    subscribeTopicSessionInvalidate({ roomId, playerId, callback: timeout });
+    subscribeTopicDisconnect({ roomId, playerId, callback: handleDisconnect });
   };
 
   const updatePlayerInfo = (players, playerId) => {
@@ -73,8 +73,8 @@ const useStateUpdateHandler = () => {
     dispatch(playerInfo ? setPlayer(playerInfo) : resetPlayer());
   };
 
-  const timeout = () => {
-    dispatch(setUserTimedOut(true));
+  const handleDisconnect = (reason) => {
+    dispatch(setDisconnectInfo({ disconnected: true, reason }));
     leaveRoom();
   };
 

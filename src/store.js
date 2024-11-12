@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import disconnectReducer from "./features/disconnect/disconnectSlice";
 import gameStateReducer from "./features/game-state/gameStateSlice";
 import hintsReducer from "./features/hints/hintsSlice";
 import playerReducer from "./features/player/playerSlice";
 import roomReducer from "./features/room/roomSlice";
-import timeoutReducer from "./features/timeout/timeoutSlice";
 
 const store = configureStore({
   reducer: {
@@ -11,7 +11,7 @@ const store = configureStore({
     playerManager: playerReducer,
     gameStateManager: gameStateReducer,
     hintsManager: hintsReducer,
-    timeoutNotifier: timeoutReducer,
+    disconnectNotifier: disconnectReducer,
   },
 });
 

@@ -5,10 +5,10 @@ import { Flip } from "gsap/Flip";
 import TextPlugin from "gsap/TextPlugin";
 import { useEffect } from "react";
 import { Provider, useDispatch } from "react-redux";
+import DisconnectModal from "./features/disconnect/DisconnectModal";
 import { setShowHints } from "./features/hints/hintsSlice";
 import ReconnectProvider from "./features/reconnect/ReconnectProvider";
 import Routing from "./features/routing/Routing";
-import TimeoutModal from "./features/timeout/TimeoutModal";
 import store from "./store";
 
 gsap.registerPlugin(useGSAP, Flip, TextPlugin, Draggable);
@@ -27,7 +27,7 @@ const App = () => {
     <Provider store={store}>
       <Routing>
         <ReconnectProvider>
-          <TimeoutModal />
+          <DisconnectModal />
           <AppInit />
         </ReconnectProvider>
       </Routing>
