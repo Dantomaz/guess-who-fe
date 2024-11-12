@@ -10,15 +10,26 @@ const ReconnectProvider = ({ children }) => {
   const { reenterRoom } = useStateUpdateHandler();
 
   useEffect(() => {
-    reconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const canReconnect = getReconnectCookieValue();
+    canReconnect ? reconnect() : navigate("/");
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const getReconnectCookieValue = () => {
+    return !!document.cookie.split(";")[0]?.split("=")[1];
+  };
 
   const reconnect = () => {
     requestRoomReconnect()
       .then((response) => reenterRoom(response.data.room, response.data.player))
       .then(() => navigate("/room"))
-      .catch(() => navigate("/"));
+      .catch(() => {
+        deleteReconnectCookie();
+        navigate("/");
+      });
+  };
+
+  const deleteReconnectCookie = () => {
+    document.cookie = "RECONNECT=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   };
 
   return <ReconnectContext.Provider value={null}>{children}</ReconnectContext.Provider>;
