@@ -51,7 +51,7 @@ const Hints = () => {
   // Animate text change
   useGSAP(
     () => {
-      if (displayText) {
+      if (showHints && displayText) {
         gsap.fromTo(
           textRef.current,
           {
@@ -67,7 +67,7 @@ const Hints = () => {
         );
       }
     },
-    { dependencies: [displayText, hintsContext] }
+    { dependencies: [showHints, displayText, hintsContext] }
   );
 
   return createPortal(
