@@ -22,7 +22,6 @@ export const APP_GAME_RESTART = "/app/room/{roomId}/restartGame";
 export const APP_GAME_PREPARE = "/app/room/{roomId}/prepareGame";
 export const APP_VOTE_FOR_CARD = "/app/room/{roomId}/vote";
 
-export const APP_GAME_START = "/app/room/{roomId}/startGame";
 export const APP_END_TURN = "/app/room/{roomId}/endTurn";
 export const APP_TOGGLE_CARD = "/app/room/{roomId}/toggleCard";
 export const APP_GUESS_CARD = "/app/room/{roomId}/guessCard";

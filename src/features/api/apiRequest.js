@@ -5,7 +5,6 @@ import {
   APP_END_TURN,
   APP_GAME_PREPARE,
   APP_GAME_RESTART,
-  APP_GAME_START,
   APP_GUESS_CARD,
   APP_PLAYER_CHANGE_NAME,
   APP_PLAYER_CHANGE_TEAM,
@@ -14,10 +13,10 @@ import {
   APP_TOGGLE_CARD,
   APP_VOTE_FOR_CARD,
   QUEUE_ERROR,
+  TOPIC_DISCONNECT,
   TOPIC_GAME_STATE,
   TOPIC_IMAGES,
   TOPIC_PLAYERS,
-  TOPIC_DISCONNECT,
 } from "./web-socket/apiWsEndpoints";
 import { publish, subscribe, unsubscribe } from "./web-socket/stompClient";
 
@@ -49,7 +48,6 @@ export const publishGameRestart = ({ roomId }) => publish(insertVariables(APP_GA
 export const publishGamePrepare = ({ roomId, useDefaultImages }) => publish(insertVariables(APP_GAME_PREPARE, roomId), useDefaultImages);
 export const publishVoteForCard = ({ roomId, playerId, cardNumber }) => publish(insertVariables(APP_VOTE_FOR_CARD, roomId), { playerId, cardNumber });
 
-export const publishGameStart = ({ roomId }) => publish(insertVariables(APP_GAME_START, roomId));
 export const publishEndTurn = ({ roomId }) => publish(insertVariables(APP_END_TURN, roomId));
 export const publishToggleCard = ({ roomId, cardNumber, team }) => publish(insertVariables(APP_TOGGLE_CARD, roomId), { cardNumber, team });
 export const publishGuessCard = ({ roomId, cardNumber }) => publish(insertVariables(APP_GUESS_CARD, roomId), cardNumber);

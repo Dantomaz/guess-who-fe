@@ -6,17 +6,7 @@ import useTeamCard from "./useTeamCard";
 
 const TeamCard = ({ children, team, title, ...rest }) => {
   const { switchTeam } = useStateUpdateHandler();
-  const {
-    playersInTeam,
-    numberOfVoters,
-    numberOfAllPlayers,
-    displayEndVotingButton,
-    notEveryoneVoted,
-    startGame,
-    displayEndTurnButton,
-    endTurn,
-    displaySwitchTeamButton,
-  } = useTeamCard({ team });
+  const { playersInTeam, displayEndTurnButton, endTurn, displaySwitchTeamButton } = useTeamCard({ team });
 
   return (
     <div className={`${styles["card"]} ${styles[team.toLowerCase()]}`} {...rest}>
@@ -28,11 +18,6 @@ const TeamCard = ({ children, team, title, ...rest }) => {
             </div>
           ))}
       </div>
-      {displayEndVotingButton && (
-        <Button className={styles["button-end-voting"]} onClick={startGame} disabled={notEveryoneVoted}>
-          End voting ({numberOfVoters}/{numberOfAllPlayers})
-        </Button>
-      )}
       {displayEndTurnButton && <Button onClick={endTurn}>End turn</Button>}
       {displaySwitchTeamButton && <Button onClick={() => switchTeam(team)}>Join team</Button>}
     </div>
