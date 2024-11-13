@@ -14,12 +14,12 @@ export const disconnect = createSlice({
     setDisconnectInfo: (state, action) => {
       state.info = action.payload;
     },
-    clearDisconnectInfo: (state) => {
-      state.info = initialState;
+    clearDisconnected: (state) => {
+      state.info.disconnected = initialState.disconnected;
     },
   },
 });
 
-export const { setDisconnectInfo, clearDisconnectInfo } = disconnect.actions;
+export const { setDisconnectInfo, clearDisconnected } = disconnect.actions;
 
 export default disconnect.reducer;

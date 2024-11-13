@@ -5,6 +5,7 @@ import { useBoolean } from "usehooks-ts";
 const useDragAndDrop = () => {
   const [files, setFiles] = useState();
   const { value: isLoading, setTrue: showLoading, setFalse: hideLoading } = useBoolean(false);
+  const [feedback, setFeedback] = useState({ display: false, message: null });
   const fileTypes = ["PNG", "JPG", "JPEG"];
   const MIN_FILES = 12;
   const MAX_FILES = 24;
@@ -16,7 +17,10 @@ const useDragAndDrop = () => {
       return;
     }
 
-    if (uploaded.length < 1 || uploaded.length > MAX_FILES || uploaded.length < MIN_FILES) {
+    const numberOfImages = uploaded.length;
+
+    if (numberOfImages < MIN_FILES || numberOfImages > MAX_FILES) {
+      setFeedbackMessage(numberOfImages);
       return;
     }
 
@@ -25,6 +29,16 @@ const useDragAndDrop = () => {
       .then(setFiles)
       .catch((error) => {})
       .finally(hideLoading);
+  };
+
+  const setFeedbackMessage = (numberOfImages) => {
+    const message = (
+      <>
+        <p>Selected: {numberOfImages}</p>
+        <p>{numberOfImages < MIN_FILES ? `Min: ${MIN_FILES}` : `Max: ${MAX_FILES}`}</p>
+      </>
+    );
+    setFeedback({ display: true, message });
   };
 
   const compressImages = (images) => {
@@ -43,11 +57,13 @@ const useDragAndDrop = () => {
 
   const abortCompression = () => {
     if (isLoading) {
-      controller.current.abort("Image uploading has been cancelled");
+      controller.current.abort("Uploading of images has been cancelled");
     }
   };
 
-  return { fileTypes, onFilesChange, abortCompression, files, MAX_FILES, isLoading };
+  const clearFeedback = () => setFeedback((prev) => ({ display: false, message: prev.message }));
+
+  return { fileTypes, onFilesChange, abortCompression, files, MAX_FILES, isLoading, feedback, clearFeedback };
 };
 
 export default useDragAndDrop;
