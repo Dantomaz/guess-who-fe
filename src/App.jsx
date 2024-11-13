@@ -20,6 +20,15 @@ const AppInit = () => {
     const showHintsBoolean = JSON.parse(localStorage.getItem("showHints"));
     dispatch(setShowHints(showHintsBoolean));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (process.env.NODE_ENV === "production") {
+    console.log = () => {};
+    console.debug = () => {};
+    console.trace = () => {};
+    console.info = () => {};
+    console.warn = () => {};
+    console.error = () => {};
+  }
 };
 
 const App = () => {
