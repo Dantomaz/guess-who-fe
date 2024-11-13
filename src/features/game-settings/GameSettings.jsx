@@ -13,6 +13,8 @@ const GameSettings = () => {
     imagesUploaded,
     uploadImages,
     isStartButtonDisabled,
+    numberOfAllPlayers,
+    numberOfPlayersInTeam,
     prepareGame,
     useDefaultImages,
     onSetDefaultImages,
@@ -44,7 +46,7 @@ const GameSettings = () => {
             </div>
           </div>
           <Button onClick={prepareGame} disabled={isStartButtonDisabled}>
-            Start game
+            Start game ({numberOfPlayersInTeam}/{numberOfAllPlayers})
           </Button>
         </>
       )}

@@ -11,12 +11,14 @@ const useGameSettings = () => {
   const { value: useDefaultImages, setTrue: setDefaultImages, setFalse: setCustomImages } = useBoolean(true);
 
   const imagesUploaded = images && images.length > 0;
+  const playerList = Object.values(room.players);
+  const isStartButtonDisabled = !arePlayersReadyToStart(playerList);
+  const numberOfAllPlayers = playerList.length;
+  const numberOfPlayersInTeam = playerList.filter((player) => player.team === "RED" || player.team === "BLUE").length;
 
-  const arePlayersReadyToStart = (players) => {
-    const playerList = Object.values(players);
-
+  function arePlayersReadyToStart(players) {
     const isEnoughPlayers = (players) => {
-      return Object.values(players).length > 1;
+      return players.length > 1;
     };
 
     const bothTeamsHaveAtLeastOnePlayer = (players) => {
@@ -26,13 +28,11 @@ const useGameSettings = () => {
     };
 
     const everyPlayerChoseTeam = (players) => {
-      return Object.values(players).every((player) => player.team !== "NONE");
+      return players.every((player) => player.team !== "NONE");
     };
 
-    return isEnoughPlayers(playerList) && bothTeamsHaveAtLeastOnePlayer(playerList) && everyPlayerChoseTeam(playerList);
-  };
-
-  const isStartButtonDisabled = !arePlayersReadyToStart(room.players);
+    return isEnoughPlayers(players) && bothTeamsHaveAtLeastOnePlayer(players) && everyPlayerChoseTeam(players);
+  }
 
   const uploadImages = (images) => {
     const formData = new FormData();
@@ -72,6 +72,8 @@ const useGameSettings = () => {
     imagesUploaded,
     uploadImages,
     isStartButtonDisabled,
+    numberOfAllPlayers,
+    numberOfPlayersInTeam,
     prepareGame,
     useDefaultImages,
     onSetDefaultImages,
