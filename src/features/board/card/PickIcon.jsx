@@ -4,7 +4,7 @@ import styles from "./PickIcon.module.scss";
 
 const PickIcon = ({ onClick, disable }) => {
   return (
-    <Button overrideClasses className={styles["pick-icon"]} onClick={onClick} disable={disable}>
+    <Button overrideClasses className={styles["pick-icon"]} onClick={onClick} disabled={disable}>
       <BsHandIndexThumb />
     </Button>
   );
