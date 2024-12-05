@@ -54,7 +54,7 @@ const Card = ({ number, imageUrl }) => {
 
   return (
     <>
-      <div ref={cardRef} className={`${styles["card"]} ${styles[highlightStyle]}`} onClick={handleClick} onContextMenu={preventDefaultAction}>
+      <div ref={cardRef} className={styles["card"]} onClick={handleClick} onContextMenu={preventDefaultAction}>
         <div
           className={`${styles["card-shutter"]} ${isCardClosed ? styles["card-shutter-closed"] : styles["card-shutter-opened"]} ${
             isPeeking && styles["card-shutter-peek"]
@@ -63,7 +63,7 @@ const Card = ({ number, imageUrl }) => {
           onMouseUp={stopPeeking}
           onMouseLeave={stopPeeking}
         ></div>
-        <div className={styles["card-title-container"]}>
+        <div className={`${styles["card-title-container"]} ${styles[highlightStyle]}`}>
           <div className={styles["card-number"]}>{number}</div>
           {isPickIconVisible && <PickIcon onClick={guessCard} disable={isCardClosed} />}
         </div>

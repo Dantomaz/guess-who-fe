@@ -8,6 +8,7 @@ const useRoom = () => {
 
   const displaySettings = gameState.gameStatus === "NEW" && host;
   const displayBoard = gameState.gameStatus !== "NEW";
+  const displayChosenCard = !!gameState.pickedCardNumber;
 
   const resolveHintsContext = () => {
     switch (gameState.gameStatus) {
@@ -28,7 +29,7 @@ const useRoom = () => {
         break;
     }
   };
-  return { gameStatus: gameState.status, displaySettings, displayBoard, resolveHintsContext };
+  return { gameStatus: gameState.status, displaySettings, displayBoard, displayChosenCard, resolveHintsContext };
 };
 
 export default useRoom;

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Board from "../board/Board";
+import PickedCard from "../board/card/picked-card/PickedCard";
 import Dashboard from "../dashboard/Dashboard";
 import GameSettings from "../game-settings/GameSettings";
 import Hints from "../hints/Hints";
@@ -9,7 +10,7 @@ import styles from "./Room.module.scss";
 import useRoom from "./useRoom";
 
 const Room = () => {
-  const { gameStatus, displaySettings, displayBoard, resolveHintsContext } = useRoom();
+  const { gameStatus, displaySettings, displayBoard, displayChosenCard, resolveHintsContext } = useRoom();
 
   useEffect(() => {
     resolveHintsContext();
@@ -19,13 +20,14 @@ const Room = () => {
     <div>
       <Dashboard />
       <Notifier />
-      <Hints />
       <div className={styles["container"]}>
         <TeamCard team="RED" />
         {displaySettings && <GameSettings />}
         {displayBoard && <Board />}
         <TeamCard team="BLUE" />
       </div>
+      <PickedCard show={displayChosenCard} />
+      <Hints />
     </div>
   );
 };

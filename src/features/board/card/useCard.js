@@ -36,13 +36,15 @@ const useCard = ({ number }) => {
   };
 
   const isCardHighlighted = (team) => {
-    const cardPickedMatchesTeam = player.team === team ? number === gameState.pickedCardNumber : number === gameState.pickedOpponentsCardNumber;
-    return gameState.gameStatus === "FINISHED" && cardPickedMatchesTeam;
+    const isCardChosen = number === gameState.pickedCardNumber;
+    const isCardChosenByOpponent = number === gameState.pickedOpponentsCardNumber;
+    const cardPickedMatchesTeam = player.team === team ? isCardChosen : isCardChosenByOpponent;
+    return cardPickedMatchesTeam && gameState.gameStatus === "FINISHED";
   };
 
   const card = gameState.cards[number - 1];
   const isCardClosed = card.closedLocked || card.closed;
-  const isPickIconVisible = gameState.gameStatus === "IN_PROGRESS" && gameState.currentTurn === player.team;
+  const isPickIconVisible = !card.closedLocked && gameState.gameStatus === "IN_PROGRESS" && gameState.currentTurn === player.team;
   const isHighlightedBlue = isCardHighlighted("BLUE");
   const isHighlightedRed = isCardHighlighted("RED");
   const isHighlightedBoth = isHighlightedBlue && isHighlightedRed;
