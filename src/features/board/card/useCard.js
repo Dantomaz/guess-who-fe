@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useBoolean } from "usehooks-ts";
 import { listVotersByCardNumbers, preventDefaultAction } from "../../../global/utils";
 import { publishGuessCard, publishToggleCard, publishVoteForCard } from "../../api/apiRequest";
-import { hintsContextDefault, hintsContextPreview } from "../../hints/hintsSlice";
+import { hintsContextPreview } from "../../hints/hintsSlice";
+import useRoom from "../../room/useRoom";
 
 const useCard = ({ number }) => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ const useCard = ({ number }) => {
   const [voters, setVoters] = useState();
   const [isImagePreviewShown, setImagePreviewShown] = useState(false);
   const { value: isPeeking, setTrue: startPeeking, setFalse: stopPeeking } = useBoolean();
+  const { resolveHintsContext } = useRoom();
 
   const showImagePreview = () => {
     dispatch(hintsContextPreview());
@@ -20,7 +22,7 @@ const useCard = ({ number }) => {
   };
 
   const hideImagePreview = () => {
-    dispatch(hintsContextDefault());
+    resolveHintsContext();
     setImagePreviewShown(false);
   };
 
