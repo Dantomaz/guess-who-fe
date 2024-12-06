@@ -9,9 +9,10 @@ import useDragAndDrop from "./useDragAndDrop";
 
 const DragAndDrop = ({ uploadFiles, onCancel }) => {
   const images = useSelector((state) => state.roomManager.room?.images);
-  const { fileTypes, onFilesChange, abortCompression, files, MAX_FILES, isLoading, feedback, clearFeedback } = useDragAndDrop();
+  const { fileTypes, onFilesChange, abortCompression, filesForUpload, filesForDisplay, MAX_FILES, isLoading, feedback, clearFeedback } =
+    useDragAndDrop();
 
-  const imagesToPreview = files ? files.map(URL.createObjectURL) : images;
+  const imagesToPreview = filesForDisplay || images;
   const imageCounter = imagesToPreview?.length || 0;
 
   const handleCancel = () => {
@@ -36,7 +37,7 @@ const DragAndDrop = ({ uploadFiles, onCancel }) => {
       <div className={styles["footer"]}>
         {<Button onClick={handleCancel}>Cancel</Button>}
         {
-          <Button onClick={() => uploadFiles(files)} disabled={!files}>
+          <Button onClick={() => uploadFiles(filesForUpload)} disabled={!filesForUpload}>
             Save
           </Button>
         }
