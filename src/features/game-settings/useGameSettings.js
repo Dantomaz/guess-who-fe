@@ -27,11 +27,11 @@ const useGameSettings = () => {
       return bluePresent && redPresent;
     };
 
-    const everyPlayerChoseTeam = (players) => {
+    const everyPlayerSelectedTeam = (players) => {
       return players.every((player) => player.team !== "NONE");
     };
 
-    return isEnoughPlayers(players) && bothTeamsHaveAtLeastOnePlayer(players) && everyPlayerChoseTeam(players);
+    return isEnoughPlayers(players) && bothTeamsHaveAtLeastOnePlayer(players) && everyPlayerSelectedTeam(players);
   }
 
   const uploadImages = (images) => {
