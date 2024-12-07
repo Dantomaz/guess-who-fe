@@ -18,7 +18,7 @@ const DragAndDropPreview = ({ images, isLoading }) => {
   const renderImagesGrid = () => {
     return (
       <div className={`${styles["drop-area"]}`} style={getGridTemplateColumnsNumber(images.length)}>
-        {images && images.map((uri, index) => <img src={uri} key={index} alt={index} draggable={false} className={styles["image"]} />)}
+        {images && images.map((imageUrl, index) => <img src={imageUrl} key={index} alt={index} draggable={false} className={styles["image"]} />)}
       </div>
     );
   };

@@ -3,8 +3,7 @@ import { useRef, useState } from "react";
 import { useBoolean } from "usehooks-ts";
 
 const useDragAndDrop = () => {
-  const [filesForUpload, setFilesForUpload] = useState();
-  const [filesForDisplay, setFilesForDisplay] = useState();
+  const [files, setFiles] = useState();
   const { value: isLoading, setTrue: showLoading, setFalse: hideLoading } = useBoolean(false);
   const [feedback, setFeedback] = useState({ display: false, message: null });
   const fileTypes = ["PNG", "JPG", "JPEG"];
@@ -27,12 +26,7 @@ const useDragAndDrop = () => {
 
     showLoading();
     compressImages(uploaded)
-      .then((files) => {
-        setFilesForUpload(files);
-        return files;
-      })
-      .then(convertFilesToBase64)
-      .then(setFilesForDisplay)
+      .then(setFiles)
       .catch((error) => {})
       .finally(hideLoading);
   };
@@ -61,18 +55,6 @@ const useDragAndDrop = () => {
     return Promise.all(images.map((image) => imageCompression(image, compressionOptions)));
   };
 
-  const convertFilesToBase64 = (files) => {
-    return Promise.all(files.map(convertToBase64));
-  };
-
-  const convertToBase64 = (file) => {
-    return new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-    });
-  };
-
   const abortCompression = () => {
     if (isLoading) {
       controller.current.abort("Uploading of images has been cancelled");
@@ -81,7 +63,7 @@ const useDragAndDrop = () => {
 
   const clearFeedback = () => setFeedback((prev) => ({ display: false, message: prev.message }));
 
-  return { fileTypes, onFilesChange, abortCompression, filesForUpload, filesForDisplay, MAX_FILES, isLoading, feedback, clearFeedback };
+  return { fileTypes, onFilesChange, abortCompression, files, MAX_FILES, isLoading, feedback, clearFeedback };
 };
 
 export default useDragAndDrop;

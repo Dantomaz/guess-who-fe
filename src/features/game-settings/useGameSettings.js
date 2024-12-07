@@ -36,7 +36,7 @@ const useGameSettings = () => {
 
   const uploadImages = (images) => {
     const formData = new FormData();
-    images.forEach((image) => formData.append("images", image, image.name));
+    images.forEach((image) => formData.append("images", image));
 
     requestImagesUpload({ roomId: room.id, formData })
       .then((response) => dispatch(setImages(response.data)))
