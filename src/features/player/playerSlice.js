@@ -14,9 +14,11 @@ export const playerSlice = createSlice({
   initialState,
   reducers: {
     setPlayer: (state, action) => {
+      console.log("setPlayer dispatched: ", action.payload);
       state.player = action.payload;
     },
     resetPlayer: (state) => {
+      console.log("resetPlayer dispatched: ");
       state.player = initialState.player;
     },
   },

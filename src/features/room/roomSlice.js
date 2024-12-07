@@ -20,6 +20,7 @@ export const roomSlice = createSlice({
       state.room = initialState.room;
     },
     setPlayers: (state, action) => {
+      console.log("setPlayers dispatched:", action.payload);
       state.room.players = action.payload;
     },
     setImages: (state, action) => {
