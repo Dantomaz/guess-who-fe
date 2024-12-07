@@ -54,21 +54,11 @@ const useStateUpdateHandler = () => {
   };
 
   const updateGameState = (gameState) => {
-    if (gameState.cards) {
-      // Convert Map to Array - array looks exactly like the map and order of the items is preserved, allowing the use of array .map() function
-      // This is because Map keys are indices starting from 0, exactly like in the array
-      gameState.cards = Object.values(gameState.cards);
-    }
     dispatch(setGameState(gameState));
   };
 
   const updateImages = (images) => {
-    if (images) {
-      // Convert Map to Array - array looks exactly like the map and order of the items is preserved, allowing the use of array .map() function.
-      // This is because Map keys are indices starting from 0, exactly like in the array.
-      const imagesBase64 = Object.values(images).map((imageUri) => `data:image/jpg;base64,${imageUri}`);
-      dispatch(setImages(imagesBase64));
-    }
+    dispatch(setImages(images));
   };
 
   const subscribeToRoomActivity = (roomId, playerId) => {
