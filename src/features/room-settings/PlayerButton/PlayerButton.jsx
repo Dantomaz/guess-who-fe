@@ -30,7 +30,7 @@ const PlayerButton = ({ player }) => {
         onClick={handleOpenOptions}
       >
         {player.name}
-        {player.host && <BiSolidCrown fontSize={"1.5vh"} className={styles["crown-icon"]} />}
+        {player.host && <BiSolidCrown />}
         <PlayerOptions player={player} show={areOptionsOpened} onClickOutsideCallback={closeOptions} />
       </Button>
     </div>

@@ -25,13 +25,13 @@ const Dashboard = () => {
       <div className={styles["dashboard-bar"]}>
         <div className="flex">
           <Button ref={leftPanelRef} onClick={showLeftPanel}>
-            Players {<MdSupervisorAccount fontSize={"2.6vh"} style={{ marginRight: "0.2vw" }} />} {Object.values(room.players).length}
+            Players {<MdSupervisorAccount className={styles["icon"]} style={{ marginRight: "0.2vw" }} />} {Object.values(room.players).length}
           </Button>
         </div>
         <div className={styles["button-group"]}>
           <Button onClick={() => toggleHints(!showHints)}>{`${showHints ? "Hide" : "Show"} hints`}</Button>
           <Button ref={rightPanelRef} onClick={showRightPanel}>
-            {player?.name} {<MdManageAccounts fontSize={"2.2vh"} />}
+            {player?.name} {<MdManageAccounts className={styles["icon"]} />}
           </Button>
         </div>
       </div>

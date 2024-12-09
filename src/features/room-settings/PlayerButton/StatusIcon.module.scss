@@ -1,8 +1,8 @@
 @import "../../../global/styles/variables.scss";
 
 .circle {
-  width: 1.5vh;
-  height: 1.5vh;
+  width: $font-size-medium-small;
+  height: $font-size-medium-small;
   border-radius: 50%;
 }
 
