@@ -2,11 +2,11 @@
 
 .container {
   position: absolute;
-  left: 120%;
-  top: -10%;
+  left: calc(100% + 1vw);
+  top: -1vh;
   width: auto;
   height: auto;
-  padding: 0.5vw;
+  padding: 0.6vw;
   gap: 0.5vw;
   z-index: 1100;
   display: flex;
@@ -17,7 +17,7 @@
 
   Button {
     white-space: nowrap;
-    font-size: $font-size-medium-small;
+    font-size: $font-size-medium;
     padding: 0.8vh 0.8vw;
     border-radius: 0.7rem;
   }
@@ -34,12 +34,12 @@
 .container:before {
   content: "";
   position: absolute;
-  left: -5%;
+  left: -0.5vw;
   right: 0;
   width: 0;
   height: 0;
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
+  border-top: $font-size-medium-small solid transparent;
+  border-bottom: $font-size-medium-small solid transparent;
   border-left: 0 solid transparent;
-  border-right: 15px solid $color-background;
+  border-right: $font-size-medium-small solid $color-background;
 }

@@ -6,6 +6,7 @@ const initialState = {
     nickname: null,
     host: false,
     team: null,
+    connected: false,
   },
 };
 

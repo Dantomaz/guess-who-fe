@@ -1,0 +1,15 @@
+@import "../../../global/styles/variables.scss";
+
+.circle {
+  width: 1.5vh;
+  height: 1.5vh;
+  border-radius: 50%;
+}
+
+.connected {
+  background-color: $color-status-green;
+}
+
+.disconnected {
+  background-color: $color-status-gray;
+}

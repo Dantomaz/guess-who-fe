@@ -1,12 +1,14 @@
 @import "../../../global/styles/variables.scss";
 
 .container {
-  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
-.player-button {
+.player-name {
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
   padding: 0.5vh 0.5vw;
   text-align: center;
@@ -20,12 +22,12 @@
 
   & > svg {
     position: absolute;
-    right: -10%;
+    right: -20%;
     font-size: 1.8vh;
   }
 }
 
-.player-button-interactible:hover {
+.player-name-interactible:hover {
   cursor: pointer;
   border-color: $color-primary-2;
 }

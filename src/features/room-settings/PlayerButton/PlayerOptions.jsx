@@ -57,7 +57,7 @@ const PlayerOptions = ({ player, show, onClickOutsideCallback }) => {
   return (
     <Transition nodeRef={containerRef} in={show} timeout={EXIT_ANIMATION_DURATION_IN_SEC * 1000} mountOnEnter unmountOnExit onExit={handleExit}>
       <div ref={containerRef} className={styles["container"]}>
-        <Button onClick={() => makeHost(player.id)}>Make host</Button>
+        {player.connected && <Button onClick={() => makeHost(player.id)}>Make host</Button>}
         <Button className={styles["button-danger"]} onClick={() => kickPlayer(player.id)}>
           Kick
         </Button>
