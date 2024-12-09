@@ -8,7 +8,7 @@ import {
   subscribeTopicPlayers,
   unsubscribeTopicGameState,
 } from "../api/apiRequest";
-import { unsubscribeAll } from "../api/web-socket/stompClient";
+import { connect, disconnect, unsubscribeAll } from "../api/web-socket/stompClient";
 import { setDisconnectInfo } from "../disconnect/disconnectSlice";
 import { resetGameState, setGameState } from "../game-state/gameStateSlice";
 import { resetPlayer, setPlayer } from "../player/playerSlice";
@@ -21,11 +21,13 @@ const useStateUpdateHandler = () => {
   const player = useSelector((state) => state.playerManager.player);
 
   const enterRoom = (room) => {
+    connect();
     resetState();
     updateRoomState(room, room.players[player.id]);
   };
 
   const reenterRoom = (room, player) => {
+    connect();
     resetState();
     updateRoomState(room, player);
     if (player.team && player.team !== "NONE") {
@@ -79,6 +81,7 @@ const useStateUpdateHandler = () => {
   };
 
   const leaveRoom = () => {
+    disconnect();
     resetState();
     navigate("/", { replace: true });
   };

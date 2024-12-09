@@ -39,7 +39,14 @@ const client = new Client({
   onWebSocketClose: onWebSocketClose,
 });
 
-client.activate();
+export const connect = () => {
+  if (client.connected) {
+    console.error(`Client already disconnected`);
+    return;
+  }
+
+  client.activate();
+};
 
 export const disconnect = () => {
   if (!client.connected) {
