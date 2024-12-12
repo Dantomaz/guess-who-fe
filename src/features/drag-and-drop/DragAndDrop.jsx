@@ -36,7 +36,7 @@ const DragAndDrop = ({ uploadFiles, onCancel }) => {
       <div className={styles["footer"]}>
         {<Button onClick={handleCancel}>Cancel</Button>}
         {
-          <Button onClick={() => uploadFiles(files)} disabled={!files}>
+          <Button onClick={() => uploadFiles(files)} enableApiLock={true} disabled={!files}>
             Save
           </Button>
         }

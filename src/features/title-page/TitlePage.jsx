@@ -35,7 +35,7 @@ const TitlePage = () => {
             showError
             style={{ width: "10vw" }}
           />
-          <Button type="submit" style={{ width: "10vw" }}>
+          <Button type="submit" enableApiLock={true} style={{ width: "10vw" }}>
             PLAY
           </Button>
         </form>

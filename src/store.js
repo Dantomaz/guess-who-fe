@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import lockReducer from "./features/api/lock/lockSlice";
 import disconnectReducer from "./features/disconnect/disconnectSlice";
 import gameStateReducer from "./features/game-state/gameStateSlice";
 import hintsReducer from "./features/hints/hintsSlice";
@@ -12,6 +13,7 @@ const store = configureStore({
     gameStateManager: gameStateReducer,
     hintsManager: hintsReducer,
     disconnectNotifier: disconnectReducer,
+    lockManager: lockReducer,
   },
 });
 

@@ -44,7 +44,7 @@ const PlayerSettings = ({ hidePanel }) => {
           </form>
         </div>
         <div className={styles["section"]}>
-          <Button onClick={onLeave} style={{ width: "10vw" }}>
+          <Button onClick={onLeave} enableApiLock={true} style={{ width: "10vw" }}>
             Leave the room
           </Button>
         </div>

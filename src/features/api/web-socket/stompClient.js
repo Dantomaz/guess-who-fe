@@ -1,5 +1,6 @@
 import { Client } from "@stomp/stompjs";
 import { parsePossibleJSONFromString } from "../../../global/utils";
+import store from "../../../store";
 import { subscribeQueueError } from "../apiRequest";
 
 const subscriptions = {};
@@ -74,6 +75,10 @@ export const subscribe = (destination, callback) => {
 };
 
 export const publish = (destination, body) => {
+  if (store.getState().lockManager.isApiRequestPending) {
+    return Promise.reject("Another request is pending");
+  }
+
   if (!client.connected) {
     console.error(`Cannot publish to ${destination} - no connection established.`);
     return;

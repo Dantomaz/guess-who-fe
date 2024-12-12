@@ -30,7 +30,7 @@ const RoomJoiningPage = () => {
             formError={errorOnJoin}
             showError
           />
-          <Button type="submit" style={{ width: "11vw" }}>
+          <Button type="submit" enableApiLock={true} style={{ width: "11vw" }}>
             JOIN
           </Button>
         </form>
@@ -38,7 +38,7 @@ const RoomJoiningPage = () => {
       <section className={`${styles["card"]} ${styles["card-create"]}`}>
         <div className={styles["form-create"]}>
           <span className={styles.text}>or create your own!</span>
-          <Button type="submit" onClick={onCreate} style={{ width: "11vw" }}>
+          <Button type="submit" enableApiLock={true} onClick={onCreate} style={{ width: "11vw" }}>
             CREATE
           </Button>
         </div>
