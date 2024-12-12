@@ -51,7 +51,7 @@ export const requestRoomJoin = ({ roomId, player }) => axiosPost(insertVariables
 
 export const requestRoomLeave = ({ roomId, playerId }) => axiosDelete(insertVariables(ROOM_LEAVE, roomId, playerId));
 
-export const requestRoomReconnect = () => axiosPost(ROOM_RECONNECT);
+export const requestRoomReconnect = ({ roomId, playerId }) => axiosPost(insertVariables(ROOM_RECONNECT, roomId, playerId));
 
 // ===== images ===== /
 

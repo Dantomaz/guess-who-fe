@@ -15,9 +15,11 @@ export const roomSlice = createSlice({
     setRoom: (state, action) => {
       console.log("setRoom dispatched:", action.payload);
       state.room = action.payload;
+      localStorage.setItem("roomId", state.room.id);
     },
     resetRoom: (state) => {
       state.room = initialState.room;
+      localStorage.removeItem("roomId");
     },
     setPlayers: (state, action) => {
       console.log("setPlayers dispatched:", action.payload);

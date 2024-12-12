@@ -10,26 +10,26 @@ const ReconnectProvider = ({ children }) => {
   const { reenterRoom } = useStateUpdateHandler();
 
   useEffect(() => {
-    const canReconnect = getReconnectCookieValue();
-    canReconnect ? reconnect() : navigate("/");
+    reconnect();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const getReconnectCookieValue = () => {
-    return !!document.cookie.split(";")[0]?.split("=")[1];
-  };
-
   const reconnect = () => {
-    requestRoomReconnect()
+    const roomId = localStorage.getItem("roomId");
+    const playerId = localStorage.getItem("playerId");
+
+    if (!roomId || !playerId) {
+      navigate("/");
+      return;
+    }
+
+    requestRoomReconnect({ roomId, playerId })
       .then((response) => reenterRoom(response.data.room, response.data.player))
       .then(() => navigate("/room"))
       .catch(() => {
-        deleteReconnectCookie();
+        localStorage.removeItem("roomId");
+        localStorage.removeItem("playerId");
         navigate("/");
       });
-  };
-
-  const deleteReconnectCookie = () => {
-    document.cookie = "RECONNECT=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   };
 
   return <ReconnectContext.Provider value={null}>{children}</ReconnectContext.Provider>;
