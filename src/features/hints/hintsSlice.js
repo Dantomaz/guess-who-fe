@@ -11,6 +11,7 @@ export const hintsSlice = createSlice({
   reducers: {
     setShowHints: (state, action) => {
       state.showHints = action.payload;
+      localStorage.setItem("showHints", state.showHints);
     },
     hintsContextNew: (state) => {
       state.context = "new";

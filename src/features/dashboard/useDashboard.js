@@ -6,7 +6,6 @@ function useDashboard() {
 
   const toggleHints = (value) => {
     dispatch(setShowHints(value));
-    localStorage.setItem("showHints", value);
   };
 
   return { toggleHints };
