@@ -32,6 +32,14 @@ const useCard = ({ number }) => {
   }, [gameState.playersVotes, room.players, number]);
 
   const voteForCard = () => {
+    const playerVoteDidNotChange = () => {
+      return gameState.playersVotes[player.id] === number;
+    };
+
+    if (playerVoteDidNotChange()) {
+      return;
+    }
+
     publishVoteForCard({ roomId: room.id, playerId: player.id, cardNumber: number });
   };
 
