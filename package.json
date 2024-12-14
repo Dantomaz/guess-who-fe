@@ -1,6 +1,6 @@
 {
   "name": "guess-who-fe",
-  "version": "0.1.0",
+  "version": "0.2",
   "private": true,
   "dependencies": {
     "@gsap/react": "^2.1.1",
