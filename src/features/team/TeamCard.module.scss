@@ -11,15 +11,14 @@
   background-color: $color-background;
   border-radius: 1rem;
   box-shadow: $box-shadow-card;
-  opacity: 0.9;
 }
 
 .red {
-  background-image: linear-gradient(100deg, $color-team-red-primary, $color-team-red-secondary);
+  background: $color-team-red;
 }
 
 .blue {
-  background-image: linear-gradient(100deg, $color-team-blue-primary, $color-team-blue-secondary);
+  background: $color-team-blue;
 }
 
 .players {

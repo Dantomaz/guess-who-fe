@@ -10,7 +10,7 @@
   padding: 0;
   margin: 0;
   border-radius: 0.5rem;
-  background-image: linear-gradient(100deg, $color-primary-1, $color-secondary-3);
+  background-image: linear-gradient(100deg, $color-primary-3, $color-secondary-3);
   overflow: hidden;
 }
 
@@ -18,7 +18,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(100deg, $color-primary-1, $color-secondary-3);
+  background-image: linear-gradient(100deg, $color-primary-3, $color-secondary-3);
   border-radius: 0.5rem;
   opacity: 1;
   z-index: 100;
@@ -63,21 +63,15 @@
 
 .highlighted-blue {
   color: $font-color-light;
-  background-image: linear-gradient(to right, $color-team-blue-primary, $color-team-blue-secondary);
+  background: $color-team-blue;
 }
 
 .highlighted-red {
   color: $font-color-light;
-  background-image: linear-gradient(to right, $color-team-red-primary, $color-team-red-secondary);
+  background: $color-team-red;
 }
 
 .highlighted-both {
   color: $font-color-light;
-  background-image: linear-gradient(
-    to right,
-    $color-team-blue-primary,
-    $color-team-blue-secondary 49%,
-    $color-team-red-primary 51%,
-    $color-team-red-secondary
-  );
+  background-image: linear-gradient(to right, $color-team-blue 49%, $color-team-red 51%);
 }

@@ -24,25 +24,25 @@
 }
 
 .red {
-  background-color: rgba($color-team-red-primary, 0.9);
+  background: $color-team-red;
 
   &:hover:not(.button-disabled) {
-    background-color: $color-team-red-secondary;
+    background: rgba($color-team-red, 0.9);
   }
 }
 
 .blue {
-  background-color: rgba($color-team-blue-primary, 0.9);
+  background: $color-team-blue;
 
   &:hover:not(.button-disabled) {
-    background-color: $color-team-blue-secondary;
+    background: rgba($color-team-blue, 0.9);
   }
 }
 
 .none {
-  background-color: $color-primary-2;
+  background: $color-primary-2;
 
   &:hover:not(.button-disabled) {
-    background-color: rgba($color-secondary-2, 0.9);
+    background: rgba($color-secondary-2, 0.9);
   }
 }

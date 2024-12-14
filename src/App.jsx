@@ -5,6 +5,7 @@ import { Flip } from "gsap/Flip";
 import TextPlugin from "gsap/TextPlugin";
 import { useEffect } from "react";
 import { Provider, useDispatch } from "react-redux";
+import styles from "./App.module.scss";
 import DisconnectModal from "./features/disconnect/DisconnectModal";
 import { setShowHints } from "./features/hints/hintsSlice";
 import ReconnectProvider from "./features/reconnect/ReconnectProvider";
@@ -33,14 +34,18 @@ const AppInit = () => {
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <Routing>
-        <ReconnectProvider>
-          <DisconnectModal />
-          <AppInit />
-        </ReconnectProvider>
-      </Routing>
-    </Provider>
+    <>
+      <div className={styles["background"]}></div>
+      <div className={styles["background-image"]}></div>
+      <Provider store={store}>
+        <Routing>
+          <ReconnectProvider>
+            <DisconnectModal />
+            <AppInit />
+          </ReconnectProvider>
+        </Routing>
+      </Provider>
+    </>
   );
 };
 

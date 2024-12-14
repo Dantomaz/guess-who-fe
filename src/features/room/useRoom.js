@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { hintsContextFinished, hintsContextInProgress, hintsContextNew, hintsContextVoting } from "../hints/hintsSlice";
+import variables from "./../../global/styles/variables.scss";
 
 const useRoom = () => {
   const dispatch = useDispatch();
@@ -9,6 +11,21 @@ const useRoom = () => {
   const displaySettings = gameState.gameStatus === "NEW" && host;
   const displayBoard = gameState.gameStatus !== "NEW";
   const displayChosenCard = !!gameState.pickedCardNumber;
+
+  useEffect(() => {
+    const getBackground = () => {
+      switch (gameState.currentTurn) {
+        case "RED":
+          return variables["background-red"];
+        case "BLUE":
+          return variables["background-blue"];
+        default:
+          return variables["background-default"];
+      }
+    };
+
+    document.body.style.background = getBackground();
+  }, [gameState.gameStatus, gameState.currentTurn]);
 
   const resolveHintsContext = () => {
     switch (gameState.gameStatus) {
@@ -29,6 +46,7 @@ const useRoom = () => {
         break;
     }
   };
+
   return { gameStatus: gameState.status, displaySettings, displayBoard, displayChosenCard, resolveHintsContext };
 };
 
