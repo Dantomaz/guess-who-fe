@@ -2,8 +2,10 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const useNotifier = () => {
+  const { t } = useTranslation();
   const player = useSelector((state) => state.playerManager.player);
   const gameState = useSelector((state) => state.gameStateManager.gameState);
   const textRef = useRef();
@@ -13,23 +15,23 @@ const useNotifier = () => {
 
   if (gameState.gameStatus === "NEW") {
     if (player.host) {
-      text = "Settings";
+      text = t("notifier.settings");
     } else {
-      text = "Wait for host";
+      text = t("notifier.wait");
     }
   } else if (gameState.gameStatus === "VOTING") {
-    text = "Choose the card for your team";
+    text = t("notifier.choose-card");
   } else if (gameState.gameStatus === "IN_PROGRESS") {
     if (gameState.currentTurn === player.team) {
-      text = "Ask a question or take a guess!";
+      text = t("notifier.ask-or-guess");
     } else {
-      text = "Answer your opponent's question";
+      text = t("notifier.answer");
     }
   } else if (gameState.gameStatus === "FINISHED") {
     if (gameState.winner === player.team) {
-      text = "Your team won!";
+      text = t("notifier.win");
     } else {
-      text = "Your team lost!";
+      text = t("notifier.loose");
     }
   } else {
     text = " ";

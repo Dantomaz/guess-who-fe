@@ -6,6 +6,13 @@
   grid-template-rows: 100vh;
 }
 
+.dashboard {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2vh 2vw;
+}
+
 .form-join {
   display: flex;
   flex-direction: column;

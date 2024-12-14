@@ -1,0 +1,100 @@
+{
+  "translation": {
+    "title-page.title.welcome": "Welcome to",
+    "title-page.title.name": "Guess Who?",
+    "title-page.nickname-prompt": "Please, choose a nickname:",
+    "title-page.input-field.placeholder": "Nickname",
+    "title-page.input-field.error.required": "There's nothing there...",
+    "title-page.input-field.error.empty": "Still nothing...",
+    "title-page.button.play": "PLAY",
+
+    "joining-page.card-join.title": "Join existing room",
+    "joining-page.card-join.input-field.placeholder": "Room ID",
+    "joining-page.card-join.input-field.error.required": "Room ID is required",
+    "joining-page.card-join.input-field.error.empty": "There's nothing there...",
+    "joining-page.card-join.input-field.error.wrong-format": "What the fuck, man?",
+    "joining-page.card-join.button": "JOIN",
+    "joining-page.card-create.title": "or create your own!",
+    "joining-page.card-create.button": "CREATE",
+
+    "dashboard.button.players": "Players",
+    "dashboard.button.show-hints": "Show hints",
+    "dashboard.button.hide-hints": "Hide hints",
+
+    "room-settings.code.title": "Friends can join you using this code!",
+    "room-settings.button.copy.default": "copy",
+    "room-settings.button.copy.clicked": "copied",
+    "room-settings.button.reset-game": "Reset game",
+    "room-settings.player-list.title": "Players in this room: {{count}}",
+
+    "player-settings.team-select.title": "Change your team",
+    "player-settings.team-select.title-no-team": "Join a team to play!",
+    "player-settings.button.team-select.red": "Team Red",
+    "player-settings.button.team-select.blue": "Team Blue",
+    "player-settings.button.team-select.none": "No Team",
+    "player-settings.language.title": "Choose a language:",
+    "player-settings.input-field.placeholder": "Nickname",
+    "player-settings.input-field.error.required": "There's nothing there...",
+    "player-settings.input-field.error.empty": "Still nothing...",
+    "player-settings.input-field.error.not-changed": "It's already your nickname",
+    "player-settings.input-field.error.too-long": "It's too long",
+    "player-settings.button.update-nickname": "Update nickname",
+    "player-settings.button.leave": "Leave the room",
+
+    "game-settings.checkbox.images-default": "Use default images",
+    "game-settings.checkbox.images-custom": "Use custom images (min. 12)",
+    "game-settings.button.edit": "Edit",
+    "game-settings.button.start": "Start game {{count}}/{{countTotal}}",
+
+    "game-settings.drag-and-drop.text.p1": "Images will be compressed automatically to improve performance, but compressing high quality images will take some time and CPU power. Please be patient.",
+    "game-settings.drag-and-drop.text.p2": "Consider lowering the size of your images first, before saving them if they are larger than 200KB each.",
+    "game-settings.drag-and-drop.text.p3": "Image ratio of 1:1 is the most optimal.",
+    "game-settings.drag-and-drop.drop-area.wait": "Please wait...",
+    "game-settings.drag-and-drop.drop-area.p1": "Click here",
+    "game-settings.drag-and-drop.drop-area.p2": "or drag & drop the files",
+    "game-settings.drag-and-drop.counter": "{{count}}/{{countTotal}} images",
+    "game-settings.drag-and-drop.button.cancel": "Cancel",
+    "game-settings.drag-and-drop.button.save": "Save",
+
+    "game-settings.drag-and-drop.modal-error.title": "Could not save images!",
+    "game-settings.drag-and-drop.modal-error.selected": "Selected: {{count}}",
+    "game-settings.drag-and-drop.modal-error.min": "Min: {{count}}",
+    "game-settings.drag-and-drop.modal-error.max": "Max: {{count}}",
+
+    "modal.okay": "Okay",
+    "modal.cancel": "Cancel",
+
+    "team.button.end-turn": "End turn",
+    "team.button.join-team": "Join team",
+
+    "notifier.settings": "Settings",
+    "notifier.wait": "Wait for host",
+    "notifier.choose-card": "Choose the card for your team",
+    "notifier.ask-or-guess": "Ask a question or take a guess!",
+    "notifier.answer": "Answer your opponent's question",
+    "notifier.win": "Your team won!",
+    "notifier.loose": "Your team lost!",
+
+    "hints.header": "HINTS",
+
+    "hints.new.host.p1": "<0>Start game</0> button shows how many players selected a team.",
+    "hints.new.host.p2": "<0>You</0> can start the game once everybody selects a team and both teams have at least one player!",
+    "hints.new.player": "<0>Host</0> can start the game once everybody selects a team and both teams have at least one player!",
+
+    "hints.voting.p1": "<0>Left Mouse Click</0> - vote for a card - once everyone votes, the card for each team will be chosen based on the number of votes.",
+    "hints.voting.p2": "<0>Right Mouse Click</0> - enlarge the image to take a better look.",
+
+    "hints.inProgress.p1": "<0>Left Mouse Click</0> - close/open a card for everyone in your team - keep in mind that incorrectly guessed cards can't be opened anymore.",
+    "hints.inProgress.p2": "<0>Right Mouse Click</0> (if card is opened) - preview the image to take a better look.",
+    "hints.inProgress.p3": "<0>Right Mouse Click and Hold</0> (if card is closed) - take a peek at the image - only you will see it.",
+
+    "hints.finished.p1": "<0>Game has ended!</0>",
+    "hints.finished.p2": "<0>Host</0> can now restart the game by clicking the button in <1>room info</1>.",
+    "hints.finished.p3": "<0>Room info</0> can be opened by clicking the <1>Players</1> button located in the top left corner.",
+
+    "hints.preview.p1": "<0>Mouse Scroll Up</0> - zoom in.",
+    "hints.preview.p2": "<0>Mouse Scroll Down</0> - zoom out.",
+    "hints.preview.p3": "<0>Left Mouse Click / Hold</0> - zoom in / move the image.",
+    "hints.preview.p4": "<0>Right Mouse Click</0> - reset zoom / close image preview."
+  }
+}

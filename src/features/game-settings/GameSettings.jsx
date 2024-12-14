@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import Button from "../../global/components/button/Button";
 import RadioButton from "../../global/components/radio-button/RadioButton";
 import "../../global/styles/classes.scss";
@@ -7,6 +8,7 @@ import styles from "./GameSettings.module.scss";
 import useGameSettings from "./useGameSettings";
 
 const GameSettings = () => {
+  const { t } = useTranslation();
   const {
     isDragAndDropVisible,
     showDragAndDrop,
@@ -32,21 +34,21 @@ const GameSettings = () => {
         <>
           <div className={styles["options"]}>
             <RadioButton name="default" checked={useDefaultImages} onChange={onSetDefaultImages}>
-              Use default images
+              {t("game-settings.checkbox.images-default")}
             </RadioButton>
             <div className={styles["option-wrapper"]}>
               <RadioButton name="custom" checked={!useDefaultImages} onChange={onSetCustomImages}>
-                Use custom images (min. 12)
+                {t("game-settings.checkbox.images-custom")}
               </RadioButton>
               {showCustomImagesEditButton && (
                 <Button onClick={showDragAndDrop} className={styles["option-button"]}>
-                  Edit
+                  {t("game-settings.button.edit")}
                 </Button>
               )}
             </div>
           </div>
           <Button onClick={prepareGame} disabled={isStartButtonDisabled}>
-            Start game ({numberOfPlayersInTeam}/{numberOfAllPlayers})
+            {t("game-settings.button.start", { count: numberOfPlayersInTeam, countTotal: numberOfAllPlayers })}
           </Button>
         </>
       )}

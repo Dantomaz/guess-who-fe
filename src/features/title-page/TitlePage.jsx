@@ -1,34 +1,40 @@
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import Button from "../../global/components/button/Button";
 import Input from "../../global/components/input/Input";
 import "../../global/styles/classes.scss";
 import { isStringBlank } from "../../global/utils";
+import LanguageSelect from "../player-settings/language-select/LanguageSelect";
 import styles from "./TitlePage.module.scss";
 import useTitlePage from "./useTitlePage";
 
 const TitlePage = () => {
+  const { t } = useTranslation();
   const { register, handleSubmit, formState } = useForm();
   const { onSubmit } = useTitlePage();
 
   return (
     <div className={`${styles["container"]}`}>
+      <div className={styles["dashboard"]}>
+        <LanguageSelect />
+      </div>
       <div className={styles["card"]}>
         <div className="text-center">
-          <p className={styles.text}>Welcome to</p>
-          <p className={styles.title}>Guess Who?</p>
+          <p className={styles.text}>{t("title-page.title.welcome")}</p>
+          <p className={styles.title}>{t("title-page.title.name")}</p>
           <p className={styles.text} style={{ marginTop: "3vh" }}>
-            Please, choose a nickname:
+            {t("title-page.nickname-prompt")}
           </p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
             id="nickname"
             type="text"
-            label="Nickname"
+            label={t("title-page.input-field.placeholder")}
             register={register("nickname", {
-              required: "There's nothing there...",
+              required: t("title-page.input-field.error.required"),
               validate: {
-                notBlank: (nickname) => !isStringBlank(nickname) || "Still nothing...",
+                notBlank: (nickname) => !isStringBlank(nickname) || t("title-page.input-field.error.empty"),
               },
             })}
             formState={formState}
@@ -36,7 +42,7 @@ const TitlePage = () => {
             style={{ width: "10vw" }}
           />
           <Button type="submit" enableApiLock={true} style={{ width: "10vw" }}>
-            PLAY
+            {t("title-page.button.play")}
           </Button>
         </form>
       </div>

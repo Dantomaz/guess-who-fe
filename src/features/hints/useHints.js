@@ -1,3 +1,4 @@
+import { Trans } from "react-i18next";
 import { useSelector } from "react-redux";
 
 const useHints = () => {
@@ -8,69 +9,98 @@ const useHints = () => {
     new: host ? (
       <>
         <p>
-          <span>Start game</span> button shows how many players selected a team.
+          <Trans i18nKey="hints.new.host.p1">
+            <span></span>
+          </Trans>
         </p>
         <p>
-          <span>You</span> can start the game once everybody selects a team and both teams have at least one player!
+          <Trans i18nKey="hints.new.host.p2">
+            <span></span>
+          </Trans>
         </p>
       </>
     ) : (
-      <>
-        <p>
-          <span>Host</span> can start the game once everybody selects a team and both teams have at least one player!
-        </p>
-      </>
+      <p>
+        <Trans i18nKey="hints.new.player">
+          <span></span>
+        </Trans>
+      </p>
     ),
     voting: (
       <>
         <p>
-          <span>Left Mouse Click</span> - vote for card - once everyone votes, the card for each team will be chosen based on number of votes
+          <Trans i18nKey="hints.voting.p1">
+            <span></span>
+          </Trans>
         </p>
         <p>
-          <span>Right Mouse Click</span> - preview the image to take a better look
+          <Trans i18nKey="hints.voting.p2">
+            <span></span>
+          </Trans>
         </p>
       </>
     ),
     inProgress: (
       <>
         <p>
-          <span>Left Mouse Click</span> - close/open a card for everyone in your team - keep in mind, that incorrectly guessed cards can't be opened
-          anymore
+          <Trans i18nKey="hints.inProgress.p1">
+            <span style={{ fontWeight: "bold" }}></span>
+          </Trans>
         </p>
         <p>
-          <span>Right Mouse Click</span> (if card is opened) - preview the image to take a better look
+          <Trans i18nKey="hints.inProgress.p2">
+            <span style={{ fontWeight: "bold" }}></span>
+          </Trans>
         </p>
         <p>
-          <span>Right Mouse Click and Hold</span> (if card is closed) - take a peek at the image - only you will see it
+          <Trans i18nKey="hints.inProgress.p3">
+            <span style={{ fontWeight: "bold" }}></span>
+          </Trans>
         </p>
       </>
     ),
     finished: (
       <>
         <p>
-          <span>Game has ended!</span>
+          <Trans i18nKey="hints.finished.p1">
+            <span></span>
+          </Trans>
         </p>
         <p>
-          <span>Host</span> can now restart the game by clicking the button in <span>room info</span>.
+          <Trans i18nKey="hints.finished.p2">
+            <span></span>
+            <span></span>
+          </Trans>
         </p>
         <p>
-          <span>Room info</span> can be opened by clicking the button located in the top left corner.
+          <Trans i18nKey="hints.finished.p3">
+            <span></span>
+            <span></span>
+          </Trans>
         </p>
       </>
     ),
     preview: (
       <>
         <p>
-          <span>Mouse Scroll Up</span> - zoom in
+          <Trans i18nKey="hints.preview.p1">
+            <span></span>
+          </Trans>
         </p>
         <p>
-          <span>Mouse Scroll Down</span> - zoom out
+          <Trans i18nKey="hints.preview.p2">
+            <span></span>
+          </Trans>
         </p>
         <p>
-          <span>Left Mouse Click / Hold</span> - zoom in / move the image
+          <Trans i18nKey="hints.preview.p3">
+            <span></span>
+          </Trans>
         </p>
         <p>
-          <span>Right Mouse Click</span> - reset zoom / close image preview
+          <Trans i18nKey="hints.preview.p4">
+            <span></span>
+          </Trans>
         </p>
       </>
     ),

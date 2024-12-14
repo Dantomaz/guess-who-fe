@@ -1,5 +1,6 @@
 import React from "react";
 import { FileUploader } from "react-drag-drop-files";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import Button from "../../global/components/button/Button";
 import Modal from "../../global/components/modal/Modal";
@@ -8,6 +9,7 @@ import DragAndDropPreview from "./drag-and-drop-preview/DragAndDropPreview";
 import useDragAndDrop from "./useDragAndDrop";
 
 const DragAndDrop = ({ uploadFiles, onCancel }) => {
+  const { t } = useTranslation();
   const images = useSelector((state) => state.roomManager.room?.images);
   const { fileTypes, onFilesChange, abortCompression, files, MAX_FILES, isLoading, feedback, clearFeedback } = useDragAndDrop();
 
@@ -22,26 +24,23 @@ const DragAndDrop = ({ uploadFiles, onCancel }) => {
   return (
     <>
       <div className={styles["hint"]}>
-        <p>
-          Images will be compressed automatically to improve performance, but compressing high quality images will take some time and CPU power.
-          Please be patient.
-        </p>
-        <p>Consider lowering the size of your images first, before saving them if they are larger than 200KB each.</p>
-        <p>Image ratio of 1:1 is the most optimal.</p>
+        <p>{t("game-settings.drag-and-drop.text.p1")}</p>
+        <p>{t("game-settings.drag-and-drop.text.p2")}</p>
+        <p>{t("game-settings.drag-and-drop.text.p3")}</p>
       </div>
       <FileUploader classes={styles["drop-area-container"]} multiple types={fileTypes} handleChange={onFilesChange}>
         <DragAndDropPreview images={imagesToPreview} isLoading={isLoading} />
       </FileUploader>
-      <div className={styles["counter"]}>{`${imageCounter}/${MAX_FILES} images`}</div>
+      <div className={styles["counter"]}>{t("game-settings.drag-and-drop.counter", { count: imageCounter, countTotal: MAX_FILES })}</div>
       <div className={styles["footer"]}>
-        {<Button onClick={handleCancel}>Cancel</Button>}
+        {<Button onClick={handleCancel}>{t("game-settings.drag-and-drop.button.cancel")}</Button>}
         {
           <Button onClick={() => uploadFiles(files)} enableApiLock={true} disabled={!files || isLoading}>
-            Save
+            {t("game-settings.drag-and-drop.button.save")}
           </Button>
         }
       </div>
-      <Modal show={feedback.display} header={"Could not save images!"} body={feedback.message} onOk={clearFeedback} />
+      <Modal show={feedback.display} header={t("game-settings.drag-and-drop.modal-error.title")} body={feedback.message} onOk={clearFeedback} />
     </>
   );
 };

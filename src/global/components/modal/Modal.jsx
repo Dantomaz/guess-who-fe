@@ -2,11 +2,13 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React, { useRef } from "react";
 import { createPortal } from "react-dom";
+import { useTranslation } from "react-i18next";
 import { Transition } from "react-transition-group";
 import Button from "../button/Button";
 import styles from "./Modal.module.scss";
 
 const Modal = ({ show, header, body, onOk, okText, onCancel, cancelText, style }) => {
+  const { t } = useTranslation();
   const ModalHeader = () => {
     return <div className={styles["header"]}>{header}</div>;
   };
@@ -24,12 +26,12 @@ const Modal = ({ show, header, body, onOk, okText, onCancel, cancelText, style }
       <div className={styles["footer"]} style={{ justifyContent: footerJustifyStyle }}>
         {onOk && (
           <Button onClick={onOk} style={{ width: buttonWidth }}>
-            {okText || "Okay"}
+            {okText || t("modal.okay")}
           </Button>
         )}
         {onCancel && (
           <Button onClick={onCancel} style={{ width: buttonWidth }}>
-            {cancelText || "Cancel"}
+            {cancelText || t("modal.cancel")}
           </Button>
         )}
       </div>

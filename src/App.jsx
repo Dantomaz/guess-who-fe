@@ -3,8 +3,11 @@ import { gsap } from "gsap";
 import { Draggable } from "gsap/Draggable";
 import { Flip } from "gsap/Flip";
 import TextPlugin from "gsap/TextPlugin";
+import i18next from "i18next";
 import { useEffect } from "react";
+import { I18nextProvider } from "react-i18next";
 import { Provider, useDispatch } from "react-redux";
+import "../src/translations/i18";
 import styles from "./App.module.scss";
 import DisconnectModal from "./features/disconnect/DisconnectModal";
 import { setShowHints } from "./features/hints/hintsSlice";
@@ -34,10 +37,10 @@ const AppInit = () => {
 
 const App = () => {
   return (
-    <>
-      <div className={styles["background"]}></div>
-      <div className={styles["background-image"]}></div>
+    <I18nextProvider i18n={i18next}>
       <Provider store={store}>
+        <div className={styles["background"]}></div>
+        <div className={styles["background-image"]}></div>
         <Routing>
           <ReconnectProvider>
             <DisconnectModal />
@@ -45,7 +48,7 @@ const App = () => {
           </ReconnectProvider>
         </Routing>
       </Provider>
-    </>
+    </I18nextProvider>
   );
 };
 

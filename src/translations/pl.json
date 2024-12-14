@@ -1,0 +1,100 @@
+{
+  "translation": {
+    "title-page.title.welcome": "Witaj w grze",
+    "title-page.title.name": "Zgadnij Kto?",
+    "title-page.nickname-prompt": "Proszę, wybierz pseudonim:",
+    "title-page.input-field.placeholder": "Pseudonim",
+    "title-page.input-field.error.required": "Nic tam nie ma...",
+    "title-page.input-field.error.empty": "Wciąż nic...",
+    "title-page.button.play": "GRAJ",
+
+    "joining-page.card-join.title": "Dołącz do pokoju",
+    "joining-page.card-join.input-field.placeholder": "ID pokoju",
+    "joining-page.card-join.input-field.error.required": "ID pokoju jest wymagane",
+    "joining-page.card-join.input-field.error.empty": "Nic tam nie ma...",
+    "joining-page.card-join.input-field.error.wrong-format": "Co to jest do chuja?",
+    "joining-page.card-join.button": "DOŁĄCZ",
+    "joining-page.card-create.title": "lub stwórz własny!",
+    "joining-page.card-create.button": "STWÓRZ",
+
+    "dashboard.button.players": "Gracze",
+    "dashboard.button.show-hints": "Pokaż wskazówki",
+    "dashboard.button.hide-hints": "Ukryj wskazówki",
+
+    "room-settings.code.title": "Znajomi mogą dołączyć za pomocą tego kodu!",
+    "room-settings.button.copy.default": "kopiuj",
+    "room-settings.button.copy.clicked": "kopiuj",
+    "room-settings.button.reset-game": "Zresetuj grę",
+    "room-settings.player-list.title": "Gracze w tym pokoju: {{count}}",
+
+    "player-settings.team-select.title": "Zmień swoją drużynę",
+    "player-settings.team-select.title-no-team": "Dołącz do drużyny, aby grać!",
+    "player-settings.button.team-select.red": "Czerwoni",
+    "player-settings.button.team-select.blue": "Niebiescy",
+    "player-settings.button.team-select.none": "Brak drużyny",
+    "player-settings.language.title": "Wybierz język:",
+    "player-settings.input-field.placeholder": "Pseudonim",
+    "player-settings.input-field.error.required": "Nic tam nie ma...",
+    "player-settings.input-field.error.empty": "Wciąż nic...",
+    "player-settings.input-field.error.not-changed": "To już jest twój pseudonim",
+    "player-settings.input-field.error.too-long": "Za długi",
+    "player-settings.button.update-nickname": "Zmień pseudonim",
+    "player-settings.button.leave": "Opuść pokój",
+
+    "game-settings.checkbox.images-default": "Użyj domyślnych obrazów",
+    "game-settings.checkbox.images-custom": "Użyj własnych obrazów (min. 12)",
+    "game-settings.button.edit": "Edytuj",
+    "game-settings.button.start": "Rozpocznij grę {{count}}/{{countTotal}}",
+
+    "game-settings.drag-and-drop.text.p1": "Obrazy są automatycznie kompresowane, aby poprawić wydajność, jednak kompresowanie obrazów wysokiej jakości zajmuje trochę czasu i mocy procesora. Cierpliwości.",
+    "game-settings.drag-and-drop.text.p2": "Rozważ zmniejszenie rozmiaru obrazów przed ich zapisaniem, jeśli są większe niż 200 KB każdy.",
+    "game-settings.drag-and-drop.text.p3": "Stosunek obrazu 1:1 jest najbardziej optymalny.",
+    "game-settings.drag-and-drop.drop-area.wait": "Proszę czekać...",
+    "game-settings.drag-and-drop.drop-area.p1": "Kliknij tutaj",
+    "game-settings.drag-and-drop.drop-area.p2": "lub przeciągnij & upuść pliki",
+    "game-settings.drag-and-drop.counter": "{{count}}/{{countTotal}} obrazów",
+    "game-settings.drag-and-drop.button.cancel": "Anuluj",
+    "game-settings.drag-and-drop.button.save": "Zapisz",
+
+    "game-settings.drag-and-drop.modal-error.title": "Nie udało się zapisać obrazów!",
+    "game-settings.drag-and-drop.modal-error.selected": "Wybrane: {{count}}",
+    "game-settings.drag-and-drop.modal-error.min": "Min: {{count}}",
+    "game-settings.drag-and-drop.modal-error.max": "Max: {{count}}",
+
+    "modal.okay": "OK",
+    "modal.cancel": "Anuluj",
+
+    "team.button.end-turn": "Zakończ turę",
+    "team.button.join-team": "Dołącz do drużyny",
+
+    "notifier.settings": "Ustawienia",
+    "notifier.wait": "Czekaj na gospodarza",
+    "notifier.choose-card": "Wybierz kartę dla swojej drużyny",
+    "notifier.ask-or-guess": "Zadaj pytanie lub zgadnij kartę!",
+    "notifier.answer": "Odpowiedz na pytanie przeciwnika",
+    "notifier.win": "Twoja drużyna wygrała!",
+    "notifier.loose": "Twoja drużyna przegrała!",
+
+    "hints.header": "WSKAZÓWKI",
+
+    "hints.new.host.p1": "Przycisk <0>Rozpocznij grę</0> pokazuje, ilu graczy wybrało drużynę.",
+    "hints.new.host.p2": "<0>Możesz</0> rozpocząć grę, gdy wszyscy wybiorą drużynę i obie drużyny będą miały przynajmniej jednego gracza!",
+    "hints.new.player": "<0>Gospodarz</0> może rozpocząć grę, gdy wszyscy wybiorą drużynę i obie drużyny będą miały przynajmniej jednego gracza!",
+
+    "hints.voting.p1": "<0>Lewy przycisk myszy</0> - zagłosuj na kartę - gdy wszyscy zagłosują, karta dla każdej drużyny zostanie wybrana na podstawie liczby głosów.",
+    "hints.voting.p2": "<0>Prawy przycisk myszy</0> - powiększ obraz, aby lepiej się przyjrzeć.",
+
+    "hints.inProgress.p1": "<0>Lewy przycisk myszy</0> - zamknij/otwórz kartę dla wszystkich w swojej drużynie - pamiętaj, że karty odgadnięte nieprawidłowo nie mogą być już otwarte.",
+    "hints.inProgress.p2": "<0>Prawy przycisk myszy</0> (jeśli karta jest otwarta) - powiększ obraz, aby lepiej się przyjrzeć.",
+    "hints.inProgress.p3": "<0>Przytrzymaj prawy przycisk myszy</0> (jeśli karta jest zamknięta) - podejrzyj obraz - tylko Ty go zobaczysz.",
+
+    "hints.finished.p1": "<0>Gra zakończona!</0>",
+    "hints.finished.p2": "<0>Gospodarz</0> może teraz zrestartować grę, klikając przycisk w <1>informacjach o pokoju</1>.",
+    "hints.finished.p3": "<0>Informacje o pokoju</0> można otworzyć, klikając przycisk <1>Gracze</1> w lewym górnym rogu.",
+
+    "hints.preview.p1": "<0>Rolka myszy w górę</0> - powiększ.",
+    "hints.preview.p2": "<0>Rolka myszy w dół</0> - pomniejsz.",
+    "hints.preview.p3": "<0>Lewy przycisk myszy / Przytrzymaj</0> - powiększ / przesuń obraz.",
+    "hints.preview.p4": "<0>Prawy przycisk myszy</0> - zresetuj powiększenie / zamknij podgląd obrazu."
+  }
+}

@@ -1,5 +1,11 @@
 @import "../../global/styles/variables.scss";
 
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .connect-info {
   display: flex;
   flex-direction: column;
@@ -41,7 +47,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 90vh;
+  flex: 1;
   width: 100%;
   background-color: $font-color-light-gray;
 }
@@ -61,11 +67,6 @@
   &:active {
     transform: none;
   }
-}
-
-.players-number {
-  font-weight: 700;
-  margin-left: 0.5vw;
 }
 
 .players {

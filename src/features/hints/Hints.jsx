@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { useRef } from "react";
 import { createPortal } from "react-dom";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Transition } from "react-transition-group";
 import { useBoolean } from "usehooks-ts";
@@ -9,6 +10,7 @@ import styles from "./Hints.module.scss";
 import useHints from "./useHints";
 
 const Hints = () => {
+  const { t } = useTranslation();
   const { text } = useHints();
   const showHints = useSelector((state) => state.hintsManager.showHints);
   const hintsContext = useSelector((state) => state.hintsManager.context);
@@ -76,7 +78,7 @@ const Hints = () => {
         {displayText && (
           <>
             <div ref={textRef} className={styles["text-container"]}>
-              <p className={styles["title"]}>HINTS</p>
+          <p className={styles["title"]}>{t("hints.header")}</p>
               {text}
             </div>
           </>

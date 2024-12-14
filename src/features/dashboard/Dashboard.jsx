@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { MdManageAccounts, MdSupervisorAccount } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useBoolean } from "usehooks-ts";
@@ -11,6 +12,7 @@ import styles from "./Dashboard.module.scss";
 import useDashboard from "./useDashboard";
 
 const Dashboard = () => {
+  const { t } = useTranslation();
   const { toggleHints } = useDashboard();
   const room = useSelector((state) => state.roomManager.room);
   const player = useSelector((state) => state.playerManager.player);
@@ -25,11 +27,14 @@ const Dashboard = () => {
       <div className={styles["dashboard-bar"]}>
         <div className="flex">
           <Button ref={leftPanelRef} onClick={showLeftPanel}>
-            Players {<MdSupervisorAccount className={styles["icon"]} style={{ marginRight: "0.2vw" }} />} {Object.values(room.players).length}
+            {t("dashboard.button.players")}
+            {<MdSupervisorAccount className={styles["icon"]} style={{ marginRight: "0.2vw" }} />} {Object.values(room.players).length}
           </Button>
         </div>
         <div className={styles["button-group"]}>
-          <Button onClick={() => toggleHints(!showHints)}>{`${showHints ? "Hide" : "Show"} hints`}</Button>
+          <Button onClick={() => toggleHints(!showHints)}>{`${
+            showHints ? t("dashboard.button.hide-hints") : t("dashboard.button.show-hints")
+          }`}</Button>
           <Button ref={rightPanelRef} onClick={showRightPanel}>
             {player?.name} {<MdManageAccounts className={styles["icon"]} />}
           </Button>

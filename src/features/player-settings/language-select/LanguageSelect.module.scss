@@ -1,0 +1,14 @@
+@import "../../../global/styles/variables.scss";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+
+  img {
+    height: 4vh;
+    width: 4vh;
+    cursor: pointer;
+  }
+}
