@@ -16,29 +16,18 @@ const Hints = () => {
   const hintsRef = useRef();
   const textRef = useRef();
 
-  const ANIMATION_DURATION_IN_SECONDS = 0.5;
-  const ANIMATION_STYLE_FROM = {
-    height: 0,
-    opacity: 0,
-    duration: ANIMATION_DURATION_IN_SECONDS,
-    ease: "power2.out",
-  };
-  const ANIMATION_STYLE_TO = {
-    height: "auto",
-    opacity: 1,
-    duration: ANIMATION_DURATION_IN_SECONDS,
-    ease: "power2.out",
-  };
+  const ANIMATION_DURATION_IN_SECONDS = 0.4;
 
   // Animate enter
   useGSAP(
     () => {
       if (showHints) {
-        gsap.fromTo(hintsRef.current, ANIMATION_STYLE_FROM, {
-          ...ANIMATION_STYLE_TO,
-          onStart: () => gsap.to(textRef.current, { opacity: 1 }),
-          onInterrupt: () => gsap.to(textRef.current, { opacity: 0 }),
-        });
+        gsap.fromTo(
+          hintsRef.current,
+          { height: 0, opacity: 0, ease: "power2.out" },
+          { height: "40vh", opacity: 1, duration: ANIMATION_DURATION_IN_SECONDS }
+        );
+        gsap.to(textRef.current, { opacity: 1, duration: ANIMATION_DURATION_IN_SECONDS });
       }
     },
     { dependencies: [showHints] }
@@ -46,8 +35,13 @@ const Hints = () => {
 
   // Animate exit
   const handleExit = () => {
+    gsap.to(hintsRef.current, {
+      height: 0,
+      opacity: 0,
+      duration: ANIMATION_DURATION_IN_SECONDS,
+      ease: "power2.in",
+    });
     gsap.to(textRef.current, { opacity: 0, duration: ANIMATION_DURATION_IN_SECONDS });
-    gsap.to(hintsRef.current, ANIMATION_STYLE_FROM);
   };
 
   // Animate text swap on context change
@@ -58,8 +52,6 @@ const Hints = () => {
           textRef.current,
           {
             opacity: 0,
-            ease: "power1.inOut",
-            duration: ANIMATION_DURATION_IN_SECONDS,
           },
           {
             opacity: 1,
@@ -69,15 +61,15 @@ const Hints = () => {
         );
       }
     },
-    { dependencies: [showHints, hintsContext] }
+    { dependencies: [hintsContext] }
   );
 
   return createPortal(
     <Transition nodeRef={hintsRef} in={showHints} timeout={ANIMATION_DURATION_IN_SECONDS * 1000} mountOnEnter unmountOnExit onExit={handleExit}>
       <div ref={hintsRef} className={styles["hints-card"]}>
         <div ref={textRef} className={styles["text-container"]}>
-          <p className={styles["title"]}>{t("hints.header")}</p>
-          {text}
+          <div className={styles["header"]}>{t("hints.header")}</div>
+          <div className={styles["content"]}>{text}</div>
         </div>
       </div>
     </Transition>,

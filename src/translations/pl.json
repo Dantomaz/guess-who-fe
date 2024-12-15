@@ -79,7 +79,7 @@
     "hints.header": "WSKAZÓWKI",
 
     "hints.new.host.p1": "Przycisk <0>Rozpocznij grę</0> pokazuje, ilu graczy wybrało drużynę.",
-    "hints.new.host.p2": "<0>Możesz</0> rozpocząć grę, gdy wszyscy wybiorą drużynę i obie drużyny będą miały przynajmniej jednego gracza!",
+    "hints.new.host.p2": "Możesz rozpocząć grę, gdy wszyscy wybiorą drużynę i obie drużyny będą miały przynajmniej jednego gracza!",
     "hints.new.player": "<0>Gospodarz</0> może rozpocząć grę, gdy wszyscy wybiorą drużynę i obie drużyny będą miały przynajmniej jednego gracza!",
 
     "hints.voting.p1": "<0>Lewy przycisk myszy</0> - zagłosuj na kartę - gdy wszyscy zagłosują, karta dla każdej drużyny zostanie wybrana na podstawie liczby głosów.",

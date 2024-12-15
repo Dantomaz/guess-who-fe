@@ -2,42 +2,63 @@
 
 .hints-card {
   position: absolute;
+  display: flex;
+  flex-direction: column;
   bottom: 6%;
-  right: 3%;
-  height: auto;
-  max-height: 40vh;
-  width: 20vw;
-  overflow-y: auto;
-  scrollbar-width: none;
-  padding: 2vh 1vw;
-  margin: 0;
+  right: 4%;
+  height: 40vh;
+  width: 15vw;
+  padding-top: 1.5vh;
   z-index: 900;
   background-color: $color-background;
   border-radius: 1rem;
   box-shadow: $box-shadow-card;
   opacity: 1;
+  overflow: hidden;
 }
 
 .text-container {
-  width: auto;
-  height: auto;
   display: flex;
   flex-direction: column;
-  gap: 1vh;
-  opacity: 0;
+  gap: 1.5vh;
+  overflow-y: auto;
+}
 
-  .title {
-    font-size: $font-size-medium-large;
-    font-weight: bold;
-    align-self: center;
-  }
+.header {
+  font-size: $font-size-medium-large;
+  font-weight: 700;
+  align-self: center;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid $font-color-light-gray;
+  text-transform: uppercase;
+  padding-bottom: 0.5vh;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: justify;
+  font-size: $font-size-medium;
+  line-height: 1.4;
+  gap: 1px;
+  overflow-y: auto;
 
   p {
-    font-size: $font-size-medium;
-    text-align: justify;
+    letter-spacing: 0.2px;
+    padding: 0.8vh 0.5vw;
 
-    span {
-      font-weight: 700;
+    &:nth-child(odd) {
+      background-color: #f0fff0; // alternate background for better visual separation
     }
+
+    &:nth-child(even) {
+      background-color: #f9f9f9; // lighter background for contrast
+    }
+  }
+
+  span {
+    font-weight: 700;
   }
 }

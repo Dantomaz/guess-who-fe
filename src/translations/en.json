@@ -79,7 +79,7 @@
     "hints.header": "HINTS",
 
     "hints.new.host.p1": "<0>Start game</0> button shows how many players selected a team.",
-    "hints.new.host.p2": "<0>You</0> can start the game once everybody selects a team and both teams have at least one player!",
+    "hints.new.host.p2": "You can start the game once everybody selects a team and both teams have at least one player!",
     "hints.new.player": "<0>Host</0> can start the game once everybody selects a team and both teams have at least one player!",
 
     "hints.voting.p1": "<0>Left Mouse Click</0> - vote for a card - once everyone votes, the card for each team will be chosen based on the number of votes.",

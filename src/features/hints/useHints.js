@@ -44,17 +44,17 @@ const useHints = () => {
       <>
         <p>
           <Trans i18nKey="hints.inProgress.p1">
-            <span style={{ fontWeight: "bold" }}></span>
+            <span></span>
           </Trans>
         </p>
         <p>
           <Trans i18nKey="hints.inProgress.p2">
-            <span style={{ fontWeight: "bold" }}></span>
+            <span></span>
           </Trans>
         </p>
         <p>
           <Trans i18nKey="hints.inProgress.p3">
-            <span style={{ fontWeight: "bold" }}></span>
+            <span></span>
           </Trans>
         </p>
       </>

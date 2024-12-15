@@ -2,16 +2,16 @@
 
 .card {
   position: absolute;
-  top: 55%;
-  right: 8%;
-  height: 39vh;
+  top: 54%;
+  right: 4%;
+  height: 40vh;
   width: 15vw;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 0.2vh;
-  margin: auto auto;
+  padding-top: 1.5vh;
+  gap: 1.5vh;
   background-color: $color-background;
   border-radius: 1rem;
   box-shadow: $box-shadow-card;
@@ -21,13 +21,18 @@
 }
 
 .card-empty {
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .header {
+  font-size: $font-size-medium;
+  font-weight: 700;
   align-self: center;
-  padding-top: 0.5vh;
-  font-size: $font-size-log-highlight;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid $font-color-light-gray;
+  text-transform: uppercase;
+  padding-bottom: 0.5vh;
 }
 
 .content {
@@ -42,8 +47,12 @@
 
 .activity-row {
   width: 100%;
-  letter-spacing: 0;
   padding: 0.5vh 0.2vw;
+  letter-spacing: 0.2px;
+
+  span {
+    letter-spacing: 0.2px;
+  }
 }
 
 .background-red {
@@ -58,19 +67,16 @@
   font-weight: 700;
   color: #d05139;
   font-size: $font-size-log-highlight;
-  letter-spacing: 0;
 }
 
 .blue {
   font-weight: 700;
   color: #3499d3;
   font-size: $font-size-log-highlight;
-  letter-spacing: 0;
 }
 
 .card-number {
   font-weight: 700;
   color: $font-color-gray;
   font-size: $font-size-log-highlight;
-  letter-spacing: 0;
 }
