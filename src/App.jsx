@@ -1,24 +1,12 @@
-import { useGSAP } from "@gsap/react";
-import { gsap } from "gsap";
-import { Draggable } from "gsap/Draggable";
-import { Flip } from "gsap/Flip";
-import TextPlugin from "gsap/TextPlugin";
-import i18next from "i18next";
-import { useEffect } from "react";
-import { I18nextProvider } from "react-i18next";
-import { Provider, useDispatch } from "react-redux";
+import { useEffect, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "../src/translations/i18";
 import styles from "./App.module.scss";
-import DisconnectModal from "./features/disconnect/DisconnectModal";
 import { setShowHints } from "./features/hints/hintsSlice";
-import ReconnectProvider from "./features/reconnect/ReconnectProvider";
-import Routing from "./features/routing/Routing";
-import store from "./store";
 
-gsap.registerPlugin(useGSAP, Flip, TextPlugin, Draggable);
-
-const AppInit = () => {
+const App = () => {
   const dispatch = useDispatch();
+  const gameState = useSelector((state) => state.gameStateManager.gameState);
 
   useEffect(() => {
     const showHintsBoolean = JSON.parse(localStorage.getItem("showHints"));
@@ -33,22 +21,23 @@ const AppInit = () => {
     console.warn = () => {};
     console.error = () => {};
   }
-};
 
-const App = () => {
+  const backgroundColor = useMemo(() => {
+    switch (gameState.currentTurn) {
+      case "RED":
+        return styles["background-red"];
+      case "BLUE":
+        return styles["background-blue"];
+      default:
+        return styles["background-default"];
+    }
+  }, [gameState.currentTurn]);
+
   return (
-    <I18nextProvider i18n={i18next}>
-      <Provider store={store}>
-        <div className={styles["background"]}></div>
-        <div className={styles["background-image"]}></div>
-        <Routing>
-          <ReconnectProvider>
-            <DisconnectModal />
-            <AppInit />
-          </ReconnectProvider>
-        </Routing>
-      </Provider>
-    </I18nextProvider>
+    <>
+      <div className={`${styles["background"]} ${backgroundColor}`}></div>
+      <div className={styles["background-image"]}></div>
+    </>
   );
 };
 
