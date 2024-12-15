@@ -95,6 +95,10 @@
     "hints.preview.p1": "<0>Rolka myszy w górę</0> - powiększ.",
     "hints.preview.p2": "<0>Rolka myszy w dół</0> - pomniejsz.",
     "hints.preview.p3": "<0>Lewy przycisk myszy / Przytrzymaj</0> - powiększ / przesuń obraz.",
-    "hints.preview.p4": "<0>Prawy przycisk myszy</0> - zresetuj powiększenie / zamknij podgląd obrazu."
+    "hints.preview.p4": "<0>Prawy przycisk myszy</0> - zresetuj powiększenie / zamknij podgląd obrazu.",
+
+    "activity-panel.header": "Historia rozgrywki",
+    "activity-panel.message.end-turn": " kończy turę",
+    "activity-panel.message.guess-card": " wskazuje kartę numer "
   }
 }

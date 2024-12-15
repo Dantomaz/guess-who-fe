@@ -12,7 +12,7 @@ const useTeamCard = ({ team }) => {
   const displaySwitchTeamButton = gameState.gameStatus === "NEW" && player.team !== team;
 
   const endTurn = () => {
-    publishEndTurn({ roomId: room.id });
+    publishEndTurn({ roomId: room.id, playerId: player.id });
   };
 
   return {

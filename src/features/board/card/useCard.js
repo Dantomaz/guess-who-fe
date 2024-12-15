@@ -66,10 +66,12 @@ const useCard = ({ number }) => {
 
   const guessCard = (e) => {
     preventDefaultAction(e);
+
     if (isCardClosed) {
       return;
     }
-    publishGuessCard({ roomId: room.id, cardNumber: number });
+
+    publishGuessCard({ roomId: room.id, playerId: player.id, cardNumber: number });
   };
 
   const { onClick: handleClick } =

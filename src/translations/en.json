@@ -95,6 +95,10 @@
     "hints.preview.p1": "<0>Mouse Scroll Up</0> - zoom in.",
     "hints.preview.p2": "<0>Mouse Scroll Down</0> - zoom out.",
     "hints.preview.p3": "<0>Left Mouse Click / Hold</0> - zoom in / move the image.",
-    "hints.preview.p4": "<0>Right Mouse Click</0> - reset zoom / close image preview."
+    "hints.preview.p4": "<0>Right Mouse Click</0> - reset zoom / close image preview.",
+
+    "activity-panel.header": "Game log",
+    "activity-panel.message.end-turn": " ends a turn",
+    "activity-panel.message.guess-card": " taps card number "
   }
 }

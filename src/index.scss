@@ -48,3 +48,22 @@ h3 {
 h3 {
   font-size: $font-size-medium-small;
 }
+
+::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+// scrollbar track
+::-webkit-scrollbar-track {
+  opacity: 0; // invisible
+}
+
+// scrollbar handle
+::-webkit-scrollbar-thumb {
+  background-color: #c7c7c7;
+  border-radius: 1rem;
+
+  &:hover {
+    background-color: #9e9e9e;
+  }
+}

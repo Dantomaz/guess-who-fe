@@ -81,9 +81,9 @@ const useStateUpdateHandler = () => {
   };
 
   const leaveRoom = () => {
+    navigate("/", { replace: true });
     disconnect();
     resetState();
-    navigate("/", { replace: true });
   };
 
   const switchTeam = (newTeam) => {

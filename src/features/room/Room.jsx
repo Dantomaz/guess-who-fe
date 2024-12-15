@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import ActivityPanel from "../activity-panel/ActivityPanel";
 import Board from "../board/Board";
 import PickedCard from "../board/card/picked-card/PickedCard";
 import Dashboard from "../dashboard/Dashboard";
@@ -27,6 +28,7 @@ const Room = () => {
         <TeamCard team="BLUE" />
       </div>
       <PickedCard show={displayChosenCard} />
+      <ActivityPanel />
       <Hints />
     </div>
   );

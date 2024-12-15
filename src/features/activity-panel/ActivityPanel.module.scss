@@ -1,0 +1,76 @@
+@import "../../global/styles/variables.scss";
+
+.card {
+  position: absolute;
+  top: 55%;
+  right: 8%;
+  height: 39vh;
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.2vh;
+  margin: auto auto;
+  background-color: $color-background;
+  border-radius: 1rem;
+  box-shadow: $box-shadow-card;
+  font-size: $font-size-medium-small;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.card-empty {
+  opacity: 0.5;
+}
+
+.header {
+  align-self: center;
+  padding-top: 0.5vh;
+  font-size: $font-size-log-highlight;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-y: auto;
+  width: 100%;
+  gap: 1px;
+}
+
+.activity-row {
+  width: 100%;
+  letter-spacing: 0;
+  padding: 0.5vh 0.2vw;
+}
+
+.background-red {
+  background: #ffe7d5;
+}
+
+.background-blue {
+  background: #cff9ff;
+}
+
+.red {
+  font-weight: 700;
+  color: #d05139;
+  font-size: $font-size-log-highlight;
+  letter-spacing: 0;
+}
+
+.blue {
+  font-weight: 700;
+  color: #3499d3;
+  font-size: $font-size-log-highlight;
+  letter-spacing: 0;
+}
+
+.card-number {
+  font-weight: 700;
+  color: $font-color-gray;
+  font-size: $font-size-log-highlight;
+  letter-spacing: 0;
+}

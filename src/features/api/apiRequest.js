@@ -71,11 +71,11 @@ export const publishGamePrepare = ({ roomId, useDefaultImages }) => publish(inse
 
 export const publishVoteForCard = ({ roomId, playerId, cardNumber }) => publish(insertVariables(APP_VOTE_FOR_CARD, roomId), { playerId, cardNumber });
 
-export const publishEndTurn = ({ roomId }) => publish(insertVariables(APP_END_TURN, roomId));
+export const publishEndTurn = ({ roomId, playerId }) => publish(insertVariables(APP_END_TURN, roomId, playerId));
 
 export const publishToggleCard = ({ roomId, cardNumber, team }) => publish(insertVariables(APP_TOGGLE_CARD, roomId), { cardNumber, team });
 
-export const publishGuessCard = ({ roomId, cardNumber }) => publish(insertVariables(APP_GUESS_CARD, roomId), cardNumber);
+export const publishGuessCard = ({ roomId, playerId, cardNumber }) => publish(insertVariables(APP_GUESS_CARD, roomId, playerId), cardNumber);
 
 // ===== disconnect ===== /
 
