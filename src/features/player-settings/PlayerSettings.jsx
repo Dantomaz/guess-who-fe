@@ -44,6 +44,7 @@ const PlayerSettings = ({ hidePanel }) => {
                   tooLong: (nickname) => nickname.trim().length <= 15 || t("player-settings.input-field.error.too-long"),
                 },
               })}
+              maxLength="15"
               formState={formState}
               showError
             />

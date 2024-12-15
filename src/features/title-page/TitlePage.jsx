@@ -35,8 +35,10 @@ const TitlePage = () => {
               required: t("title-page.input-field.error.required"),
               validate: {
                 notBlank: (nickname) => !isStringBlank(nickname) || t("title-page.input-field.error.empty"),
+                tooLong: (nickname) => nickname.trim().length <= 15 || t("player-settings.input-field.error.too-long"),
               },
             })}
+            maxLength="15"
             formState={formState}
             showError
             style={{ width: "10vw" }}
