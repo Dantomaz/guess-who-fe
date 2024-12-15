@@ -5,7 +5,6 @@ import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Transition } from "react-transition-group";
-import { useBoolean } from "usehooks-ts";
 import styles from "./Hints.module.scss";
 import useHints from "./useHints";
 
@@ -16,19 +15,16 @@ const Hints = () => {
   const hintsContext = useSelector((state) => state.hintsManager.context);
   const hintsRef = useRef();
   const textRef = useRef();
-  const { value: displayText, setTrue: showText, setFalse: hideText } = useBoolean();
 
   const ANIMATION_DURATION_IN_SECONDS = 0.5;
   const ANIMATION_STYLE_FROM = {
-    width: 0,
     height: 0,
     opacity: 0,
     duration: ANIMATION_DURATION_IN_SECONDS,
     ease: "power2.out",
   };
   const ANIMATION_STYLE_TO = {
-    width: "20vw",
-    height: "32vh",
+    height: "auto",
     opacity: 1,
     duration: ANIMATION_DURATION_IN_SECONDS,
     ease: "power2.out",
@@ -38,7 +34,11 @@ const Hints = () => {
   useGSAP(
     () => {
       if (showHints) {
-        gsap.fromTo(hintsRef.current, ANIMATION_STYLE_FROM, { ...ANIMATION_STYLE_TO, onComplete: showText, onInterrupt: hideText });
+        gsap.fromTo(hintsRef.current, ANIMATION_STYLE_FROM, {
+          ...ANIMATION_STYLE_TO,
+          onStart: () => gsap.to(textRef.current, { opacity: 1 }),
+          onInterrupt: () => gsap.to(textRef.current, { opacity: 0 }),
+        });
       }
     },
     { dependencies: [showHints] }
@@ -46,14 +46,14 @@ const Hints = () => {
 
   // Animate exit
   const handleExit = () => {
-    hideText();
+    gsap.to(textRef.current, { opacity: 0, duration: ANIMATION_DURATION_IN_SECONDS });
     gsap.to(hintsRef.current, ANIMATION_STYLE_FROM);
   };
 
-  // Animate text change
+  // Animate text swap on context change
   useGSAP(
     () => {
-      if (showHints && displayText) {
+      if (showHints) {
         gsap.fromTo(
           textRef.current,
           {
@@ -69,20 +69,16 @@ const Hints = () => {
         );
       }
     },
-    { dependencies: [showHints, displayText, hintsContext] }
+    { dependencies: [showHints, hintsContext] }
   );
 
   return createPortal(
     <Transition nodeRef={hintsRef} in={showHints} timeout={ANIMATION_DURATION_IN_SECONDS * 1000} mountOnEnter unmountOnExit onExit={handleExit}>
       <div ref={hintsRef} className={styles["hints-card"]}>
-        {displayText && (
-          <>
-            <div ref={textRef} className={styles["text-container"]}>
+        <div ref={textRef} className={styles["text-container"]}>
           <p className={styles["title"]}>{t("hints.header")}</p>
-              {text}
-            </div>
-          </>
-        )}
+          {text}
+        </div>
       </div>
     </Transition>,
     document.body
