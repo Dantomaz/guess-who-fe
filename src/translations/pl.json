@@ -27,6 +27,7 @@
     "room-settings.button.reset-game": "Zresetuj grę",
     "room-settings.player-list.title": "Gracze w tym pokoju: {{count}}",
 
+    "player-settings.team-select.title-change-blocked": "Nie możesz zmienić drużyny podczas gry!",
     "player-settings.team-select.title": "Zmień swoją drużynę",
     "player-settings.team-select.title-no-team": "Dołącz do drużyny, aby grać!",
     "player-settings.button.team-select.red": "Czerwoni",

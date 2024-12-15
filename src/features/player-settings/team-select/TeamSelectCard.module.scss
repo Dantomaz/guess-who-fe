@@ -3,11 +3,12 @@
 .button {
   display: flex;
   justify-content: center;
+  width: 9vw;
   text-align: center;
   padding: 1vh 1vw;
   border-radius: 1rem;
   box-shadow: $box-shadow-button;
-  font-size: $font-size-medium-large;
+  font-size: $font-size-medium;
   font-weight: 600;
   background-color: none;
   border: none;

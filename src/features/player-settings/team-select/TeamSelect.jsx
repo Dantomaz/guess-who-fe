@@ -12,7 +12,15 @@ const TeamSelect = () => {
   const gameStatus = useSelector((state) => state.gameStateManager.gameState.gameStatus);
 
   const team = player?.team;
-  const title = team === "NONE" ? t("player-settings.team-select.title-no-team") : t("player-settings.team-select.title");
+  let title;
+
+  if (gameStatus !== "NEW") {
+    title = t("player-settings.team-select.title-change-blocked");
+  } else if (team === "NONE") {
+    title = t("player-settings.team-select.title-no-team");
+  } else {
+    title = t("player-settings.team-select.title");
+  }
 
   const nameUpper = team === "RED" ? "NONE" : "RED";
   const nameLower = team === "BLUE" ? "NONE" : "BLUE";
@@ -22,15 +30,11 @@ const TeamSelect = () => {
 
   return (
     <div className={styles["container"]}>
-      {
-        <>
-          <p>{title}</p>
-          <div className={styles["team-select"]}>
-            <TeamSelectCard name={nameUpper} text={textUpper} onClick={switchTeam} style={{ width: "11vw" }} disabled={gameStatus !== "NEW"} />
-            <TeamSelectCard name={nameLower} text={textLower} onClick={switchTeam} style={{ width: "11vw" }} disabled={gameStatus !== "NEW"} />
-          </div>
-        </>
-      }
+      {title}
+      <div className={styles["team-select"]}>
+        <TeamSelectCard name={nameUpper} text={textUpper} onClick={switchTeam} disabled={gameStatus !== "NEW"} />
+        <TeamSelectCard name={nameLower} text={textLower} onClick={switchTeam} disabled={gameStatus !== "NEW"} />
+      </div>
     </div>
   );
 };
