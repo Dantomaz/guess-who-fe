@@ -15,12 +15,12 @@ export const playerSlice = createSlice({
   initialState,
   reducers: {
     setPlayer: (state, action) => {
-      console.log("setPlayer dispatched: ", action.payload);
+      console.log("setPlayer dispatched:", action.payload);
       state.player = action.payload;
       localStorage.setItem("playerId", state.player.id);
     },
     resetPlayer: (state) => {
-      console.log("resetPlayer dispatched: ");
+      console.log("resetPlayer dispatched");
       state.player = initialState.player;
       localStorage.removeItem("playerId");
     },

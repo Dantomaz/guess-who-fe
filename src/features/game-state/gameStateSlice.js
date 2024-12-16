@@ -18,7 +18,7 @@ export const gameStateSlice = createSlice({
   initialState,
   reducers: {
     setGameState: (state, action) => {
-      console.log("setGameState dispatched: ", action.payload);
+      console.log("setGameState dispatched:", action.payload);
       if (action.payload.cards) {
         // Convert Map to Array - array looks exactly like the map and order of the items is preserved, allowing the use of array .map() function
         // This is because Map keys are indices starting from 0, exactly like in the array
@@ -27,7 +27,7 @@ export const gameStateSlice = createSlice({
       state.gameState = action.payload;
     },
     resetGameState: (state) => {
-      console.log("resetGameState dispatched: ", initialState.gameState);
+      console.log("resetGameState dispatched:", initialState.gameState);
       state.gameState = initialState.gameState;
     },
   },
