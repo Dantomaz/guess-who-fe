@@ -16,6 +16,8 @@ export const APP_PLAYER_CHANGE_NAME = "/app/room/{roomId}/player/{playerId}/chan
 export const APP_PLAYER_CHANGE_TEAM = "/app/room/{roomId}/player/{playerId}/changeTeam";
 export const APP_PLAYER_MAKE_HOST = "/app/room/{roomId}/player/{playerId}/makeHost";
 export const APP_PLAYER_KICK = "/app/room/{roomId}/player/{playerId}/kick";
+export const APP_TEAMS_RESET = "/app/room/{roomId}/resetTeams";
+export const APP_TEAMS_RANDOMIZE = "/app/room/{roomId}/randomizeTeams";
 
 export const APP_GAME_RESTART = "/app/room/{roomId}/restartGame";
 

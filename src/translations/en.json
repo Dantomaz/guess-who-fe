@@ -24,6 +24,8 @@
     "room-settings.code.title": "Friends can join you using this code!",
     "room-settings.button.copy.default": "copy",
     "room-settings.button.copy.clicked": "copied",
+    "room-settings.button.randomize-teams": "Randomize teams",
+    "room-settings.button.reset-teams": "Reset teams",
     "room-settings.button.reset-game": "Reset game",
     "room-settings.player-list.title": "Players in this room: {{count}}",
 

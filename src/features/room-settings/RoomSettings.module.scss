@@ -64,7 +64,15 @@
   gap: 2vh;
 }
 
-.button-reset {
+.button-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5vh;
+}
+
+.button {
   margin-bottom: 1vh;
 
   &:active {

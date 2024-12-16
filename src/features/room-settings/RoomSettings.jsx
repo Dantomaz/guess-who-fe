@@ -9,11 +9,33 @@ import useRoomSettings from "./useRoomSettings";
 
 const RoomSettings = ({ hidePanel }) => {
   const { t } = useTranslation();
-  const { resetGame } = useRoomSettings({ hidePanel });
+  const { randomizeTeams, resetTeams, resetGame } = useRoomSettings({ hidePanel });
   const room = useSelector((state) => state.roomManager.room);
   const player = useSelector((state) => state.playerManager.player);
+  const gameStatus = useSelector((state) => state.gameStateManager.gameState.gameStatus);
 
   const numberOfPlayers = Object.values(room?.players).length;
+
+  const renderButtons = () => {
+    if (!player.host) {
+      return;
+    }
+
+    return gameStatus === "NEW" ? (
+      <>
+        <Button className={styles["button"]} onClick={randomizeTeams}>
+          {t("room-settings.button.randomize-teams")}
+        </Button>
+        <Button className={styles["button"]} onClick={resetTeams}>
+          {t("room-settings.button.reset-teams")}
+        </Button>
+      </>
+    ) : (
+      <Button className={styles["button"]} onClick={resetGame}>
+        {t("room-settings.button.reset-game")}
+      </Button>
+    );
+  };
 
   return (
     <div className={styles["container"]}>
@@ -25,11 +47,7 @@ const RoomSettings = ({ hidePanel }) => {
       </div>
       <div className={styles["settings"]}>
         <section className={styles["section"]}>
-          {player.host && (
-            <Button className={styles["button-reset"]} onClick={resetGame}>
-              {t("room-settings.button.reset-game")}
-            </Button>
-          )}
+          <div className={styles["button-section"]}>{renderButtons()}</div>
           <p style={{ fontWeight: 700 }}>{t("room-settings.player-list.title", { count: numberOfPlayers })}</p>
           <div className={styles["players"]}>
             {Object.values(room.players).map((player, index) => (

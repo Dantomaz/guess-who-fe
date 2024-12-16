@@ -10,6 +10,8 @@ import {
   APP_PLAYER_CHANGE_TEAM,
   APP_PLAYER_KICK,
   APP_PLAYER_MAKE_HOST,
+  APP_TEAMS_RANDOMIZE,
+  APP_TEAMS_RESET,
   APP_TOGGLE_CARD,
   APP_VOTE_FOR_CARD,
   QUEUE_ERROR,
@@ -42,6 +44,10 @@ export const publishPlayerChangeTeam = ({ roomId, playerId, newTeam }) => publis
 export const publishPlayerMakeHost = ({ roomId, playerId }) => publish(insertVariables(APP_PLAYER_MAKE_HOST, roomId, playerId));
 
 export const publishPlayerKick = ({ roomId, playerId }) => publish(insertVariables(APP_PLAYER_KICK, roomId, playerId));
+
+export const publishTeamsReset = ({ roomId }) => publish(insertVariables(APP_TEAMS_RESET, roomId));
+
+export const publishTeamsRandomize = ({ roomId }) => publish(insertVariables(APP_TEAMS_RANDOMIZE, roomId));
 
 // ===== room ===== /
 

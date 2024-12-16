@@ -24,6 +24,8 @@
     "room-settings.code.title": "Znajomi mogą dołączyć za pomocą tego kodu!",
     "room-settings.button.copy.default": "kopiuj",
     "room-settings.button.copy.clicked": "kopiuj",
+    "room-settings.button.randomize-teams": "Przydziel drużyny losowo",
+    "room-settings.button.reset-teams": "Zresetuj drużyny",
     "room-settings.button.reset-game": "Zresetuj grę",
     "room-settings.player-list.title": "Gracze w tym pokoju: {{count}}",
 
