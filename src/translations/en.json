@@ -27,6 +27,9 @@
     "room-settings.button.reset-game": "Reset game",
     "room-settings.player-list.title": "Players in this room: {{count}}",
 
+    "room-settings.player-options.host": "Switch host",
+    "room-settings.player-options.kick": "Kick",
+
     "player-settings.team-select.title-change-blocked": "You can not change your team during the game!",
     "player-settings.team-select.title-no-team": "Join a team to play!",
     "player-settings.team-select.title": "Change your team",

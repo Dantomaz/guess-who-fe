@@ -27,6 +27,9 @@
     "room-settings.button.reset-game": "Zresetuj grę",
     "room-settings.player-list.title": "Gracze w tym pokoju: {{count}}",
 
+    "room-settings.player-options.host": "Zmień hosta",
+    "room-settings.player-options.kick": "Wyrzuć",
+
     "player-settings.team-select.title-change-blocked": "Nie możesz zmienić drużyny podczas gry!",
     "player-settings.team-select.title": "Zmień swoją drużynę",
     "player-settings.team-select.title-no-team": "Dołącz do drużyny, aby grać!",
@@ -69,7 +72,7 @@
     "team.button.join-team": "Dołącz do drużyny",
 
     "notifier.settings": "Ustawienia",
-    "notifier.wait": "Czekaj na gospodarza",
+    "notifier.wait": "Czekaj na hosta",
     "notifier.choose-card": "Wybierz kartę dla swojej drużyny",
     "notifier.ask-or-guess": "Zadaj pytanie lub zgadnij kartę!",
     "notifier.answer": "Odpowiedz na pytanie przeciwnika",
@@ -80,7 +83,7 @@
 
     "hints.new.host.p1": "Przycisk <0>Rozpocznij grę</0> pokazuje, ilu graczy wybrało drużynę.",
     "hints.new.host.p2": "Możesz rozpocząć grę, gdy wszyscy wybiorą drużynę i obie drużyny będą miały przynajmniej jednego gracza!",
-    "hints.new.player": "<0>Gospodarz</0> może rozpocząć grę, gdy wszyscy wybiorą drużynę i obie drużyny będą miały przynajmniej jednego gracza!",
+    "hints.new.player": "<0>Host</0> może rozpocząć grę, gdy wszyscy wybiorą drużynę i obie drużyny będą miały przynajmniej jednego gracza!",
 
     "hints.voting.p1": "<0>Lewy przycisk myszy</0> - zagłosuj na kartę - gdy wszyscy zagłosują, karta dla każdej drużyny zostanie wybrana na podstawie liczby głosów.",
     "hints.voting.p2": "<0>Prawy przycisk myszy</0> - powiększ obraz, aby lepiej się przyjrzeć.",
@@ -90,7 +93,7 @@
     "hints.inProgress.p3": "<0>Przytrzymaj prawy przycisk myszy</0> (jeśli karta jest zamknięta) - podejrzyj obraz - tylko Ty go zobaczysz.",
 
     "hints.finished.p1": "<0>Gra zakończona!</0>",
-    "hints.finished.p2": "<0>Gospodarz</0> może teraz zrestartować grę, klikając przycisk w <1>informacjach o pokoju</1>.",
+    "hints.finished.p2": "<0>Host</0> może teraz zrestartować grę, klikając przycisk w <1>informacjach o pokoju</1>.",
     "hints.finished.p3": "<0>Informacje o pokoju</0> można otworzyć, klikając przycisk <1>Gracze</1> w lewym górnym rogu.",
 
     "hints.preview.p1": "<0>Rolka myszy w górę</0> - powiększ.",

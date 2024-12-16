@@ -1,6 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { Transition } from "react-transition-group";
 import { useOnClickOutside } from "usehooks-ts";
 import Button from "../../../global/components/button/Button";
@@ -8,6 +9,7 @@ import styles from "./PlayerOptions.module.scss";
 import usePlayerOptionsButton from "./usePlayerOptionsButton";
 
 const PlayerOptions = ({ player, show, onClickOutsideCallback }) => {
+  const { t } = useTranslation();
   const { makeHost, kickPlayer } = usePlayerOptionsButton({ onClose: onClickOutsideCallback });
   const containerRef = useRef();
 
@@ -57,9 +59,9 @@ const PlayerOptions = ({ player, show, onClickOutsideCallback }) => {
   return (
     <Transition nodeRef={containerRef} in={show} timeout={EXIT_ANIMATION_DURATION_IN_SEC * 1000} mountOnEnter unmountOnExit onExit={handleExit}>
       <div ref={containerRef} className={styles["container"]}>
-        {player.connected && <Button onClick={() => makeHost(player.id)}>Make host</Button>}
+        {player.connected && <Button onClick={() => makeHost(player.id)}>{t("room-settings.player-options.host")}</Button>}
         <Button className={styles["button-danger"]} onClick={() => kickPlayer(player.id)}>
-          Kick
+          {t("room-settings.player-options.kick")}
         </Button>
       </div>
     </Transition>
