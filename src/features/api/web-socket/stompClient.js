@@ -61,8 +61,13 @@ export const disconnect = () => {
 
 export const subscribe = (destination, callback) => {
   if (!client.connected) {
-    console.error(`Cannot subscribe to ${destination} - no connection established. Connecting...`);
+    console.error(`Cannot subscribe to ${destination} - no connection established. Adding destination to queue.`);
     subscriptionsToRetry.push({ destination, callback });
+    return;
+  }
+
+  if (subscriptions[destination]) {
+    console.log(`Already subscribed to ${destination}`);
     return;
   }
 
@@ -98,6 +103,16 @@ export const unsubscribe = (destination) => {
   console.log(`Unsubscribed from ${destination}`);
 };
 
+export const unsubscribeTeams = () => {
+  const teamTopicPattern = new RegExp("/topic/room/.+/gameState/team/.+");
+
+  Object.keys(subscriptions).forEach((dst) => {
+    if (teamTopicPattern.test(dst)) {
+      unsubscribe(dst);
+    }
+  });
+};
+
 export const unsubscribeAll = () => {
-  Object.values(subscriptions).forEach((subscription) => subscription.unsubscribe());
+  Object.keys(subscriptions).forEach(unsubscribe);
 };

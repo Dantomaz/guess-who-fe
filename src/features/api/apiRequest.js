@@ -20,7 +20,7 @@ import {
   TOPIC_IMAGES,
   TOPIC_PLAYERS,
 } from "./web-socket/apiWsEndpoints";
-import { publish, subscribe, unsubscribe } from "./web-socket/stompClient";
+import { publish, subscribe, unsubscribeTeams } from "./web-socket/stompClient";
 
 // ===== headers ===== /
 
@@ -69,7 +69,7 @@ export const subscribeTopicImages = ({ roomId, callback }) => subscribe(insertVa
 
 export const subscribeTopicGameState = ({ roomId, team, callback }) => subscribe(insertVariables(TOPIC_GAME_STATE, roomId, team), callback);
 
-export const unsubscribeTopicGameState = ({ roomId, team }) => unsubscribe(insertVariables(TOPIC_GAME_STATE, roomId, team));
+export const unsubscribeTopicTeams = () => unsubscribeTeams();
 
 export const publishGameRestart = ({ roomId }) => publish(insertVariables(APP_GAME_RESTART, roomId));
 

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   publishPlayerChangeTeam,
@@ -6,7 +6,7 @@ import {
   subscribeTopicGameState,
   subscribeTopicImages,
   subscribeTopicPlayers,
-  unsubscribeTopicGameState,
+  unsubscribeTopicTeams,
 } from "../api/apiRequest";
 import { connect, disconnect, unsubscribeAll } from "../api/web-socket/stompClient";
 import { setDisconnectInfo } from "../disconnect/disconnectSlice";
@@ -17,13 +17,10 @@ import { resetRoom, setImages, setPlayers, setRoom } from "../room/roomSlice";
 const useStateUpdateHandler = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const room = useSelector((state) => state.roomManager.room);
-  const player = useSelector((state) => state.playerManager.player);
 
   const enterRoom = (room) => {
     connect();
-    resetState();
-    updateRoomState(room, room.players[player.id]);
+    updateRoomState(room, room.players[localStorage.getItem("playerId")]);
   };
 
   const reenterRoom = (room, player) => {
@@ -72,7 +69,13 @@ const useStateUpdateHandler = () => {
   const updatePlayerInfo = (players, playerId) => {
     dispatch(setPlayers(players));
     const playerInfo = players[playerId];
-    dispatch(playerInfo ? setPlayer(playerInfo) : resetPlayer());
+
+    if (playerInfo) {
+      dispatch(setPlayer(playerInfo));
+      updateTeamSubscription(playerInfo.team);
+    } else {
+      dispatch(resetPlayer());
+    }
   };
 
   const handleDisconnect = (reason) => {
@@ -87,14 +90,15 @@ const useStateUpdateHandler = () => {
   };
 
   const switchTeam = (newTeam) => {
-    const currentTeam = player.team;
-    if (currentTeam && currentTeam !== "NONE") {
-      unsubscribeTopicGameState({ roomId: room.id, team: currentTeam });
+    publishPlayerChangeTeam({ roomId: localStorage.getItem("roomId"), playerId: localStorage.getItem("playerId"), newTeam });
+  };
+
+  const updateTeamSubscription = (newTeam) => {
+    unsubscribeTopicTeams();
+
+    if (newTeam && newTeam !== "NONE") {
+      subscribeTopicGameState({ roomId: localStorage.getItem("roomId"), team: newTeam, callback: updateGameState });
     }
-    if (newTeam !== "NONE") {
-      subscribeTopicGameState({ roomId: room.id, team: newTeam, callback: updateGameState });
-    }
-    publishPlayerChangeTeam({ roomId: room.id, playerId: player.id, newTeam });
   };
 
   return { enterRoom, reenterRoom, leaveRoom, switchTeam };
