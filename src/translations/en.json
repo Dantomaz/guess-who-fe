@@ -2,7 +2,7 @@
   "translation": {
     "title-page.title.welcome": "Welcome to",
     "title-page.title.name": "Guess Who?",
-    "title-page.nickname-prompt": "Please, choose a nickname:",
+    "title-page.nickname-prompt": "Choose a nickname:",
     "title-page.input-field.placeholder": "Nickname",
     "title-page.input-field.error.required": "There's nothing there...",
     "title-page.input-field.error.empty": "Still nothing...",

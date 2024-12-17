@@ -2,7 +2,7 @@
   "translation": {
     "title-page.title.welcome": "Witaj w grze",
     "title-page.title.name": "Zgadnij Kto?",
-    "title-page.nickname-prompt": "Proszę, wybierz pseudonim:",
+    "title-page.nickname-prompt": "Wybierz pseudonim:",
     "title-page.input-field.placeholder": "Pseudonim",
     "title-page.input-field.error.required": "Nic tam nie ma...",
     "title-page.input-field.error.empty": "Wciąż nic...",
