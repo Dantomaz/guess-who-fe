@@ -50,7 +50,7 @@
     "game-settings.checkbox.images-default": "Use default images",
     "game-settings.checkbox.images-custom": "Use custom images (min. 12)",
     "game-settings.button.edit": "Edit",
-    "game-settings.button.start": "Start game {{count}}/{{countTotal}}",
+    "game-settings.button.start": "Start game",
 
     "game-settings.drag-and-drop.text.p1": "Images will be compressed automatically to improve performance, but compressing high quality images will take some time and CPU power. Please be patient.",
     "game-settings.drag-and-drop.text.p2": "Consider lowering the size of your images first, before saving them if they are larger than 200KB each.",

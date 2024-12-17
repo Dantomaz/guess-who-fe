@@ -6,6 +6,7 @@ import "../../global/styles/classes.scss";
 import DragAndDrop from "../drag-and-drop/DragAndDrop";
 import styles from "./GameSettings.module.scss";
 import useGameSettings from "./useGameSettings";
+import { MdSupervisorAccount } from "react-icons/md";
 
 const GameSettings = () => {
   const { t } = useTranslation();
@@ -48,7 +49,11 @@ const GameSettings = () => {
             </div>
           </div>
           <Button onClick={prepareGame} disabled={isStartButtonDisabled}>
-            {t("game-settings.button.start", { count: numberOfPlayersInTeam, countTotal: numberOfAllPlayers })}
+            {t("game-settings.button.start")}
+            <div className={styles["icon-wrapper"]}>
+              {<MdSupervisorAccount />}
+              {`${numberOfPlayersInTeam}/${numberOfAllPlayers}`}
+            </div>
           </Button>
         </>
       )}

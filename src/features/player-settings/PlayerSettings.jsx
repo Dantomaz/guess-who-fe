@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { ImExit } from "react-icons/im";
 import { useSelector } from "react-redux";
 import Button from "../../global/components/button/Button";
 import Input from "../../global/components/input/Input";
@@ -52,7 +53,8 @@ const PlayerSettings = ({ hidePanel }) => {
           </form>
         </div>
         <div className={styles["section"]}>
-          <Button onClick={onLeave} enableApiLock={true} style={{ width: "10vw" }}>
+          <Button onClick={onLeave} enableApiLock={true}>
+            <ImExit />
             {t("player-settings.button.leave")}
           </Button>
         </div>

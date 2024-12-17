@@ -50,7 +50,7 @@
     "game-settings.checkbox.images-default": "Użyj domyślnych obrazów",
     "game-settings.checkbox.images-custom": "Użyj własnych obrazów (min. 12)",
     "game-settings.button.edit": "Edytuj",
-    "game-settings.button.start": "Rozpocznij grę {{count}}/{{countTotal}}",
+    "game-settings.button.start": "Rozpocznij grę",
 
     "game-settings.drag-and-drop.text.p1": "Obrazy są automatycznie kompresowane, aby poprawić wydajność, jednak kompresowanie obrazów wysokiej jakości zajmuje trochę czasu i mocy procesora. Cierpliwości.",
     "game-settings.drag-and-drop.text.p2": "Rozważ zmniejszenie rozmiaru obrazów przed ich zapisaniem, jeśli są większe niż 200 KB każdy.",

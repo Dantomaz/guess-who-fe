@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { VscDebugRestart } from "react-icons/vsc";
 import { useSelector } from "react-redux";
 import Button from "../../global/components/button/Button";
 import CopyButton from "../../global/components/copy-button/CopyButton";
@@ -32,6 +33,7 @@ const RoomSettings = ({ hidePanel }) => {
       </>
     ) : (
       <Button className={styles["button"]} onClick={resetGame}>
+        <VscDebugRestart />
         {t("room-settings.button.reset-game")}
       </Button>
     );

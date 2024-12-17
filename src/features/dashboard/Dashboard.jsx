@@ -28,7 +28,9 @@ const Dashboard = () => {
         <div className="flex">
           <Button ref={leftPanelRef} onClick={showLeftPanel}>
             {t("dashboard.button.players")}
-            {<MdSupervisorAccount className={styles["icon"]} style={{ marginRight: "0.2vw" }} />} {Object.values(room.players).length}
+            <div className={styles["icon-wrapper"]}>
+              {<MdSupervisorAccount />} {Object.values(room.players).length}
+            </div>
           </Button>
         </div>
         <div className={styles["button-group"]}>
@@ -36,7 +38,7 @@ const Dashboard = () => {
             showHints ? t("dashboard.button.hide-hints") : t("dashboard.button.show-hints")
           }`}</Button>
           <Button ref={rightPanelRef} onClick={showRightPanel}>
-            {player?.name} {<MdManageAccounts className={styles["icon"]} />}
+            {player?.name} {<MdManageAccounts />}
           </Button>
         </div>
       </div>

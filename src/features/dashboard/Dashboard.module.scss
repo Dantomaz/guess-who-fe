@@ -17,6 +17,8 @@
   gap: 1vw;
 }
 
-.icon {
-  font-size: $font-size-large;
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.2vw;
 }
