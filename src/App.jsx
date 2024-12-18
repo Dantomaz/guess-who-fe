@@ -19,7 +19,6 @@ const App = () => {
     console.trace = () => {};
     console.info = () => {};
     console.warn = () => {};
-    console.error = () => {};
   }
 
   const backgroundColor = useMemo(() => {
