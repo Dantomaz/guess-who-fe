@@ -38,6 +38,8 @@ const client = new Client({
   onWebSocketError: onWebSocketError,
   onStompError: onStompError,
   onWebSocketClose: onWebSocketClose,
+  heartbeatIncoming: 25000, // expect heartbeats from the server every 20 seconds
+  heartbeatOutgoing: 25000, // send heartbeats to the server every 20 seconds
 });
 
 export const connect = () => {
